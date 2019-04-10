@@ -2,14 +2,14 @@ import React from 'react';
 import './Slider.css';
 import $ from "jquery";
 
-var scaling = 1.50;
+let scaling = 1.50;
 //count
-var currentSliderCount = 0;
-var videoCount = $(".slider-container").children().length;
-var showCount = 4;
-var sliderCount = videoCount / showCount;
-var controlsWidth = 40;
-var scollWidth = 0;
+let currentSliderCount = 0;
+let videoCount = $(".slider-container").children().length;
+let showCount = 4;
+let sliderCount = videoCount / showCount;
+let controlsWidth = 40;
+let scollWidth = 0;
     
 
 $(document).ready(function(){
@@ -22,18 +22,18 @@ $( window ).resize(function() {
 });
 function init(){
     // elements
-    var win = $(window);
-    var sliderFrame = $(".slider-frame");
-    var sliderContainer = $(".slider-container");
-    var slide = $(".slide");
+  let win = $(window);
+    let sliderFrame = $(".slider-frame");
+    let sliderContainer = $(".slider-container");
+    let slide = $(".slide");
     
     //counts
-    var scollWidth = 0;
+    let scollWidth = 0;
  
     
     //sizes
-    var windowWidth = win.width();
-    var frameWidth = win.width() - 80;
+    let windowWidth = win.width();
+    let frameWidth = win.width() - 80;
      if(windowWidth >= 0 && windowWidth <= 414){
        showCount = 2;
    }else if(windowWidth >= 414 &&  windowWidth <= 768){
@@ -41,11 +41,11 @@ function init(){
    }else{
        showCount = 4;
    }
-    var videoWidth = ((windowWidth - controlsWidth * 2) / showCount );
-    var videoHeight = Math.round(videoWidth / (16/9));
+    let videoWidth = ((windowWidth - controlsWidth * 2) / showCount );
+    let videoHeight = Math.round(videoWidth / (16/9));
     
-    var videoWidthDiff = (videoWidth * scaling) - videoWidth;
-    var videoHeightDiff = (videoHeight * scaling) - videoHeight;
+    let videoWidthDiff = (videoWidth * scaling) - videoWidth;
+    let videoHeightDiff = (videoHeight * scaling) - videoHeight;
     
   
     
@@ -128,25 +128,19 @@ const Slider = () => {
     <div class="btn prev"></div>
     <div class="btn next"></div>
     <div class="slider-container">
-        <div class="slide">0</div>
-        <div class="slide">1</div>
-        <div class="slide">2</div>
-        <div class="slide">3</div>
-        <div class="slide">4</div>
-        <div class="slide">5</div>
-        <div class="slide">6</div>
-        <div class="slide">7</div>
-        <div class="slide">8</div>
-        <div class="slide">9</div>
-        <div class="slide">10</div>
-        <div class="slide">11</div>
-        <div class="slide">12</div>
-        <div class="slide">13</div>
-        <div class="slide">14</div>
-        <div class="slide">15</div>
-        <div class="slide">16</div>
+        <div class="slide"><img src="https://vignette.wikia.nocookie.net/harrypotter/images/f/f1/Affichefilm_HP1.jpg/revision/latest/scale-to-width-down/250?cb=20120819063135&path-prefix=fr" /></div>
+        <div class="slide"><img src="https://assets.e-cinema.com/UPLOADS/169796-collateral-affiche.jpg"/></div>
+        <div class="slide"><img src="https://assets.e-cinema.com/UPLOADS/FC1F26-million-dollar-baby-affiche.jpg"/></div>
+        <div class="slide"><img src="https://assets.e-cinema.com/UPLOADS/622134-zodiac-affiche.jpg"/></div>
+        <div class="slide"><img src="https://assets.e-cinema.com/UPLOADS/A0C659-hannibal-affiche.jpg"/></div>
+        <div class="slide"><img src="https://assets.e-cinema.com/UPLOADS/622134-zodiac-affiche.jpg"/></div>
+        <div class="slide"><img src="https://assets.e-cinema.com/UPLOADS/622134-zodiac-affiche.jpg"/></div>
+        <div class="slide"><img src="https://assets.e-cinema.com/UPLOADS/622134-zodiac-affiche.jpg"/></div>
+        <div class="slide"><img src="https://assets.e-cinema.com/UPLOADS/622134-zodiac-affiche.jpg"/></div>
+        <div class="slide"><img src="https://assets.e-cinema.com/UPLOADS/622134-zodiac-affiche.jpg"/></div>
+        <div class="slide"><img src="https://assets.e-cinema.com/UPLOADS/622134-zodiac-affiche.jpg"/></div>
     </div>
-</div>
+  </div>
   )
  
 }
