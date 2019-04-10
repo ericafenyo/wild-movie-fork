@@ -125,9 +125,10 @@ const Slider = () => {
   
     return(
       <div class="slider-frame">
-    <div class="btn prev"></div>
-    <div class="btn next"></div>
+    
     <div class="slider-container">
+    {/* <div class="btn prev"></div>
+    <div class="btn next"></div> */}
         <div class="slide"><img src="https://vignette.wikia.nocookie.net/harrypotter/images/f/f1/Affichefilm_HP1.jpg/revision/latest/scale-to-width-down/250?cb=20120819063135&path-prefix=fr" /></div>
         <div class="slide"><img src="https://assets.e-cinema.com/UPLOADS/169796-collateral-affiche.jpg"/></div>
         <div class="slide"><img src="https://assets.e-cinema.com/UPLOADS/FC1F26-million-dollar-baby-affiche.jpg"/></div>
