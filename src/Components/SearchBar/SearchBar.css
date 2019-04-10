@@ -76,16 +76,20 @@
   display: none;
 }
 
+.search-bar .icon-close:hover {
+  cursor: pointer;
+}
+
 .search-bar .search-view {
   outline: none;
   width: 100%;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   background-color: transparent;
   border: none;
 }
 
 .search-bar .search-view:focus {
   outline: none;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(0, 0, 0, 0.87);
 }
 /*# sourceMappingURL=SearchBar.css.map */
