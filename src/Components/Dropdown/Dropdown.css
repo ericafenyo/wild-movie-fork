@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+*{box-sizing: border-box}
+
+.test{
+    width: 296px;
+    height: 143px;
+    border: solid 1px #44556b;
+    background-color: rgba(47, 59, 82, 0.3);
+}
+    
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #242e42;
+}
+
+
+ p{
+   
+    margin: 0;
+    padding-left: 8px;
+   
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    text-align: justify;
+    color: rgba(255, 255, 255, 0.87);
+} 
+.dropdown
+{
+    width: 296px;
+  
+  border: solid 1px #44556b;
+  background-color: rgba(47, 59, 82, 0.3);
+  padding: 21px;
+ 
+}
+.history-item {
+    display:flex;
+    margin-top: 8px;
+   }
+.resultItem p{
+    
+    padding:0 !important;
+    margin-top: 8px;
+}
+.dropdown i {
+ color: rgba(255, 255, 255, 0.87) !important;
+}
+
