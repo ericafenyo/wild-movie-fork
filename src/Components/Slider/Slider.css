@@ -50,10 +50,9 @@
  
   .slide{
     width: 99px;
-
     height: 144px;
-  
     border-radius: 2px;
+    margin-right: 16px;
 
   }
 
