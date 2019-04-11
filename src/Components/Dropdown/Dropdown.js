@@ -2,7 +2,8 @@
 //  import React, { Component } from 'react'
  import React from 'react';
  import './Dropdown.css';
- import imgHistory from './images/icon-history.svg'
+ 
+
 
 
  class HistoryItem extends React.Component {
@@ -31,19 +32,14 @@
 
 class Dropdown extends React.Component {
     render() {
-      return (
-      <div className="dropdown">
-        <ResultItem title = "Machete"/>
-        <HistoryItem title = "Star wars"/>
-        <HistoryItem title = "Star wars 2"/>
-        <HistoryItem title = "Star wars 3"/>
+      
+      return <div className="dropdown">{this.props.children}>
         </div>
       
-      );
     }
   }
 
-  export default Dropdown 
+  export {Dropdown, ResultItem, HistoryItem}
 
 
 

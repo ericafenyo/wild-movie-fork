@@ -29,6 +29,7 @@ body{
     width: 296px;
   
   border: solid 1px #44556b;
+  border-top: none;
   background-color: rgba(47, 59, 82, 0.3);
   padding: 21px;
  
