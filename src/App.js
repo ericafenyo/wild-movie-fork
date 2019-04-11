@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
-import './App.css';
 import SearchBar from './Components/SearchBar/SearchBar';
 import { search } from './data/ApiEndpoint';
+import { Dropdown, ResultItem, HistoryItem} from './Components/Dropdown/Dropdown'
 
 class App extends Component {
   constructor(props) {
@@ -26,6 +25,7 @@ class App extends Component {
     const query = this.state.value
     if (keyCode === ENTER_KEYCODE && query) {
       this.performSearch(ENTER_KEYCODE)
+      this.setState({ isLoading: false })
     }
   }
 
@@ -43,6 +43,14 @@ class App extends Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />
+
+          {this.state.isLoading ? "" :
+            <Dropdown >
+              {this.state.data.slice(0, 5).map((item, index) =>
+                <div key={index}><HistoryItem title={item.title} /></div>
+              )}
+            </Dropdown>
+          }
         </div>
       </div>
     );
