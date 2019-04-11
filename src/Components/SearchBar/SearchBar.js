@@ -1,12 +1,31 @@
 import React from 'react'
 import './SearchBar.css'
 
-const SearchBar = () => (
+
+
+const SearchBar = ({ performSearch, handleChange, handleSubmit, value }) => (
   <div className="search-bar">
-    <i class="material-icons">search</i>
-    <input className="search-view" type="text" placeholder="Search movies" />
-    <i class="material-icons icon-close">close</i>
+    <i className="material-icons">search</i>
+    <input
+      id="search-input"
+      className="search-view"
+      onChange={handleChange}
+      onKeyUp = {handleSubmit}
+      value={value}
+      type="text"
+      placeholder="Search movies" />
+    <i className="material-icons icon-close">close</i>
   </div>
 )
+
+
+
+// const handleChange = (event) > {
+
+// }
+
+// const handleSubmit = (event) => {
+
+// }
 
 export default SearchBar
