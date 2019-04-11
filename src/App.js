@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './Components/SearchBar/SearchBar';
 import { search } from './data/ApiEndpoint';
-import { Dropdown, ResultItem, HistoryItem} from './Components/Dropdown/Dropdown'
+import { Dropdown, ResultItem, HistoryItem } from './Components/Dropdown/Dropdown'
 
 class App extends Component {
   constructor(props) {
@@ -15,25 +15,36 @@ class App extends Component {
 
   handleChange = (event) => {
     const value = event.target.value
-    console.log(value)
     this.setState({ value: value })
+
+    setTimeout(() => {
+      this.setState({ isLoading: false })
+    }, 2000)
+
+    this.handleSubmit(event)
   }
 
   handleSubmit = (event) => {
-    const ENTER_KEYCODE = 13
-    const keyCode = event.keyCode
+    // const ENTER_KEYCODE = 13
+    // const keyCode = event.keyCode
     const query = this.state.value
-    if (keyCode === ENTER_KEYCODE && query) {
-      this.performSearch(ENTER_KEYCODE)
-      this.setState({ isLoading: false })
+    console.log(event.target)
+    if (query) {
+      this.performSearch(query)
     }
   }
 
   performSearch = (query) => {
+
     search(query, (movies) => { this.setState({ data: movies.results }) })
+
+    this.setState({ isLoading: false })
   }
 
+  displayDropdown = () => !this.state.value ? { opacity: 0 } : { opacity: 1 }
+
   render() {
+    console.log(this.state.data)
     return (
       <div className="box-wrapper">
         <div className="box">
@@ -45,10 +56,8 @@ class App extends Component {
           />
 
           {this.state.isLoading ? "" :
-            <Dropdown >
-              {this.state.data.slice(0, 5).map((item, index) =>
-                <div key={index}><HistoryItem title={item.title} /></div>
-              )}
+            <Dropdown style={this.displayDropdown()} >
+              {this.state.data.slice(0, 5).map((movie, index) => <ResultItem title={movie.title} />)}
             </Dropdown>
           }
         </div>
