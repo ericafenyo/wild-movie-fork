@@ -1,5 +1,5 @@
-import React from 'react'
-import './SearchBar.css'
+import React from 'react';
+import './SearchBar.css';
 
 /** 
  * TODO: Checklist
@@ -28,6 +28,6 @@ const SearchBar = ({ handleChange, handleSubmit, value, clearValue }) => (
       placeholder="Search movies" />
     <i className="material-icons icon-close" onClick={clearValue} >close</i>
   </div>
-)
+);
 
-export default SearchBar
+export default SearchBar;
