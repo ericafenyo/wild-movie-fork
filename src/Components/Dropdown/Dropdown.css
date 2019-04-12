@@ -1,48 +1,86 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
-*{box-sizing: border-box}
 
-.test{
-    width: 296px;
-    height: 143px;
-    border: solid 1px #44556b;
-    background-color: rgba(47, 59, 82, 0.3);
-}
-    
-body{
-    font-family: 'Roboto', sans-serif;
-    background-color: #242e42;
+:root {
+  --color-secondary: #2F3B52;
+  --color-primary: #242E42;
 }
 
+* {
+  box-sizing: border-box
+}
 
- p{
-   
-    margin: 0;
-    padding-left: 8px;
-   
-    font-size: 14px;
-    letter-spacing: 0.4px;
-    text-align: justify;
-    color: rgba(255, 255, 255, 0.87);
-} 
-.dropdown
-{
-    width: 296px;
-  
+.test {
+  width: 296px;
+  height: 143px;
   border: solid 1px #44556b;
   background-color: rgba(47, 59, 82, 0.3);
-  padding: 21px;
- 
-}
-.history-item {
-    display:flex;
-    margin-top: 8px;
-   }
-.resultItem p{
-    
-    padding:0 !important;
-    margin-top: 8px;
-}
-.dropdown i {
- color: rgba(255, 255, 255, 0.87) !important;
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #242e42;
+}
+
+p {
+  margin: 0;
+  padding-left: 8px;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  text-align: justify;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+
+.dropdown {
+  width: 296px;
+  border: solid 1px #44556b;
+  background-color: rgba(47, 59, 82, 0.3);
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .dropdown {
+    width: 400px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .dropdown {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dropdown {
+    width: 800px;
+  }
+}
+
+.ellispe {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.history-item {
+  display: flex;
+  margin-top: 8px;
+}
+
+.result-item p {
+  padding: 8px 21px;
+}
+
+
+.result-item {
+  transition: all .5ms;
+}
+
+.result-item :hover {
+  background: var(--color-secondary);
+  cursor: pointer;
+}
+
+.dropdown i {
+  color: rgba(255, 255, 255, 0.87) !important;
+}
