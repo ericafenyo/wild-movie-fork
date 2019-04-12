@@ -18,3 +18,77 @@
     margin: auto;
     margin-top: 10%;
 }
+* {
+  box-sizing: border-box;
+}
+
+div{
+  padding: 0;
+  margin: 0;
+}
+
+.homeScreen {
+  height: 100vh;
+  background-color: #242e42;
+  text-align: center;
+}
+
+.logo {
+  width: 17%;
+  margin-top : 8%;
+  display: inline-block;
+}
+
+.searchBar {
+  display: inline-block;
+  margin-top: 15%;
+}
+
+.dropdownSB {
+  display: none;
+  margin-top: 0;
+}
+
+/* .activeDropdown {
+  display: inline-block;
+} */
+
+.navBar {
+  margin-top: 10%;
+}
+
+.btn {
+  color: #657d95;
+  background-color: #242e42;
+  border: none;
+  border-radius: 0;
+}
+
+.btnActive  {
+  color: #242e42;
+  background-color: #ffab4f;
+  border: none;
+  border-radius: 0;
+}
+
+.btnFavorite {
+  color: #657d95;
+  background-color: #242e42;
+  border-color: #ffab4f;
+  border-radius: 0;
+}
+
+.slider {
+  display: inline-block;
+  margin-top: 5%;
+}
+
+.btnFavorite {
+  margin-top: 15%;
+}
+
+.iconAbout {
+  float: right;
+  margin-top: 65%;
+  padding-inline-end: 5%;
+}

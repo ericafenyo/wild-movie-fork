@@ -32,9 +32,9 @@ class HomeScreen extends Component {
           <SearchBar />
         </div>
         <div className="NavBar">
-          <Button style={btn} onClick={this.handleClick}>BOX OFFICE</Button>{''}
-          <Button style={btn} onClick={this.handleClick}>COMMING SOON</Button>{''}
-          <Button style={btnActive} onClick={this.handleClick}>POPULAR</Button>{''}
+          <Button className={navButton} onClick={this.handleClick}>BOX OFFICE</Button>{''}
+          <Button className={navButton} onClick={this.handleClick}>COMMING SOON</Button>{''}
+          <Button className={navButton} onClick={this.handleClick}>POPULAR</Button>{''}
         </div>
         
         <div>
