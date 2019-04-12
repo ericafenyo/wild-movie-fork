@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import SearchBar from './Components/SearchBar/SearchBar';
 import { search } from './data/ApiEndpoint';
 import { Dropdown, ResultItem, HistoryItem} from './Components/Dropdown/Dropdown'
+import './App.css';
+
+
 
 class App extends Component {
   constructor(props) {
@@ -36,6 +39,7 @@ class App extends Component {
 
   render() {
     return (
+
       <div className="box-wrapper">
         <div className="box">
           <SearchBar
@@ -52,9 +56,9 @@ class App extends Component {
             </Dropdown>
           }
         </div>
-      </div>
-    );
-  }
+        </div>
+  )}
+  
 }
 
 export default App;

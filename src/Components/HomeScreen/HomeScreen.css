@@ -1,0 +1,23 @@
+
+.HomeScreen {
+  height: 100vh;
+  border: solid 1px #524575;
+  background-color: #242e42;
+  text-align: center;
+ 
+}
+
+.HomeScreen-logo {
+width: 17%;
+margin-top : 8%;
+}
+
+.searchBar {
+    width: 296px;
+    height: 32px;
+    border-radius: 2px;
+    background-color: white;
+    margin: auto;
+    margin-top: 10%;
+}
+
