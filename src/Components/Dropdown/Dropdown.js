@@ -2,8 +2,6 @@
 //  import React, { Component } from 'react'
  import React from 'react';
  import './Dropdown.css';
- 
-
 
 
 //  class HistoryItem extends React.Component {

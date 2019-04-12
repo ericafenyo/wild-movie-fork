@@ -39,7 +39,6 @@ class App extends Component {
 
   render() {
     return (
-
       <div className="box-wrapper">
         <div className="box">
           <SearchBar
