@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
 
+/* Modified */
+:root {
+  --color-secondary: #2F3B52;
+  --color-primary: #242E42;
+}
+
 * {
   box-sizing: border-box
 }
@@ -16,7 +22,6 @@ body {
   background-color: #242e42;
 }
 
-
 p {
   margin: 0;
   padding-left: 8px;
@@ -26,12 +31,30 @@ p {
   color: rgba(255, 255, 255, 0.87);
 }
 
+/* Modified */
 .dropdown {
   width: 296px;
-  height: 148px;
   border: solid 1px #44556b;
   background-color: rgba(47, 59, 82, 0.3);
-  padding: 8px 21px;
+}
+
+/* Modified: add media query */
+@media (min-width: 768px) and (max-width: 991px) {
+  .dropdown {
+    width: 400px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .dropdown {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dropdown {
+    width: 800px;
+  }
 }
 
 .ellispe {
@@ -45,10 +68,19 @@ p {
   margin-top: 8px;
 }
 
-.resultItem p {
+/* Modified */
+.result-item p {
+  padding: 8px 21px;
+}
 
-  padding: 0 !important;
-  margin-top: 8px;
+/* Modified */
+.result-item {
+  transition: all .5ms;
+}
+
+.result-item :hover {
+  background: var(--color-secondary);
+  cursor: pointer;
 }
 
 .dropdown i {
