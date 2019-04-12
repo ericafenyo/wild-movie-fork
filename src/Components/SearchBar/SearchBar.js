@@ -1,9 +1,18 @@
 import React from 'react'
 import './SearchBar.css'
 
+/** 
+ * TODO: Checklist
+ * Input loose focus only when empty
+ * 
+ * Display close button only when Input has content
+ * 
+ * Click on the the close icon to clear the input without loosing focus
+ * 
+ * Add a search button
+ */
 
-
-const SearchBar = ({ performSearch, handleChange, handleSubmit, value }) => (
+const SearchBar = ({ handleChange, handleSubmit, value, clearValue }) => (
   <div className="search-bar">
     <i className="material-icons" >search</i>
     <input
@@ -13,20 +22,10 @@ const SearchBar = ({ performSearch, handleChange, handleSubmit, value }) => (
       onKeyUp={handleSubmit}
       value={value}
       type="text"
-      onFocus={() => console.log("focus")}
+      autoComplete="off"
       placeholder="Search movies" />
-    <i className="material-icons icon-close" >close</i>
+    <i className="material-icons icon-close" onClick={clearValue} >close</i>
   </div>
 )
-
-
-
-// const handleChange = (event) > {
-
-// }
-
-// const handleSubmit = (event) => {
-
-// }
 
 export default SearchBar
