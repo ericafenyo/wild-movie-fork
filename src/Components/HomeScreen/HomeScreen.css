@@ -1,23 +1,81 @@
 
-.HomeScreen {
-  height: 100vh;
-  border: solid 1px #524575;
-  background-color: #242e42;
-  text-align: center;
- 
+* {
+  box-sizing: border-box;
 }
 
-.HomeScreen-logo {
-width: 17%;
-margin-top : 8%;
+div{
+  padding: 0;
+  margin: 0;
+}
+
+.homeScreen {
+  height: 100vh;
+  background-color: #242e42;
+  text-align: center;
+}
+
+.logo {
+  width: 17%;
+  margin-top : 8%;
+  display: inline-block;
 }
 
 .searchBar {
-    width: 296px;
-    height: 32px;
-    border-radius: 2px;
-    background-color: white;
-    margin: auto;
-    margin-top: 10%;
+  display: inline-block;
+  margin-top: 15%;
+}
+
+.dropdownSB {
+  display: inline-block;
+  margin-top: 0;
+ 
+}
+
+/* .activeDropdown {
+  display: inline-block;
+} */
+
+.navBar {
+  margin-top: 10%;
+  padding: 1%;
+}
+
+.btn {
+  color: #657d95;
+  background-color: #242e42;
+  border: none;
+  border-radius: 0;
+}
+
+.btnActive  {
+  color: #242e42;
+  background-color: #ffab4f;
+  border: none;
+  border-radius: 0;
+}
+
+.btnFavorite {
+  color: #657d95;
+  background-color: #242e42;
+  border-color: #ffab4f;
+  border-radius: 0;
+}
+
+
+
+/* .carrousel {
+  display: inline-block;
+  margin-top: 5%;
+
+} */
+
+.btnFavorite {
+  margin-top: 15%;
+}
+
+.iconAbout {
+  float: right;
+  margin-top: 65%;
+  padding-inline-end: 5%;
 }
 

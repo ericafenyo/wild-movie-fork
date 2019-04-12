@@ -2,7 +2,7 @@
 //  import React, { Component } from 'react'
  import React from 'react';
  import './Dropdown.css';
- import imgHistory from './images/icon-history.svg'
+//  import imgHistory from './images/icon-history.svg'
 
 
  class HistoryItem extends React.Component {
@@ -10,7 +10,7 @@
      return (
      <div>
         <div className="history-item">
-        <i class="material-icons">history</i>
+        <i className="material-icons">history</i>
           <p>{this.props.title}</p>
         </div>
       </div>
