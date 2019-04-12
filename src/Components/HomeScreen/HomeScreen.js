@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "../Logo/logo.svg";
+// import logo from "../Logo/logo.svg";
 import "./HomeScreen.css";
 
 import { Button } from 'reactstrap';
@@ -43,7 +43,7 @@ class HomeScreen extends Component {
     return (
       <div className="HomeScreen">
         <header className="HomeScreen-header">
-          <img src={logo} className="HomeScreen-logo" alt="logo" />
+          {/* <img src={logo} className="HomeScreen-logo" alt="logo" /> */}
         </header>
 
         <div className="searchBar">
