@@ -2,8 +2,6 @@
 //  import React, { Component } from 'react'
  import React from 'react';
  import './Dropdown.css';
- import imgHistory from './images/icon-history.svg'
-
 
  class HistoryItem extends React.Component {
    render(){

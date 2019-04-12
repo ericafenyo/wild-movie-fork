@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import logo from "../Logo/logo.svg";
 import "./HomeScreen.css";
 
-import Carrousel from "./Carrousel";
-import SearchBar from "./SearchBar";
 import { Button } from 'reactstrap';
+import SearchBar from "../SearchBar/SearchBar";
 
 
 let btn = {
@@ -58,7 +57,7 @@ class HomeScreen extends Component {
         </div>
 
         <div>
-          <Carrousel />
+          {/* <Carrousel /> */}
         </div>
 
         <div>
