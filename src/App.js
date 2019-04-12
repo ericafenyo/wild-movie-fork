@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import SearchBar from './Components/SearchBar/SearchBar';
+import { Dropdown, ResultItem } from './Components/Dropdown/Dropdown'
+
 import { search } from './data/ApiEndpoint';
-import { Dropdown, ResultItem, HistoryItem } from './Components/Dropdown/Dropdown'
+
+
+// ───── Utility extension functions (Should be movied to a utitility file) ────
+
+/**
+ * Check if a string value is empty or just whitespaces
+ */
+
+/*eslint no-extend-native: ["error", { "exceptions": ["String"] }]*/
+String.prototype.notEmpty = function () {
+  const regex = /\S/
+  return regex.test(this)
+}
 
 class App extends Component {
   constructor(props) {
@@ -9,55 +23,98 @@ class App extends Component {
     this.state = {
       isLoading: true,
       value: "",
-      data: []
+      data: [],
+      history: []
     }
   }
 
-  handleChange = (event) => {
+  onTextChange = (event) => {
+    //Retrieve the value from the search input
     const value = event.target.value
+    // Update the state with the value 
     this.setState({ value: value })
-
-    setTimeout(() => {
-      this.setState({ isLoading: false })
-    }, 2000)
-
-    this.handleSubmit(event)
-  }
-
-  handleSubmit = (event) => {
-    // const ENTER_KEYCODE = 13
-    // const keyCode = event.keyCode
-    const query = this.state.value
-    console.log(event.target)
-    if (query) {
-      this.performSearch(query)
+    //Check if the value is empty
+    if (value.notEmpty()) {
+      // Value not empty
+      // Perform a search request
+      this.dispatchSearchRequest(value)
+    } else {
+      // Value is empty
+      // Empty the data and hide the suggession box (Dropdown)
+      this.cleanData()
     }
   }
 
-  performSearch = (query) => {
-
-    search(query, (movies) => { this.setState({ data: movies.results }) })
-
+  dispatchSearchRequest = (query) => {
+    this.performSearch(query)
     this.setState({ isLoading: false })
   }
 
-  displayDropdown = () => !this.state.value ? { opacity: 0 } : { opacity: 1 }
+  performSearch = (query) => {
+    search(query, (movies) => { this.setState({ data: movies.results, isLoading: false }) })
+  }
+
+  cleanData = () => {
+    this.setState({ data: [], isLoading: true })
+  }
+
+  onSuggessionItemClick = (event) => {
+    const suggession = event.target.textContent
+    console.log(suggession);
+    // TODO: use this for history logs
+    this.setState({ value: suggession })
+    this.cleanData()
+  }
+
+  handleSubmit = (event) => {
+
+    // const ENTER_KEYCODE = 13
+    // const keyCode = event.keyCode
+    // const query = this.state.value
+    // if (query && query.notEmpty()) {
+    //   this.performSearch(query)
+    // }
+  }
+
+  clearValue = (event) => {
+    this.setState({ value: "" })
+    this.cleanData()
+    console.log("suggession");
+    return false;
+
+    // const ENTER_KEYCODE = 13
+    // const keyCode = event.keyCode
+    // const query = this.state.value
+    // if (query && query.notEmpty()) {
+    //   this.performSearch(query)
+    // }
+  }
+
+
+  componentDidUpdate() {
+    console.log(this.state.data)
+  }
 
   render() {
-    console.log(this.state.data)
     return (
       <div className="box-wrapper">
         <div className="box">
           <SearchBar
             performSearch={this.performSearch}
             value={this.state.value}
-            handleChange={this.handleChange}
+            handleChange={this.onTextChange}
             handleSubmit={this.handleSubmit}
+            clearValue={this.clearValue}
           />
 
           {this.state.isLoading ? "" :
-            <Dropdown style={this.displayDropdown()} >
-              {this.state.data.slice(0, 5).map((movie, index) => <ResultItem title={movie.title} />)}
+            <Dropdown>
+              {this.state.data.slice(0, 5).map((movie) =>
+                <ResultItem
+                  key={movie.id}
+                  title={movie.title}
+                  handleClick={this.onSuggessionItemClick}
+                />)}
             </Dropdown>
           }
         </div>
