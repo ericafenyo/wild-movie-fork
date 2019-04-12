@@ -21,10 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-<<<<<<< HEAD
 package-lock.json
-=======
 yarn.lock
 src/Components/SearchBar/SearchBar.scss
 src/Components/SearchBar/SearchBar.css.map
->>>>>>> 99675866e985cef981151459abd9948f616a534d
