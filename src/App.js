@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from './Components/SearchBar/SearchBar';
-import { Dropdown, ResultItem } from './Components/Dropdown/Dropdown'
+
 
 import { search } from './data/ApiEndpoint';
 
@@ -108,14 +108,14 @@ class App extends Component {
           />
 
           {this.state.isLoading ? "" :
-            <Dropdown>
+            {/* <Dropdown>
               {this.state.data.slice(0, 5).map((movie) =>
                 <ResultItem
                   key={movie.id}
                   title={movie.title}
                   handleClick={this.onSuggessionItemClick}
                 />)}
-            </Dropdown>
+            </Dropdown> */}
           }
         </div>
       </div>
