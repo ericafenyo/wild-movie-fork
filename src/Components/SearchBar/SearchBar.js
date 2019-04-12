@@ -10,6 +10,8 @@ import './SearchBar.css'
  * Click on the the close icon to clear the input without loosing focus
  * 
  * Add a search button
+ * 
+ * add propsTypes
  */
 
 const SearchBar = ({ handleChange, handleSubmit, value, clearValue }) => (
