@@ -26,9 +26,8 @@ div{
 }
 
 .dropdownSB {
-  display: inline-block;
+  display: none;
   margin-top: 0;
- 
 }
 
 /* .activeDropdown {
@@ -37,7 +36,6 @@ div{
 
 .navBar {
   margin-top: 10%;
-  padding: 1%;
 }
 
 .btn {
@@ -61,13 +59,10 @@ div{
   border-radius: 0;
 }
 
-
-
-/* .carrousel {
+.slider {
   display: inline-block;
   margin-top: 5%;
-
-} */
+}
 
 .btnFavorite {
   margin-top: 15%;

@@ -3,7 +3,7 @@ import logo from "../Logo/logo.svg";
 import "./HomeScreen.css";
 import icon from "../Icon/icon-about.svg";
 
-// import Carrousel from "./Carrousel";
+import Slider from "./Slider";
 import SearchBar from "../SearchBar/SearchBar.js";
 import Dropdown from "../Dropdown/Dropdown.js";
 import { Button } from 'reactstrap';
@@ -43,7 +43,7 @@ class HomeScreen extends Component {
   };
 
   render() {
-    const navButton = this.state.active ? "btnActive" : "btn"; 
+    const navButton = this.state.active ? "btnActive" : "btn";
     return (
       <div className="homeScreen">
         <header className="homeScreenHeader">
@@ -55,20 +55,18 @@ class HomeScreen extends Component {
 
 
         <div className="navBar">
-        <div className="buttonBox">
-          <Button onClick={this.handleClick} className={navButton}>BOX OFFICE</Button>
+          <div className="buttonBox">
+            <Button onClick={this.handleClick} className={navButton}>BOX OFFICE</Button>
           </div>
           <div className="buttonSoon">
-          <Button onClick={this.handleClick} className={navButton}>COMING SOON</Button>
+            <Button onClick={this.handleClick} className={navButton}>COMING SOON</Button>
           </div>
           <div className="buttonPop">
-          <Button onClick={this.handleClick} className={navButton}>POPULAR</Button>{''}
+            <Button onClick={this.handleClick} className={navButton}>POPULAR</Button>{''}
           </div>
         </div>
 
-        {/* <div className="carrousel">
-          <Carrousel />
-        </div> */}
+        <div className="slider"><Slider /></div>
 
         <div>
           <Button className="btnFavorite">MY FAVORITES</Button>{''}
