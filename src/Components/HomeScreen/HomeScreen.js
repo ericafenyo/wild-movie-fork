@@ -45,17 +45,15 @@ class HomeScreen extends Component {
         <header className="HomeScreen-header">
           {/* <img src={logo} className="HomeScreen-logo" alt="logo" /> */}
         </header>
-
         <div className="searchBar">
           <SearchBar />
         </div>
-
         <div className="NavBar">
           <Button style={btn} onClick={this.handleClick}>BOX OFFICE</Button>{''}
           <Button style={btn} onClick={this.handleClick}>COMMING SOON</Button>{''}
           <Button style={btnActive} onClick={this.handleClick}>POPULAR</Button>{''}
         </div>
-
+        
         <div>
           {/* <Carrousel /> */}
         </div>

@@ -1,10 +1,8 @@
-
 .HomeScreen {
   height: 100vh;
   border: solid 1px #524575;
   background-color: #242e42;
   text-align: center;
- 
 }
 
 .HomeScreen-logo {
@@ -20,4 +18,3 @@ margin-top : 8%;
     margin: auto;
     margin-top: 10%;
 }
-
