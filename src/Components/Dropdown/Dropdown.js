@@ -6,40 +6,36 @@
 
 
 
- class HistoryItem extends React.Component {
-   render(){
-     return (
+//  class HistoryItem extends React.Component {
+//    render(){
+//      return (
+  export const HistoryItem   = ({title}) =>
      <div>
         <div className="history-item">
-        <i class="material-icons">history</i>
-          <p>{this.props.title}</p>
+        <i className="material-icons">history</i>
+          <p className = "ellipses">{title}</p>
         </div>
       </div>
-      )
-   }
- }
- class ResultItem extends React.Component {
-  render(){
-    return (
+//       )
+//    }
+//  }
+//  class ResultItem extends React.Component {
+//   render(){
+//     return (
+  export const ResultItem = ({title, handelClick}) =>
     <div>
        <div className="resultItem">
-        <p>{this.props.title}</p>
+        <p className="ellipsis">{this.props.title}</p>
        </div>
      </div>
-     )
-  }
-}
+//      )
+//   }
+// }
 
-class Dropdown extends React.Component {
-    render() {
-      
-      return <div className="dropdown">{this.props.children}>
-        </div>
-      
-    }
-  }
 
-  export {Dropdown, ResultItem, HistoryItem}
+  
+
+  export const Dropdown =  ({children}) => <div  className= "dropdown">{children}</div>
 
 
 
