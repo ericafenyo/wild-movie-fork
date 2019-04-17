@@ -2,12 +2,7 @@
     margin: 0;
     padding: 0;
   }
-  .slider-frame {
-    background-color: #242e42;
-    position:* {
-    margin: 0;
-    padding: 0;
-  }
+
   .slider-frame {
     background-color: #242e42;
     position: relative;
@@ -15,7 +10,7 @@
     overflow-y: hidden;
     overflow-x: scroll;
     margin-top: 100px;/*Delete after*/
-    height: 30px;
+    height: 300px;
   } 
 
   ::-webkit-scrollbar { 
@@ -62,26 +57,13 @@
   } 
 
   
-   relative;
-    margin: 0 auto;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    margin-top: 100px;/*Delete after*/
-    height: 158px;
-  } 
+
 
   ::-webkit-scrollbar { 
     display: none; 
     }
     
-  .slider-frame .btn {
-    width: 60px;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.3);
-    position: absolute;
-    top: 0;
-    z-index: 1000;
-  } 
+
   .slider-frame .btn.prev {
 
     left: 0px;
