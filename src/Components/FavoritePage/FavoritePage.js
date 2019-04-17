@@ -3,25 +3,20 @@ import { search } from "../../data/ApiEndpoint";
 import { mapper } from "../../data/Mapper"
 import './FavoritePage.css'
 
-
 const FavIcon = ({ url, openDetail, adFavorite }) => {
   return (
-
     <div>
-
-      <img 
-      onClick={openDetail}
-      className="sizeImg img-fluid"
+      <img
+        onClick={openDetail}
+        className="sizeImg img-fluid"
         src={url}
-        alt="poster_path"
-      ></img>
+        alt="poster_path" />
       <div className="icon-favorite" >
-      <i class="material-icons"onClick={adFavorite}> favorite </i>
+        <i class="material-icons" onClick={adFavorite}> favorite </i>
       </div>
     </div>
-
   );
-};
+}
 
 class FavoritePage extends Component {
   constructor(props) {
@@ -29,45 +24,38 @@ class FavoritePage extends Component {
     this.state = {
       results: [],
       isLoading: true,
-
     }
-  };
+  }
 
   componentDidMount() {
     search('Lord', response => {
-      this.setState({ results: response })
-      this.setState({ isLoading: false })
-
+      this.setState({ results: response, isLoading: false })
     });
   }
 
   openetail = () => {
-    console.log("test")
+    console.log("test");
   }
+
   adFavorite = () => {
-    console.log("test")
+    console.log("test");
   }
-
-
-
 
   render() {
     return (
-      
-        <div className="row p-0 m-0">
-          {
-            this.state.results.map(item =>
-              (
-                < div className="col-6  favorite-item m-0 p-0">
-                  <FavIcon url={mapper.buildImageUrl(item.poster_path)} openDetail={this.openetail} adFavorite={this.adFavorite} />
-                </div>
-              )
+      <div className="row p-0 m-0">
+        {
+          this.state.results.map(item =>
+            (
+              < div className="col-6  favorite-item m-0 p-0">
+                <FavIcon url={mapper.buildImageUrl(item.poster_path)} openDetail={this.openetail} adFavorite={this.adFavorite} />
+              </div>
             )
-          }
-        
+          )
+        }
       </div>
     );
   }
-};
+}
 
 export default FavoritePage;

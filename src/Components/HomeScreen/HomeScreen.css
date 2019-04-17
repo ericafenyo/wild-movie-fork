@@ -1,6 +1,6 @@
 .logo {
   width: 17%;
-  margin-top : 8%;
+  margin-top: 8%;
   display: inline-block;
 }
 
@@ -11,24 +11,19 @@
 }
 
 .searchBar {
-    width: 296px;
-    height: 32px;
-    border-radius: 2px;
-    background-color: white;
-    margin: auto;
-    margin-top: 10%;
-    display: inline-block;
+  width: 296px;
+  height: 32px;
+  border-radius: 2px;
+  background-color: white;
+  margin: auto;
+  margin-top: 10%;
+  display: inline-block;
 }
 
 .dropdownSB {
   display: inline-block;
   margin-top: 0;
 }
-
-/* .activeDropdown {
-  display: inline-block;
-} */
-
 
 .btn {
   color: #657d95 !important;
@@ -39,7 +34,7 @@
   margin-right: 5%;
 }
 
-.btnActive  {
+.btnActive {
   color: #242e42 !important;
   background-color: #ffab4f !important;
 }
