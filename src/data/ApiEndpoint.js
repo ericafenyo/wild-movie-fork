@@ -19,8 +19,14 @@
  * @file 
  * This file contains some helper functions for accessing movie data
  * from [The Movie Database (TMDb)]{@link https://www.themoviedb.org}.
- * It is recommended to invoke these functions through the [Repository]{@link ./Repository }
- * object which adds an optimization layer for better performance.
+ * It is recommended to parse the responses with mapper functions present in the [Mapper]{@link ./Mapper }
+ * class.
+ * 
+ * To use these helper functions;
+ * 1: Install axios using `yarn add axios` or `npm install axios`
+ * 2: Import them into your javaScript file using `import { search, fetchMovieChart, fetchMovieDetails } from 'path` 
+ * 3: Invoke the function of your choice and pass the required parameters.
+ * Example `search("query", result => console.log(result))`
  * 
  * @see search
  * @see fetchMovieChart
@@ -73,7 +79,7 @@ export const search = (query, callback, page = 1) => {
     page: page
   }
   _performNetworkCall(path, response => {
-    callback(response)
+    callback(response.data.results)
   }, queryParams)
 }
 
@@ -90,7 +96,7 @@ export const fetchMovieChart = (chart, callback, page = 1) => {
     page: page
   }
   _performNetworkCall(path, response => {
-    callback(response)
+    callback(response.data.results)
   }, queryParams)
 }
 
@@ -107,6 +113,6 @@ export const fetchMovieDetails = (movieId, callback) => {
     append_to_response: PARAM_APPEND_TO_RESULT
   }
   _performNetworkCall(path, response => {
-    callback(response)
+    callback(response.data)
   }, queryParams)
 }
