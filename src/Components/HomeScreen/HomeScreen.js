@@ -21,7 +21,7 @@ class HomeScreen extends Component {
     this.setState({ active: !this.state.active });
   };
 
-  render() {
+  render(){
     const navButton = this.state.active ? "btnActive" : "btn";
     return (
       <div className="homeScreen">
