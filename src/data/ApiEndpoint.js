@@ -1,26 +1,112 @@
-// Variables utilisées pour stocker la clé API TMDB
-const token = "64b4c85951711a3e428dc42847471e4c";
-const baseUrl = "https://api.themoviedb.org/3/search/movie";
+/**
+ * @license
+ * Copyright (C) 2019 Eric Afenyo
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-const performFetch = (url, callback) => {
-  fetch(url)
-    .then(function (response) {
-      return response.json();
+/**
+ * @file 
+ * This file contains some helper functions for accessing movie data
+ * from [The Movie Database (TMDb)]{@link https://www.themoviedb.org}.
+ * It is recommended to invoke these functions through the [Repository]{@link ./Repository }
+ * object which adds an optimization layer for better performance.
+ * 
+ * @see search
+ * @see fetchMovieChart
+ * @see fetchMovieDetails
+ * @see {@link ./Repository }
+ */
+
+import axios from 'axios';
+
+// API Related Information
+const API_TOKEN = "64b4c85951711a3e428dc42847471e4c";
+const BASE_URL = "https://api.themoviedb.org/3/";
+
+/**
+ * Performs a network request using the [axios api]{@link https://github.com/axios/axios}
+ * @param {string} path The URL path to be appended to the base server URL.
+ * @param {function} callback A Function to execute on the network response.
+ * @param {object} params Optional: The URL parameters to be sent with the request.
+ */
+const _performNetworkCall = (path, callback, params = {}) => {
+  // axios config options for making network requests
+  const config = {
+    baseURL: BASE_URL,
+    params: {
+      api_key: API_TOKEN,
+      ...params
+    }
+  }
+  // Perform a GET request wih the provided path and config option
+  // TODO: Implement networkState to notify the "calling layer" about the state changes.
+  axios.get(path, config)
+    .then(response => {
+      callback(response)
+    }).catch(error => {
+      console.log(error);
     })
-    .then(function (json) {
-      callback(json);
-    });
 }
 
 /**
- * Search for closest matched movies using a provided query string and we provide. 
+ * Search for closest matched movies by title.
  * 
- * @param {*} query a text query to search
- * @param {*} page the page to query
+ * @param {string} query The text query to search
+ * @param {function} callback A Function to execute on the network response.
+ * @param {number} page Optional: The page to query. Default value is 1
  */
 export const search = (query, callback, page = 1) => {
-  const url = `${baseUrl}?api_key=${token}&query=${query}&page=${page}`
-  performFetch(url, result => {
-    callback(result)
-  })
+  const path = "search/movie"
+  const queryParams = {
+    query: query,
+    page: page
+  }
+  _performNetworkCall(path, response => {
+    callback(response)
+  }, queryParams)
+}
+
+/**
+ * Get a list of top movies on TMDb
+ * 
+ * @param {string} chart Allowed values: now_playing, popular, top_rated and upcoming
+ * @param {function} callback A Function to execute on the network response.
+ * @param {number} page Optional: The page to query. Default value is 1
+ */
+export const fetchMovieChart = (chart, callback, page = 1) => {
+  const path = `movie/${chart}`
+  const queryParams = {
+    page: page
+  }
+  _performNetworkCall(path, response => {
+    callback(response)
+  }, queryParams)
+}
+
+/**
+ * Get the primary information about a particular movie.
+ * 
+ * @param {number} movieId TMDb movie id
+ * @param {function} callback A Function to execute on the network response.
+ */
+export const fetchMovieDetails = (movieId, callback) => {
+  const path = `movie/${movieId}`
+  const PARAM_APPEND_TO_RESULT = "videos,credits"
+  const queryParams = {
+    append_to_response: PARAM_APPEND_TO_RESULT
+  }
+  _performNetworkCall(path, response => {
+    callback(response)
+  }, queryParams)
 }
