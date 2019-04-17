@@ -1,0 +1,59 @@
+.logo {
+  width: 17%;
+  margin-top : 8%;
+  display: inline-block;
+}
+
+.homeScreen {
+  position: relative;
+  text-align: center;
+  background-color: #242e42;
+}
+
+.searchBar {
+    width: 296px;
+    height: 32px;
+    border-radius: 2px;
+    background-color: white;
+    margin: auto;
+    margin-top: 10%;
+    display: inline-block;
+}
+
+.dropdownSB {
+  display: inline-block;
+  margin-top: 0;
+}
+
+/* .activeDropdown {
+  display: inline-block;
+} */
+
+
+.btn {
+  color: #657d95 !important;
+  background-color: #242e42 !important;
+  border: none !important;
+  margin-top: 20%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.btnActive  {
+  color: #242e42 !important;
+  background-color: #ffab4f !important;
+}
+
+.btnFavorite {
+  color: #657d95 !important;
+  background-color: #242e42 !important;
+  border: solid 1px #ffab4f !important;
+  border-radius: 0;
+  margin-top: 5%;
+  margin-bottom: 25%;
+}
+
+.slider {
+  display: inline-block;
+  margin-top: 5%;
+}

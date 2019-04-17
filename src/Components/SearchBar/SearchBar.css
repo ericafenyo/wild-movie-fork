@@ -1,0 +1,116 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.box-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #242E42;
+}
+
+.search-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 32px;
+  width: 296px;
+  border-radius: 2px;
+  background-color: #2F3B52;
+  border: 1px solid #44556B;
+  padding: 0 4px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .search-bar {
+    width: 400px;
+    height: 36px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .search-bar {
+    width: 600px;
+    height: 36px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .search-bar {
+    width: 800px;
+    height: 36px;
+  }
+}
+
+.search-bar:focus-within {
+  background-color: #ffffff;
+  border: solid 1px #ffffff;
+}
+
+.search-bar:focus-within i {
+  color: #242E42;
+}
+
+.search-bar ::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-bar :-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-bar ::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-bar ::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-bar i {
+  padding: 4px;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.search-bar .icon-close {
+  display: initial;
+}
+
+.search-bar .icon-close:hover {
+  cursor: pointer;
+}
+
+.search-bar .search-view {
+  outline: none;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: transparent;
+  border: none;
+}
+
+.search-bar .search-view:focus {
+  outline: none;
+  color: rgba(0, 0, 0, 0.87);
+}
