@@ -1,13 +1,12 @@
-.HomeScreen {
-  height: 100vh;
-  background-color: #242e42;
-  text-align: center;
-}
-
 .logo {
   width: 17%;
   margin-top : 8%;
   display: inline-block;
+}
+
+.homeScreen {
+  position: relative;
+  text-align: center;
 }
 
 .searchBar {
@@ -17,35 +16,11 @@
     background-color: white;
     margin: auto;
     margin-top: 10%;
-}
-* {
-  box-sizing: border-box;
-}
-
-div{
-  padding: 0;
-  margin: 0;
-}
-
-.homeScreen {
-  height: 100vh;
-  background-color: #242e42;
-  text-align: center;
-}
-
-.logo {
-  width: 17%;
-  margin-top : 8%;
-  display: inline-block;
-}
-
-.searchBar {
-  display: inline-block;
-  margin-top: 15%;
+    display: inline-block;
 }
 
 .dropdownSB {
-  display: none;
+  display: inline-block;
   margin-top: 0;
 }
 
@@ -53,42 +28,31 @@ div{
   display: inline-block;
 } */
 
-.navBar {
-  margin-top: 10%;
-}
 
 .btn {
-  color: #657d95;
-  background-color: #242e42;
-  border: none;
-  border-radius: 0;
+  color: #657d95 !important;
+  background-color: #242e42 !important;
+  border: none !important;
+  margin-top: 20%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .btnActive  {
-  color: #242e42;
-  background-color: #ffab4f;
-  border: none;
-  border-radius: 0;
+  color: #242e42 !important;
+  background-color: #ffab4f !important;
 }
 
 .btnFavorite {
-  color: #657d95;
-  background-color: #242e42;
-  border-color: #ffab4f;
+  color: #657d95 !important;
+  background-color: #242e42 !important;
+  border: solid 1px #ffab4f !important;
   border-radius: 0;
+  margin-top: 5%;
+  margin-bottom: 25%;
 }
 
 .slider {
   display: inline-block;
   margin-top: 5%;
-}
-
-.btnFavorite {
-  margin-top: 15%;
-}
-
-.iconAbout {
-  float: right;
-  margin-top: 65%;
-  padding-inline-end: 5%;
 }
