@@ -15,7 +15,7 @@
     overflow-y: hidden;
     overflow-x: scroll;
     margin-top: 100px;/*Delete after*/
-    height: 30px;
+    height: 300px;
   } 
 
   ::-webkit-scrollbar { 
