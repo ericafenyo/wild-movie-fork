@@ -39,14 +39,6 @@ const SearchItem = (props) => {
   );
 };
 
-const imageNull = (path) => {
-  if (!path) {
-    return "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/No_picture_available.png/401px-No_picture_available.png"
-  }
-
-  return mapper.buildImageUrl(path)
-}
-
 // const releaseYear = (duration) => {
 //   str.slice(0, 4) {
 //     return
@@ -98,7 +90,7 @@ class SearchList extends Component {
           director=''
           date={item.release_date}
           duration='120'
-          imgUrl={imageNull(item.poster_path)}
+          imgUrl={mapper.buildImageUrl(item.poster_path)}
         />)}
       </div>
     );
