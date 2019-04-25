@@ -12,7 +12,7 @@ const Cast = (props) => {
         <Card>
             <CardImg src={props.imgUrl} alt="Card image cap" />
         </Card>
-        <CardTitle className='actor'><p>Brad Pitt</p><p>role</p></CardTitle>
+        <CardTitle className={props.actor}></CardTitle>
         </div>
     );
 }
