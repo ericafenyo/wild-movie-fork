@@ -1,41 +1,48 @@
-import React, { Component } from 'react';
-import { search } from "../../data/ApiEndpoint";
-// import  {fetchMovieDetails} from "../../data/ApiEndpoint"
+import React, { Component, Fragment } from 'react';
+import { search, fetchMovieDetails, } from "../../data/ApiEndpoint";
+import ToolBar from "../Toolbar/ToolBar"
+
+import Casting from "../Casting/Casting"
 import './MovieInfo.css'
 
-
+import MovieDetails from '../MovieDetails/MovieDetails'
 
 class MovieInfo extends Component {
-   constructor(props) {
-     super(props);
-     this.state = {
-       results: [],
-       isLoading: true
-       
-     }
-   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      info: {},
+      results: [],
+      isLoading: true,
+    }
+  }
 
-   componentDidMount() {
-       fetch(`https://api.themoviedb.org/3/search/movie?api_key=64b4c85951711a3e428dc42847471e4c&query=tron`)
+  componentDidMount() {
+    fetchMovieDetails(480414, res => {
+      this.setState({ info: res, isLoading: false })
+    })
+  }
 
+  render() {
+    if (this.state.isLoading) {
+      return <div>loading</div>
+    }
 
-     search('le seigneur', response => {
-       this.setState({ results: response })
-     });
-   }
-   
-render() {
-   console.log({results: this.state.results})
-   return (
-       <div>
-      {this.state.results}
-       </div>
-
-
-       );
-   }
- }
-
-
+    return (
+      <div className="background-primary">
+        <div className="mb-5">
+          <ToolBar 
+          title="Movie details"
+          leftIcon="close"
+          rightIcon = "favorite"
+          onClickLeftIcon = {()=> console.log("Close")}
+          onClickRightIcon = {()=> console.log("Favorite")}
+          />
+        </div>
+        <MovieDetails info={this.state.info} />
+      </div >
+    )
+  }
+}
 
 export default MovieInfo

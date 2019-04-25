@@ -1,17 +1,24 @@
-.container{
-    background-color: #242e42;
-}
 
-
-
-p{
-    text-align: center;
+ .textcolor{
+  color: white;
+  font-size: 12px;
+  margin-bottom: 0;
 }
 
 .actor{
-    background-color: #242e42;
+  background-color: #242e42;
 }
 
 .role{
-    background-color: #242e42;
+  background-color: #242e42;
 }
+.profile{
+  margin: 0 4px;
+  height: 100%;
+}
+.profile img{
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+}
+
