@@ -12,7 +12,7 @@ const Detail = (props) => {
         <div className="backdrop-wrapper">
           <img className="backdrop" src={props.backdrop} />
           <div className="play-button">
-            <img src={playButton} />
+            <img src={playButton} onClick={props.launchYoutube} />
           </div>
         </div>
         <div className="info-wrapper m-4">
@@ -44,6 +44,12 @@ const Detail = (props) => {
 }
 
 class MovieDetails extends Component {
+
+  launchYoutube = (youtubeUrl) => {
+    if(youtubeUrl){
+      window.open(youtubeUrl)
+    }
+  }
   render() {
     return (
       <div>
@@ -56,6 +62,7 @@ class MovieDetails extends Component {
           genre={this.props.info.genres.shift().name}
           synopsis={this.props.info.overview}
           cast={this.props.info.credits.cast}
+          launchYoutube={()=> this.launchYoutube("https://www.youtube.com/watch?v=Ct6BUPvE2sM")}
         />
       </div>
     )
