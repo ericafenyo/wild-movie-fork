@@ -44,11 +44,11 @@ const imageNull = (path) => {
   return mapper.buildImageUrl(path)
 }
 
-const releaseYear = (duration) => {
-  str.slice(0, 4) {
-    return
-  }
-}
+// const releaseYear = (duration) => {
+//   str.slice(0, 4) {
+//     return
+//   }
+// }
 
 
 class SearchList extends Component {
