@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { search } from "../../data/ApiEndpoint";
-import { mapper } from "../../data/Mapper"
-import './FavoritePage.css'
+import { mapper } from "../../data/Mapper";
+import './FavoritePage.css';
 
 const FavIcon = ({ url, openDetail, adFavorite }) => {
   return (
@@ -12,7 +12,7 @@ const FavIcon = ({ url, openDetail, adFavorite }) => {
         src={url}
         alt="poster_path" />
       <div className="icon-favorite" >
-        <i class="material-icons" onClick={adFavorite}> favorite </i>
+        <i className="material-icons" onClick={adFavorite}>favorite</i>
       </div>
     </div>
   );
@@ -28,7 +28,7 @@ class FavoritePage extends Component {
   }
 
   componentDidMount() {
-    search('Lord', response => {
+    search('james', response => {
       this.setState({ results: response, isLoading: false })
     });
   }
@@ -47,8 +47,8 @@ class FavoritePage extends Component {
         {
           this.state.results.map(item =>
             (
-              < div className="col-6  favorite-item m-0 p-0">
-                <FavIcon url={mapper.buildImageUrl(item.poster_path)} openDetail={this.openetail} adFavorite={this.adFavorite} />
+              < div  key={item.id} className="iconName col-6  favorite-item m-0 p-0 ">
+                <FavIcon  url={mapper.buildImageUrl(item.poster_path)} openDetail={this.openetail} adFavorite={this.adFavorite} />
               </div>
             )
           )
