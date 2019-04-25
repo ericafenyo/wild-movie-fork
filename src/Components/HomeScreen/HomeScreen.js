@@ -4,9 +4,15 @@ import Slider from "../Slider/Slider";
 import SearchBar from "../SearchBar/SearchBar";
 import Modal from "../Modal/Modal";
 import { Button } from 'reactstrap';
-import { search } from '../../data/ApiEndpoint';
+import { search, fetchMovieChart } from '../../data/ApiEndpoint';
 import logo from "../Logo/logo.svg";
 import "./HomeScreen.css";
+
+const filter = {
+  nowPlaying: "now_playing",
+  upcoming: "upcoming",
+  popular:"popular",  
+}
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -16,13 +22,31 @@ class HomeScreen extends Component {
       isLoading: true,
       value: "",
       data: [],
-      history: []
+      history: [],
+      topCharts:[],
+      chart: "now_playing"
     }
   }
 
   handleClick = (tab) => {
-    this.setState({ active: tab });
-  }
+      switch (tab) {
+        case "BOX OFFICE":
+          this.setState( {chart: filter.nowPlaying})
+        break;
+
+        case "COMING SOON":
+          this.setState({chart : filter.upcoming})
+        break;
+
+        case "POPULAR":
+          this.setState({chart : filter.popular})
+        break;
+
+        default:
+      }  
+      
+      this.setState({ active: tab });
+    }
 
   onTextChange = (event) => {
     //Retrieve the value from the search input
@@ -70,6 +94,24 @@ class HomeScreen extends Component {
     return false;
   }
 
+  getCharts = () => {
+    fetchMovieChart(this.state.chart, response => {
+      console.log(this.state.chart);
+    
+      this.setState({topCharts: response})
+    } )
+  }
+
+componentDidMount(){
+ this.getCharts()
+}
+
+componentDidUpdate(_,prevState){
+  if(prevState.chart !== this.state.chart){
+    this.getCharts();
+  }
+}
+
   render() {
     return (
       <div className="homeScreen">
@@ -85,7 +127,7 @@ class HomeScreen extends Component {
             clearValue={this.clearValue}
           />
           {this.state.isLoading ? "" :
-            <Dropdown>
+            <Dropdown className="drop">
               {this.state.data.slice(0, 5).map((movie) =>
                 <ResultItem
                   key={movie.id}
@@ -100,9 +142,9 @@ class HomeScreen extends Component {
           <Button onClick={() => this.handleClick("COMING SOON")} className={this.state.active === "COMING SOON" ? "btnActive" : "btn"} >COMING SOON</Button>
           <Button onClick={() => this.handleClick("POPULAR")} className={this.state.active === "POPULAR" ? "btnActive" : "btn"} >POPULAR</Button>
         </div>
-        <Slider />
+        <Slider  data = {this.state.topCharts}/>
         <Button className="btnFavorite">MY FAVORITES</Button>
-        <Modal />
+        <Modal className="icon-help"/>
       </div>
     );
   }

@@ -27,6 +27,7 @@
 }
 
 .search-bar {
+  font-family: 'Roboto', sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -41,26 +42,24 @@
   background-color: #2F3B52;
   border: 1px solid #44556B;
   padding: 0 4px;
+  
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .search-bar {
     width: 400px;
-    height: 36px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .search-bar {
     width: 600px;
-    height: 36px;
   }
 }
 
 @media (min-width: 1200px) {
   .search-bar {
     width: 800px;
-    height: 36px;
   }
 }
 

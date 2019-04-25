@@ -31,9 +31,11 @@ p {
 }
 
 .dropdown {
+  position: absolute !important;
   width: 296px;
   border: solid 1px #44556b;
-  background-color: rgba(47, 59, 82, 0.3);
+  background-color: rgba(47, 59, 82, 1);
+  z-index: 2 !important;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {

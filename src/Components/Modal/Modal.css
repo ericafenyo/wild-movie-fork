@@ -1,14 +1,4 @@
-.modalStyle {
-  width: auto;
-  height: 40px;
-}
-
-.material-icons{
-  width: 30px;
-  height: 30px;
+.icon-help{
   color: #657d95;
-}
-
-.modalFooter {
-  margin-top: -45px;
+  cursor: pointer;
 }

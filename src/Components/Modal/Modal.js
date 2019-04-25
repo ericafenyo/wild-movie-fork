@@ -20,18 +20,18 @@ class ModalAbout extends React.Component {
 
   render() {
     return (
-      <div className="modalAbout-sm">
-          <i className="material-icons" onClick={this.toggle}>help</i>
+      <div className="modalAbout">
+          <i className="material-icons icon-help" onClick={this.toggle}>help</i>
           <div className="modalStyle">
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>About</ModalHeader>
           <ModalBody>
-              Version 0.1 <br/>
-              Contributors: Anaïs Chevallier, Alexandre Coutant, Tristan Olivier, Eric Afenyo et Jennifer Boultareau<br/>
-              Technology:HTML, CSS, JavaScript, React, Reactstrap
-              </ModalBody>
+            Version 0.1 <br/>
+            Contributors: Anaïs Chevallier, Alexandre Coutant, Tristan Olivier, Eric Afenyo et Jennifer Boultareau<br/>
+            Technology:HTML, CSS, JavaScript, React, Reactstrap
+          </ModalBody>
           <ModalFooter classname="modalFooter">
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            <Button onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
         </div>
