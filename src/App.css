@@ -1,3 +1,32 @@
 header {
   background-color: #242e42;
 }
+
+.background-dark {
+  background: #20293C;
+}
+
+.background-primary {
+  background: #242E42;
+}
+
+.background-secondary {
+  background: #2F3B52;
+}
+
+.wm-card {
+  border-radius: 2px;
+  box-shadow: 0 6px 13px 0 rgba(21, 33, 56, 0.53);
+}
+
+.text-header {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.text-body- {
+  font-size: 16px;
+  line-height: 1.75;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
