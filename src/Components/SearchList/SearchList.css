@@ -1,4 +1,4 @@
-.card {
+.card-search-list {
     background-color: #242e42 !important;
     color: white !important;
     flex-direction: row !important;
@@ -39,7 +39,7 @@ font-family: roboto-light;
   display: none;
 } */
 
-span {
+.span-search-list {
   font-size: .4em;
   color: #657d95;
   font-family: roboto-regular;

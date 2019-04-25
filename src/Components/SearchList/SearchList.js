@@ -12,11 +12,11 @@ import { strict } from 'assert';
 
 const SearchItem = (props) => {
   return (<div>
-    <Card>
+    <Card className="card-search-list">
       <CardImg top height="100%" src={props.imgUrl} alt="Card image cap" />
       <CardBody>
         <div className="body-first-line">
-          <CardTitle className="card-title-date">{props.title} <span> ({props.date})</span>
+          <CardTitle className="card-title-date">{props.title} <span className="span-search-list"> ({props.date})</span >
           </CardTitle>
           <i class="material-icons chevron-closed"> keyboard_arrow_down</i>
           {/* <i class="material-icons chevron-opened">keyboard_arrow_up</i> */}
