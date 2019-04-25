@@ -116,3 +116,23 @@ export const fetchMovieDetails = (movieId, callback) => {
     callback(response.data)
   }, queryParams)
 }
+
+export const searchFull = (query, callback, page = 1) => {
+  const path = "search/movie"
+  const array = [];
+  const queryParams = {
+    query: query,
+    page: page
+  }
+  _performNetworkCall(path, response => {
+  
+    response.data.results.forEach(res => {
+      fetchMovieDetails(res.id, detailedResponse => {
+        array.push(detailedResponse)
+      })
+    })
+  }, queryParams)
+
+  callback(array)
+  
+  }

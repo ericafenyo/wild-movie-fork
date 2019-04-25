@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import HomeScreen from "./Components/HomeScreen/HomeScreen";
 import "./App.css";
 import "./Components/HomeScreen/HomeScreen.css";
 import 'bootstrap/dist/css/bootstrap.min.css';

@@ -1,0 +1,97 @@
+.card {
+    background-color: #242e42 !important;
+    color: white !important;
+    flex-direction: row !important;
+    margin: 0% 3% 0% 3%;
+    border-bottom: .5px solid  #44556b !important;
+    font-family: roboto-regular;
+}
+
+.card-img-top {
+  width: 35% !important;
+  padding: 4% 0% 4% 0%;
+}
+
+.card-body{
+  padding: 4%!important;
+}
+
+.body-first-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-title-date {
+color: white;
+font-size: 1.3em;
+line-height:1em;
+font-family: roboto-light;
+}
+
+.chevron-closed {
+  color: rgba(255, 255, 255, 0.86);
+  float: right;
+}
+
+/* .chevron-opened {
+  color: rgba(255, 255, 255, 0.86);
+  float: right;
+  display: none;
+} */
+
+span {
+  font-size: .4em;
+  color: #657d95;
+  font-family: roboto-regular;
+}
+
+.card-date {
+  color: white;
+  font-size: .5em;
+  line-height:1em;
+  color: #44556b
+}
+
+.card-rating {
+  color: #ffab4f;
+  font-size: .8em;
+  display: flex;
+}
+
+.star-rating{
+  font-size: 18px;
+  width: .1em;
+  padding-right: 1.4em;
+  padding-top: .05em;
+}
+
+.card-duration {
+  font-size: .8em;
+}
+
+.favorite-border {
+  width: 30px;
+  height: 30px;
+  border: solid .5px #3e4e6c ;
+  border-radius: 50%;
+}
+
+.favorite-clicked {
+  color: #ffab4f;
+  font-size: 18px;
+  width: 1em;
+  padding: .35em;
+}
+
+/* .favorite-null {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.86);
+  width: 1em;
+  padding: .35em;
+  display: none;
+} */
+
+
+
+
+
