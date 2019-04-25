@@ -7,6 +7,7 @@ import HomeScreen from "./Components/HomeScreen/HomeScreen"
 import SearchList from "./Components/SearchList/SearchList"
 import { search } from './data/ApiEndpoint';
 import FavoritePage from './Components/FavoritePage/FavoritePage';
+import MovieInfo from './Components/MovieInfo/MovieInfo';
 
 //Utility extension functions (Should be moved to a utility file)
 
@@ -81,6 +82,11 @@ class App extends Component {
         <Route
           exact path="/favorites"
           component={FavoritePage}
+        />
+
+        <Route
+          exact path="/info"
+          component={MovieInfo}
         />
 
       </div>
