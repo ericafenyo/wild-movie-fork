@@ -24,10 +24,10 @@ body {
 p {
   margin: 0;
   padding-left: 8px;
-  font-size: 14px;
   letter-spacing: 0.4px;
   text-align: justify;
   color: rgba(255, 255, 255, 0.87);
+  line-height: 35px;
 }
 
 .dropdown {
