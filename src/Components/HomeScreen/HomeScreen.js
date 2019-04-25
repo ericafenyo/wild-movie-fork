@@ -11,7 +11,7 @@ import "./HomeScreen.css";
 const filter = {
   nowPlaying: "now_playing",
   upcoming: "upcoming",
-  popular:"popular",  
+  popular: "popular",
 }
 
 class HomeScreen extends Component {
@@ -23,30 +23,30 @@ class HomeScreen extends Component {
       value: "",
       data: [],
       history: [],
-      topCharts:[],
+      topCharts: [],
       chart: "now_playing"
     }
   }
 
   handleClick = (tab) => {
-      switch (tab) {
-        case "BOX OFFICE":
-          this.setState( {chart: filter.nowPlaying})
+    switch (tab) {
+      case "BOX OFFICE":
+        this.setState({ chart: filter.nowPlaying })
         break;
 
-        case "COMING SOON":
-          this.setState({chart : filter.upcoming})
+      case "COMING SOON":
+        this.setState({ chart: filter.upcoming })
         break;
 
-        case "POPULAR":
-          this.setState({chart : filter.popular})
+      case "POPULAR":
+        this.setState({ chart: filter.popular })
         break;
 
-        default:
-      }  
-      
-      this.setState({ active: tab });
+      default:
     }
+
+    this.setState({ active: tab });
+  }
 
   onTextChange = (event) => {
     //Retrieve the value from the search input
@@ -97,20 +97,20 @@ class HomeScreen extends Component {
   getCharts = () => {
     fetchMovieChart(this.state.chart, response => {
       console.log(this.state.chart);
-    
-      this.setState({topCharts: response})
-    } )
+
+      this.setState({ topCharts: response })
+    })
   }
 
-componentDidMount(){
- this.getCharts()
-}
-
-componentDidUpdate(_,prevState){
-  if(prevState.chart !== this.state.chart){
-    this.getCharts();
+  componentDidMount() {
+    this.getCharts()
   }
-}
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.chart !== this.state.chart) {
+      this.getCharts();
+    }
+  }
 
   render() {
     return (
@@ -121,10 +121,9 @@ componentDidUpdate(_,prevState){
         <div className="searchBar">
           <SearchBar
             performSearch={this.performSearch}
-            value={this.state.value}
-            handleChange={this.onTextChange}
-            handleSubmit={this.handleSubmit}
-            clearValue={this.clearValue}
+            value={this.props.value}
+            handleChange={this.props.handleChange}
+            handleSubmit={this.props.handleSubmit}
           />
           {this.state.isLoading ? "" :
             <Dropdown className="drop">
@@ -142,9 +141,9 @@ componentDidUpdate(_,prevState){
           <Button onClick={() => this.handleClick("COMING SOON")} className={this.state.active === "COMING SOON" ? "btnActive" : "btn"} >COMING SOON</Button>
           <Button onClick={() => this.handleClick("POPULAR")} className={this.state.active === "POPULAR" ? "btnActive" : "btn"} >POPULAR</Button>
         </div>
-        <Slider  data = {this.state.topCharts}/>
+        <Slider data={this.state.topCharts} />
         <Button className="btnFavorite">MY FAVORITES</Button>
-        <Modal className="icon-help"/>
+        <Modal className="icon-help" />
       </div>
     );
   }

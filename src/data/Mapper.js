@@ -16,6 +16,7 @@
  */
 
 import { genres } from "./genres";
+import noImage from './no_poster.png'
 
 /**
  * @class
@@ -39,10 +40,14 @@ class Mapper {
      * @param {string} fileSize Image file size.
      */
     buildImageUrl = (imagePath, fileSize = "w500") => {
-        // Base image url
-        const BASE_URL = "https://image.tmdb.org/t/p/"
-        return `${BASE_URL}${fileSize}${imagePath}`
-    }
+      // Base image url
+      const BASE_URL = "https://image.tmdb.org/t/p/"
+
+      if (!imagePath) {
+          return noImage
+      }
+      return `${BASE_URL}${fileSize}${imagePath}`
+  }
 
     /**
      * Build a working youtube URL from a provided video key.

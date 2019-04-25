@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, withRouter, Redirect } from "react-router-dom";
 import {
   Card, CardImg, CardText, CardBody,
   CardTitle
@@ -8,6 +9,7 @@ import { mapper } from '../../data/Mapper';
 import "./SearchList.css";
 import "../../App.css";
 import { strict } from 'assert';
+import ToolBar from '../Toolbar/ToolBar'
 
 
 const SearchItem = (props) => {
@@ -18,7 +20,7 @@ const SearchItem = (props) => {
         <div className="body-first-line">
           <CardTitle className="card-title-date">{props.title} <span> ({props.date})</span>
           </CardTitle>
-          <i class="material-icons chevron-closed"> keyboard_arrow_down</i>
+          <i className="material-icons chevron-closed"> keyboard_arrow_down</i>
           {/* <i class="material-icons chevron-opened">keyboard_arrow_up</i> */}
         </div>
         <CardText className="card-rating">
@@ -27,12 +29,13 @@ const SearchItem = (props) => {
         </CardText>
         <CardText className="card-spec">{props.director}</CardText>
         <CardText className="card-duration">{props.duration}</CardText>
-        <CardText className="favorite-border"><i class="material-icons favorite-clicked">favorite</i></CardText>
+        <CardText className="favorite-border">
+          <i className="material-icons favorite-clicked">favorite</i></CardText>
         {/* <SearchListExpanded /> */}
       </CardBody>
     </Card>
 
-  </div>
+  </div >
   );
 };
 
@@ -56,24 +59,40 @@ class SearchList extends Component {
     super(props);
     this.state = {
       movieList: [],
-      isLoading: true
+      isLoading: true,
+      navigateHome: false
     }
   }
 
   componentDidMount() {
-    search('mad max', result => this.setState({ movieList: result, isLoading: false }))
+    search(this.props.history.location.state, result => this.setState({ movieList: result, isLoading: false }))
   }
 
-  render() {
+  navigateToHome = () => {
+    this.setState({ navigateHome: true })
+  }
 
+  navigateToFavorites = () => {
+    this.props.history.push('/favorites')
+  }
+  render() {
     if (this.state.isLoading) {
       return <div>Loading</div>
+    } else if (this.state.navigateHome) {
+      return <Redirect to="/" />
     }
-    console.log(this.state.movieList)
-    return (
 
+    return (
       <div>
+        <ToolBar
+          title="Movie deatails"
+          leftIcon="arrow_back"
+          rightIcon="favorite"
+          onClickLeftIcon={this.navigateToHome}
+          onClickRightIcon={this.navigateToFavorites}
+        />
         {this.state.movieList.map(item => <SearchItem
+          key={item.id}
           title={item.title}
           rating={item.vote_average}
           director=''
