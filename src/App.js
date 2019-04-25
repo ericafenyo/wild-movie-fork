@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./App.css";
 import "./Components/HomeScreen/HomeScreen.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import HomeScreen from "./Components/HomeScreen/HomeScreen"
 
 
 
