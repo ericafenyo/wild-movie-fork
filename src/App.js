@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <HomeScreen />
+        <HomeScreen />
         </header>
       </div>
     );
