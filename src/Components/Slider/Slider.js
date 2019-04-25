@@ -14,14 +14,14 @@ const Slider = ({data}) => {
   return (
     <div className="slider-frame">
       <div className="slider-container">
-      <div class="btn prev">
+      {/* <div class="btn prev">
       <i class="material-icons">keyboard_arrow_left</i>
-      </div>
+      </div> */}
          {data.map((item,index) =>  <Poster key ={item.id} imageUrl ={mapper.buildImageUrl(item.poster_path)}/>)}
       </div>
-      <div class="btn next">
+      {/* <div class="btn next">
       <i class="material-icons">keyboard_arrow_right</i>
-      </div>
+      </div> */}
     </div>
   );
 }
