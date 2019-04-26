@@ -79,7 +79,7 @@ class SearchList extends Component {
         <ToolBar
           title="Movie deatails"
           leftIcon="arrow_back"
-          rightIcon="favorite"
+          rightIcon="bookmark"
           onClickLeftIcon={this.navigateToHome}
           onClickRightIcon={this.navigateToFavorites}
         />

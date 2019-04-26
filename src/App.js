@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter, Redirect } from "react-router-dom";
+import { Route, withRouter, Redirect, } from "react-router-dom";
 import "./App.css";
 import "./Components/HomeScreen/HomeScreen.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,6 +8,8 @@ import SearchList from "./Components/SearchList/SearchList"
 import { search } from './data/ApiEndpoint';
 import FavoritePage from './Components/FavoritePage/FavoritePage';
 import MovieInfo from './Components/MovieInfo/MovieInfo';
+import SearchScreen from './Components/SearchScreen/SearchScreen';
+
 
 //Utility extension functions (Should be moved to a utility file)
 
@@ -76,7 +78,7 @@ class App extends Component {
               />)} />
         <Route
           exact path="/movies"
-          component={SearchList}
+          component={SearchScreen}
         />
 
         <Route
