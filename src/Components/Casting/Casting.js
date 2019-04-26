@@ -24,7 +24,6 @@ const Casting = ({ launchDetails, casts }) => {
     type: "carousel",
     perView: 6,
     gap: 12,
-
     breakpoints: {
       577: {
         gap: 8,

@@ -47,6 +47,7 @@ class MovieDetails extends Component {
       window.open(youtubeUrl);
     }
   }
+
   render() {
     return (
       <Fragment>

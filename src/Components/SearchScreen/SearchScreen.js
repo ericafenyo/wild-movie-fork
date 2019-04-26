@@ -25,12 +25,12 @@ class SearchScreen extends Component {
   }
 
   render() {
-
     if (this.state.isLoading) {
       return <div>Loading</div>
     } else if (this.state.navigateHome) {
       return <Redirect to="/" />
     }
+
     return (
       <div>
         <ToolBar
