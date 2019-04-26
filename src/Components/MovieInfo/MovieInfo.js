@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { search, fetchMovieDetails, } from "../../data/ApiEndpoint";
-import ToolBar from "../Toolbar/ToolBar"
-import Casting from "../Casting/Casting"
-import './MovieInfo.css'
-import MovieDetails from '../MovieDetails/MovieDetails'
+import ToolBar from "../Toolbar/ToolBar";
+import MovieDetails from '../MovieDetails/MovieDetails';
+import './MovieInfo.css';
+import { fetchMovieDetails, } from "../../data/ApiEndpoint";
 
 class MovieInfo extends Component {
   constructor(props) {
@@ -18,12 +17,12 @@ class MovieInfo extends Component {
   componentDidMount() {
     fetchMovieDetails(this.props.location.state, res => {
       this.setState({ info: res, isLoading: false })
-    })
+    });
   }
 
   render() {
     if (this.state.isLoading) {
-      return <div>loading</div>
+      return <div>loading</div>;
     }
 
     return (
@@ -36,9 +35,9 @@ class MovieInfo extends Component {
           onClickRightIcon={() => console.log("Favorite")}
         />
         <MovieDetails info={this.state.info} />
-      </Fragment >
-    )
+      </Fragment>
+    );
   }
 }
 
-export default MovieInfo
+export default MovieInfo;

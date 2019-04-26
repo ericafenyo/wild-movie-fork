@@ -1,23 +1,23 @@
-
- .textcolor{
+.textcolor {
   color: white;
   font-size: 12px;
   margin-bottom: 0;
 }
 
-.actor{
+.actor {
   background-color: #242e42;
 }
 
-.role{
+.role {
   background-color: #242e42;
 }
-.profile{
+
+.profile {
   height: 100%;
 }
-.profile img{
+
+.profile img {
   width: 100%;
   height: 100%;
   border-radius: 2px;
 }
-

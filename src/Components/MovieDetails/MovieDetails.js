@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import { mapper } from "../../data/Mapper";
+import Casting from "../Casting/Casting";
+import StarRatings from "react-star-ratings";
 import "./MovieDetails.css";
-import { mapper } from "../../data/Mapper"
-import Casting from "../Casting/Casting"
-import playButton from './icon-play.svg'
-import StarRatings from "react-star-ratings"
+import playButton from './icon-play.svg';
 
 const Detail = (props) => {
   return (
@@ -33,7 +33,6 @@ const Detail = (props) => {
             <p className="info-color">{props.director}</p>
             <p className="text-body- d-none d-md-block">{props.synopsis}</p>
           </div>
-
         </div>
       </div>
       <p className="text-body-  mx-3 d-md-none">{props.synopsis}</p>
@@ -43,10 +42,9 @@ const Detail = (props) => {
 }
 
 class MovieDetails extends Component {
-
   launchYoutube = (youtubeUrl) => {
     if (youtubeUrl) {
-      window.open(youtubeUrl)
+      window.open(youtubeUrl);
     }
   }
   render() {
@@ -64,8 +62,8 @@ class MovieDetails extends Component {
           launchYoutube={() => this.launchYoutube("https://www.youtube.com/watch?v=Ct6BUPvE2sM")}
         />
       </Fragment>
-    )
+    );
   }
 }
 
-export default MovieDetails
+export default MovieDetails;

@@ -41,8 +41,7 @@
   border-radius: 2px;
   background-color: #2F3B52;
   border: 1px solid #44556B;
-  padding: 0 4px;
-  
+  padding: 0 4px; 
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -113,4 +112,3 @@
   outline: none;
   color: rgba(0, 0, 0, 0.87);
 }
-

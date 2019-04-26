@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Route, withRouter, Redirect, } from "react-router-dom";
-import "./App.css";
-import "./Components/HomeScreen/HomeScreen.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import HomeScreen from "./Components/HomeScreen/HomeScreen"
-import SearchList from "./Components/SearchList/SearchList"
-import { search } from './data/ApiEndpoint';
 import FavoritePage from './Components/FavoritePage/FavoritePage';
 import MovieInfo from './Components/MovieInfo/MovieInfo';
 import SearchScreen from './Components/SearchScreen/SearchScreen';
+import { search } from './data/ApiEndpoint';
+import "./App.css";
+import "./Components/HomeScreen/HomeScreen.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 //Utility extension functions (Should be moved to a utility file)
@@ -90,10 +89,9 @@ class App extends Component {
           exact path="/info"
           component={MovieInfo}
         />
-
       </div>
     );
   }
 }
 
-export default withRouter(App)
+export default withRouter(App);

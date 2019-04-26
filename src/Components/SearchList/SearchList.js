@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
-
-import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle
-} from 'reactstrap';
-
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 import { mapper } from '../../data/Mapper';
 import "./SearchList.css";
 import "../../App.css";
 
-
-
 const SearchItem = (props) => {
-  return (<div>
+  return (
+  <div>
     <Card className="card-search-list">
       <CardImg top height="100%" src={props.imgUrl} alt="Card image cap" />
       <CardBody>
@@ -33,22 +27,18 @@ const SearchItem = (props) => {
         {/* <SearchListExpanded /> */}
       </CardBody>
     </Card>
-
-  </div >
+  </div>
   );
-};
-
-
+}
 
 class SearchList extends Component {
   render() {
-
     return (
       <div>
         {this.props.movieList.map(item => <SearchItem
           key={item.id}
           title={item.title}
-          rating={item.vote_average}
+          rating={item.vote_average/2}
           director=''
           date={item.release_date}
           duration='120'

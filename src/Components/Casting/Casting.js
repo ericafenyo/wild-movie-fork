@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
+import Glide from '@glidejs/glide';
+import { mapper } from "../../data/Mapper";
+import '@glidejs/glide/dist/css/glide.core.css';
+import '@glidejs/glide/dist/css/glide.theme.min.css';
 import "./Casting.css";
-import { mapper } from "../../data/Mapper"
-import '@glidejs/glide/dist/css/glide.core.css'
-import '@glidejs/glide/dist/css/glide.theme.min.css'
-import Glide from '@glidejs/glide'
 
 const Cast = (props) => {
-
   return (
     <div className="glide__slide">
       <div className="cast " onClick={props.launchDetails}>
@@ -17,8 +16,6 @@ const Cast = (props) => {
       </div>
     </div>
   );
-
-  
 }
 
 const Casting = ({ launchDetails, casts }) => {
@@ -27,7 +24,7 @@ const Casting = ({ launchDetails, casts }) => {
     type: "carousel",
     perView: 6,
     gap: 12,
-  
+
     breakpoints: {
       577: {
         gap: 8,
@@ -60,6 +57,6 @@ const Casting = ({ launchDetails, casts }) => {
       </div>
     </div>
   );
-};
+}
 
 export default Casting;

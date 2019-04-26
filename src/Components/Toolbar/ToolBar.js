@@ -13,7 +13,7 @@ const ToolBar = ({ title, leftIcon, rightIcon, onClickLeftIcon, onClickRightIcon
         <NavLink exact to = {rightPath}>
         <i className="material-icons  md-light" onClick={onClickRightIcon}>{rightIcon}</i>
         </NavLink>
-      </div >
+      </div>
     </div>
   );
 }

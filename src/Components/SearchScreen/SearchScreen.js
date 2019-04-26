@@ -16,9 +16,9 @@ class SearchScreen extends Component {
   }
 
   componentDidMount() {
-    search(this.props.location.state, result => this.setState({ movieList: result, isLoading: false }))
+    search(this.props.location.state, result => 
+      this.setState({ movieList: result, isLoading: false }));
   }
-
 
   navigateToHome = () => {
     this.setState({ navigateHome: true })
@@ -40,7 +40,7 @@ class SearchScreen extends Component {
        />
        <SearchList movieList={this.state.movieList}/>
       </div>
-    )
+    );
   }
 }
 
