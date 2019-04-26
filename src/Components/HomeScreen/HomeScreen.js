@@ -7,6 +7,7 @@ import { Button } from 'reactstrap';
 import { search, fetchMovieChart } from '../../data/ApiEndpoint';
 import logo from "../Logo/logo.svg";
 import "./HomeScreen.css";
+import { NavLink } from "react-router-dom/cjs/react-router-dom";
 
 const filter = {
   nowPlaying: "now_playing",
@@ -142,7 +143,9 @@ class HomeScreen extends Component {
           <Button onClick={() => this.handleClick("POPULAR")} className={this.state.active === "POPULAR" ? "btnActive" : "btn"} >POPULAR</Button>
         </div>
         <Slider data={this.state.topCharts} />
+        <NavLink exact to = "/favorites">
         <Button className="btnFavorite">MY FAVORITES</Button>
+        </NavLink>
         <Modal className="icon-help" />
       </div>
     );

@@ -74,4 +74,11 @@ class Mapper {
     }
 }
 
+
+// const releaseYear = (date) => {
+//     date.slice(0, 4) {
+//     return
+//   }
+// }
+
 export const mapper = new Mapper()

@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { search } from "../../data/ApiEndpoint";
 import { mapper } from "../../data/Mapper";
 import './FavoritePage.css';
+import ToolBar from '../Toolbar/ToolBar';
 
 const FavIcon = ({ url, openDetail, adFavorite }) => {
   return (
@@ -43,7 +44,13 @@ class FavoritePage extends Component {
 
   render() {
     return (
+      <Fragment>
+      <ToolBar 
+      title= "Favorites"
+      leftIcon="arrow_back"
+      />
       <div className="row p-0 m-0">
+      
         {
           this.state.results.map(item =>
             (
@@ -54,6 +61,7 @@ class FavoritePage extends Component {
           )
         }
       </div>
+      </Fragment>
     );
   }
 }

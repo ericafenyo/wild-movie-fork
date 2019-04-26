@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { Route, withRouter, Redirect } from "react-router-dom";
+
 import {
   Card, CardImg, CardText, CardBody,
   CardTitle
 } from 'reactstrap';
-import { search } from '../../data/ApiEndpoint';
+
 import { mapper } from '../../data/Mapper';
 import "./SearchList.css";
 import "../../App.css";
-import { strict } from 'assert';
-import ToolBar from '../Toolbar/ToolBar'
+
 
 
 const SearchItem = (props) => {
@@ -39,51 +38,14 @@ const SearchItem = (props) => {
   );
 };
 
-// const releaseYear = (duration) => {
-//   str.slice(0, 4) {
-//     return
-//   }
-// }
 
 
 class SearchList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      movieList: [],
-      isLoading: true,
-      navigateHome: false
-    }
-  }
-
-  componentDidMount() {
-    search(this.props.history.location.state, result => this.setState({ movieList: result, isLoading: false }))
-  }
-
-  navigateToHome = () => {
-    this.setState({ navigateHome: true })
-  }
-
-  navigateToFavorites = () => {
-    this.props.history.push('/favorites')
-  }
   render() {
-    if (this.state.isLoading) {
-      return <div>Loading</div>
-    } else if (this.state.navigateHome) {
-      return <Redirect to="/" />
-    }
 
     return (
       <div>
-        <ToolBar
-          title="Movie deatails"
-          leftIcon="arrow_back"
-          rightIcon="bookmark"
-          onClickLeftIcon={this.navigateToHome}
-          onClickRightIcon={this.navigateToFavorites}
-        />
-        {this.state.movieList.map(item => <SearchItem
+        {this.props.movieList.map(item => <SearchItem
           key={item.id}
           title={item.title}
           rating={item.vote_average}
