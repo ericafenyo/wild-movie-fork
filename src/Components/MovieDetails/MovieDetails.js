@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import "./MovieDetails.css";
 import { mapper } from "../../data/Mapper"
 import Casting from "../Casting/Casting"
@@ -7,38 +7,37 @@ import StarRatings from "react-star-ratings"
 
 const Detail = (props) => {
   return (
-    <div className="movie-details background-primary">
-      <div className="container p-0 wm-card background-secondary">
-        <div className="backdrop-wrapper">
-          <img className="backdrop" src={props.backdrop} />
-          <div className="play-button">
-            <img src={playButton} onClick={props.launchYoutube} />
-          </div>
+    <div className="movie-details  background-secondary">
+      <div className="backdrop-wrapper">
+        <img className="backdrop" src={props.backdrop} />
+        <div className="play-button">
+          <img src={playButton} onClick={props.launchYoutube} />
         </div>
-        <div className="info-wrapper m-4">
-          <div className="poster">
-            <img src={props.poster} alt="small poster" />
-          </div>
-          <div className="info">
-            <div className="last-wrapper">
-              <p className="text-header">{props.title}</p>
-              <StarRatings
-                numberOfStars={5}
-                rating={props.rating}
-                starDimension="20px"
-                starSpacing="4px"
-                starRatedColor="#ffab4f"
-                startEmptyColor="#2f3b52"
-              />
-              <p className="info-color">{props.duration + " min | " + props.genre}</p>
-              <p className="info-color">{props.director}</p>
-              <p className="text-body-">{props.synopsis}</p>
-            </div>
-
-          </div>
-        </div>
-        <Casting casts={props.cast} />
       </div>
+      <div className="info-wrapper">
+        <div className="poster wm-card">
+          <img src={props.poster} alt="small poster" />
+        </div>
+        <div className="info">
+          <div className="last-wrapper">
+            <p className="text-header">{props.title}</p>
+            <StarRatings
+              numberOfStars={5}
+              rating={props.rating}
+              starDimension="20px"
+              starSpacing="4px"
+              starRatedColor="#ffab4f"
+              startEmptyColor="#2f3b52"
+            />
+            <p className="info-color">{props.duration + " min | " + props.genre}</p>
+            <p className="info-color">{props.director}</p>
+            <p className="text-body- d-none d-md-block">{props.synopsis}</p>
+          </div>
+
+        </div>
+      </div>
+      <p className="text-body-  mx-3 d-md-none">{props.synopsis}</p>
+      <Casting casts={props.cast} />
     </div>
   );
 }
@@ -46,13 +45,13 @@ const Detail = (props) => {
 class MovieDetails extends Component {
 
   launchYoutube = (youtubeUrl) => {
-    if(youtubeUrl){
+    if (youtubeUrl) {
       window.open(youtubeUrl)
     }
   }
   render() {
     return (
-      <div>
+      <Fragment>
         <Detail
           backdrop={mapper.buildImageUrl(this.props.info.backdrop_path)}
           poster={mapper.buildImageUrl(this.props.info.poster_path)}
@@ -62,9 +61,9 @@ class MovieDetails extends Component {
           genre={this.props.info.genres.shift().name}
           synopsis={this.props.info.overview}
           cast={this.props.info.credits.cast}
-          launchYoutube={()=> this.launchYoutube("https://www.youtube.com/watch?v=Ct6BUPvE2sM")}
+          launchYoutube={() => this.launchYoutube("https://www.youtube.com/watch?v=Ct6BUPvE2sM")}
         />
-      </div>
+      </Fragment>
     )
   }
 }

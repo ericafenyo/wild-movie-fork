@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { search, fetchMovieDetails, } from "../../data/ApiEndpoint";
 import ToolBar from "../Toolbar/ToolBar"
-
 import Casting from "../Casting/Casting"
 import './MovieInfo.css'
-
 import MovieDetails from '../MovieDetails/MovieDetails'
 
 class MovieInfo extends Component {
@@ -18,7 +16,7 @@ class MovieInfo extends Component {
   }
 
   componentDidMount() {
-    fetchMovieDetails(480414, res => {
+    fetchMovieDetails(383498, res => {
       this.setState({ info: res, isLoading: false })
     })
   }
@@ -29,18 +27,16 @@ class MovieInfo extends Component {
     }
 
     return (
-      <div className="background-primary">
-        <div className="mb-5">
-          <ToolBar 
+      <Fragment>
+        <ToolBar
           title="Movie details"
           leftIcon="close"
-          rightIcon = "favorite"
-          onClickLeftIcon = {()=> console.log("Close")}
-          onClickRightIcon = {()=> console.log("Favorite")}
-          />
-        </div>
+          rightIcon="bookmark"
+          onClickLeftIcon={() => console.log("Close")}
+          onClickRightIcon={() => console.log("Favorite")}
+        />
         <MovieDetails info={this.state.info} />
-      </div >
+      </Fragment >
     )
   }
 }

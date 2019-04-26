@@ -6,6 +6,7 @@
     "@glidejs/glide": "^3.3.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "dotdotdot-js": "^4.0.8",
     "react": "^16.8.6",
     "react-coverflow": "^0.2.19",
     "react-dom": "^16.8.6",

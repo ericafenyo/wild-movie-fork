@@ -4,7 +4,7 @@ import './Toolbar.css';
 const ToolBar = ({ title, leftIcon, rightIcon, onClickLeftIcon, onClickRightIcon }) => {
   return (
     <div className="toolbar-wrapper background-secondary">
-      <div className="toolbar container">
+      <div className="toolbar">
         <i className="material-icons md-light" onClick={onClickLeftIcon}>{leftIcon}</i>
         <p>{title}</p>
         <i className="material-icons  md-light" onClick={onClickRightIcon}>{rightIcon}</i>
