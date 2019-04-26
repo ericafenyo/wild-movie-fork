@@ -6,38 +6,35 @@ import '@glidejs/glide/dist/css/glide.theme.min.css'
 import Glide from '@glidejs/glide'
 
 const Cast = (props) => {
+
   return (
     <div className="glide__slide">
       <div className="cast " onClick={props.launchDetails}>
         <div className="profile" >
           <img src={props.imgUrl} alt="cast profile" />
         </div>
-        <p className="textcolor">{props.character}</p>
-        <p className="textcolor">{props.name} </p>
+        <p className="text-caption-light truncate">{props.character}</p>
       </div>
     </div>
   );
+
+  
 }
 
 const Casting = ({ launchDetails, casts }) => {
   let glide = React.createRef()
   let settings = {
     type: "carousel",
-    perView: 4,
-    gap: 8,
-    peek: {
-      before: 24,
-      after: 24
-    },
+    perView: 6,
+    gap: 12,
+  
     breakpoints: {
-      768: {
-        perView: 3
-      },
-      992: {
+      577: {
+        gap: 8,
         perView: 4
       },
-
-      1200: {
+      768: {
+        gap: 4,
         perView: 5
       }
     }
@@ -48,7 +45,7 @@ const Casting = ({ launchDetails, casts }) => {
   }, [])
 
   return (
-    <div class="glide" ref={glide}>
+    <div class="glide  mt-4 mb-4" ref={glide}>
       <div class="glide__track" data-glide-el="track">
         <ul class="glide__slides">
           {
