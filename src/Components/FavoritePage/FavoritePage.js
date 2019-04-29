@@ -3,43 +3,43 @@ import { search } from "../../data/ApiEndpoint";
 import { mapper } from "../../data/Mapper";
 import ToolBar from '../Toolbar/ToolBar';
 import './FavoritePage.css';
-
-const FavIcon = ({ url, openDetail, adFavorite }) => {
-  return (
-    <div>
-      <img
-        onClick={openDetail}
-        className="sizeImg img-fluid"
-        src={url}
-        alt="poster_path" />
-      <div className="icon-favorite" >
-        <i className="material-icons" onClick={adFavorite}>favorite</i>
-      </div>
-    </div>
-  );
-}
+import axios from 'axios';
 
 class FavoritePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: [],
+      movies: [],
       isLoading: true,
     }
   }
 
-  componentDidMount() {
-    search('james', response => {
-      this.setState({ results: response, isLoading: false })
-    });
+  componentDidMount() { 
+    let favorisId = JSON.parse(localStorage.getItem('favoris'));
+    favorisId.map((favori) => {
+      axios.get(`https://api.themoviedb.org/3/movie/${favori}?api_key=64b4c85951711a3e428dc42847471e4c&language=en-US`)
+      .then((result) => {
+        this.setState({movies: [...this.state.movies, result.data]})
+      })
+    })
+    console.log(favorisId);
   }
 
-  openetail = () => {
-    console.log("test");
-  }
+  manageMovie = (id) => {
+    if(JSON.parse(localStorage.getItem('favoris'))) {
+      if(JSON.parse(localStorage.getItem('favoris').includes(id))) {
+        let favoris = JSON.parse(localStorage.getItem('favoris'));
+        let index = favoris.indexOf(id);
+        favoris.splice(index,1);
+        localStorage.setItem('favoris', JSON.stringify(favoris));
 
-  adFavorite = () => {
-    console.log("test");
+      } else {
+        localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')), id]))
+      }
+      // remove
+    } else {
+      localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')) || [], id]))
+    }
   }
 
   render() {
@@ -51,10 +51,18 @@ class FavoritePage extends Component {
         />
         <div className="row p-0 m-0">
           {
-            this.state.results.map(item =>
+            this.state.movies.map(movie =>
               (
-                < div key={item.id} className="iconName col-6  favorite-item m-0 p-0 ">
-                  <FavIcon url={mapper.buildImageUrl(item.poster_path)} openDetail={this.openetail} adFavorite={this.adFavorite} />
+                < div key={movie.id} className="iconName col-6  favorite-item m-0 p-0 ">
+                  <div>
+                    <img
+                      className="sizeImg img-fluid"
+                      src={mapper.buildImageUrl(movie.poster_path)}
+                      alt="poster_path" />
+                    <div className="icon-favorite" onClick={() => this.manageMovie(movie.id)}>
+                      <i className="material-icons" >favorite</i>
+                    </div>
+                  </div>
                 </div>
               )
             )

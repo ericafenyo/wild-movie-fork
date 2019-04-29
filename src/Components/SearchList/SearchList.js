@@ -4,49 +4,59 @@ import { mapper } from '../../data/Mapper';
 import "./SearchList.css";
 import "../../App.css";
 
-const SearchItem = (props) => {
-  return (
-  <div>
-    <Card className="card-search-list">
-      <CardImg top height="100%" src={props.imgUrl} alt="Card image cap" />
-      <CardBody>
-        <div className="body-first-line">
-          <CardTitle className="card-title-date">{props.title} <span className="span-search-list"> ({props.date})</span >
-          </CardTitle>
-          <i className="material-icons chevron-closed"> keyboard_arrow_down</i>
-          {/* <i class="material-icons chevron-opened">keyboard_arrow_up</i> */}
-        </div>
-        <CardText className="card-rating">
-          <i className="material-icons star-rating">star_rate</i>
-          {props.rating}
-        </CardText>
-        <CardText className="card-spec">{props.director}</CardText>
-        <CardText className="card-duration">{props.duration}</CardText>
-        <CardText className="favorite-border">
-          <i className="material-icons favorite-clicked">favorite</i></CardText>
-        {/* <SearchListExpanded /> */}
-      </CardBody>
-    </Card>
-  </div>
-  );
-}
-
 class SearchList extends Component {
+  
+  manageMovie = (id) => {
+    if(JSON.parse(localStorage.getItem('favoris'))) {
+      if(JSON.parse(localStorage.getItem('favoris').includes(id))) {
+        let favoris = JSON.parse(localStorage.getItem('favoris'));
+        let index = favoris.indexOf(id);
+        favoris.splice(index,1);
+        localStorage.setItem('favoris', JSON.stringify(favoris));
+      } else {
+        localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')), id]))
+      }
+      // remove
+    } else {
+      localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')) || [], id]))
+    }
+  }
+
   render() {
     return (
       <div>
-        {this.props.movieList.map(item => <SearchItem
-          key={item.id}
-          title={item.title}
-          rating={item.vote_average/2}
-          director=''
-          date={item.release_date}
-          duration='120'
-          imgUrl={mapper.buildImageUrl(item.poster_path)}
-        />)}
+        {this.props.movieList.map((item, index) => {
+          return (
+            <div key={index}>
+              <Card className="card-search-list">
+                <CardImg top height="100%" src={mapper.buildImageUrl(item.poster_path)} alt="Card image cap" />
+                <CardBody>
+                  <div className="body-first-line">
+                    <CardTitle className="card-title-date">{item.title} <span className="span-search-list"> ({item.date})</span >
+                    </CardTitle>
+                    <i className="material-icons chevron-closed"> keyboard_arrow_down</i>
+                    {/* <i class="material-icons chevron-opened">keyboard_arrow_up</i> */}
+                  </div>
+                  <CardText className="card-rating">
+                    <i className="material-icons star-rating">star_rate</i>
+                    {item.rating}
+                  </CardText>
+                  <CardText className="card-spec">{item.director}</CardText>
+                  <CardText className="card-duration">{item.duration}</CardText>
+                  <CardText className="favorite-border" onClick={() => this.manageMovie(item.id)}>
+                    <i className="material-icons favorite-clicked">favorite</i>
+                  </CardText>
+                  {/* <SearchListExpanded /> */}
+                </CardBody>
+              </Card>
+            </div>
+            )
+        })}
       </div>
     );
   }
 }
 
 export default SearchList;
+
+
