@@ -11,7 +11,7 @@ import "./HomeScreen.css";
 const filter = {
   nowPlaying: "now_playing",
   upcoming: "upcoming",
-  popular: "popular",
+  popular: "popular"
 }
 
 class HomeScreen extends Component {
@@ -31,26 +31,26 @@ class HomeScreen extends Component {
   }
 
   handleSubmit = ({ key }) => {
-    const ENTER_KEYCODE = "Enter"
+    const ENTER_KEYCODE = "Enter";
 
-    const query = this.state.value
+    const query = this.state.value;
     if (key === ENTER_KEYCODE) {
-      this.setState({ navigateToList: true })
+      this.setState({ navigateToList: true });
     }
   };
 
   handleClick = (tab) => {
     switch (tab) {
       case "BOX OFFICE":
-        this.setState({ chart: filter.nowPlaying })
+        this.setState({ chart: filter.nowPlaying });
         break;
 
       case "COMING SOON":
-        this.setState({ chart: filter.upcoming })
+        this.setState({ chart: filter.upcoming });
         break;
 
       case "POPULAR":
-        this.setState({ chart: filter.popular })
+        this.setState({ chart: filter.popular });
         break;
 
       default:
@@ -63,7 +63,7 @@ class HomeScreen extends Component {
     //Retrieve the value from the search input
     const value = event.target.value;
     // Update the state with the value 
-    this.setState({ value: value })
+    this.setState({ value: value });
   }
 
   dispatchSearchRequest = (query) => {
@@ -72,7 +72,7 @@ class HomeScreen extends Component {
 
   performSearch = (query) => {
     search(query, (movies) => {
-      this.setState({ suggestions: movies, isLoading: false })
+      this.setState({ suggestions: movies, isLoading: false });
     });
   }
 
@@ -92,7 +92,6 @@ class HomeScreen extends Component {
     }
   }
 
-
   onSuggestionsFetchRequested = ({ value }) => {
     //Check if the value is empty
     if (/\S/.test(value)) {
@@ -102,19 +101,17 @@ class HomeScreen extends Component {
     } else {
       // Value is empty
       // Empty the data and hide the suggestion box (Dropdown)
-      this.setState({ suggestions: [] })
+      this.setState({ suggestions: [] });
     }
   }
 
   onSuggestionsClearRequested = () => {
-    this.setState({ suggestions: [], hideContent: false })
+    this.setState({ suggestions: [], hideContent: false });
   }
 
-
-  getSuggestionValue = suggestion => suggestion.title
-
+  getSuggestionValue = suggestion => suggestion.title;
   renderSuggestion = (suggestion) => {
-    this.setState({ hideContent: true })
+    this.setState({ hideContent: true });
     return (
       <p className="suggestion-item">{suggestion.title}</p>
     );
@@ -122,7 +119,7 @@ class HomeScreen extends Component {
 
   onSuggestionSelected = (event, { suggestion }) => {
     event.preventDefault();
-    this.setState({ movieId: suggestion.id, navigateToInfo: true })
+    this.setState({ movieId: suggestion.id, navigateToInfo: true });
   }
 
   render() {

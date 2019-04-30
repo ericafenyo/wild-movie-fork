@@ -41,3 +41,15 @@
 .i.material-icons{
   margin: 20px;
 }
+
+.FavoriteScreen {
+  height: 100vh;
+  background-color: #242e42;
+  text-align: center;
+}
+
+.Rectangle {
+  width: 96px;
+  height: 144px;
+  border-radius: 2px;
+}

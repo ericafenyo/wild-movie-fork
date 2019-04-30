@@ -113,13 +113,13 @@ export const fetchMovieDetails = (movieId, callback) => {
     append_to_response: PARAM_APPEND_TO_RESULT
   }
   _performNetworkCall(path, response => {
-    callback(response.data)
+    callback(response.data);
   }, queryParams)
 }
 
 const deferredMovieDetails = async (movieId) => {
-  const path = `movie/${movieId}`
-  const PARAM_APPEND_TO_RESULT = "videos,credits"
+  const path = `movie/${movieId}`;
+  const PARAM_APPEND_TO_RESULT = "videos,credits";
  
   const config = {
     baseURL: BASE_URL,
@@ -128,12 +128,12 @@ const deferredMovieDetails = async (movieId) => {
       append_to_response: PARAM_APPEND_TO_RESULT
     }
   }
-  let movie = await axios.get(path, config)
-  return movie
+  let movie = await axios.get(path, config);
+  return movie;
  }
 
  export const searchFull = async (query, callback, page = 1) => {
-  const path = "search/movie"
+  const path = "search/movie";
  
   // axios config options for making network requests
   const config = {
@@ -145,16 +145,15 @@ const deferredMovieDetails = async (movieId) => {
     }
   }
  
-  const movies = await axios.get(path, config)
+  const movies = await axios.get(path, config);
   let promises = movies.data.results.map( async item => {
-    let movie = await deferredMovieDetails(item.id)
+    let movie = await deferredMovieDetails(item.id);
     movie.data.isFav = false;
-    let favSort = localStorage.getItem('favoris') || []
+    let favSort = localStorage.getItem('favoris') || [];
     if(favSort.includes(movie.data.id)){
       movie.data.isFav = true;
     }
-    return movie.data
+    return movie.data;
   })
-    Promise.all(promises).then(res => callback(res))
+    Promise.all(promises).then(res => callback(res));
  }
-

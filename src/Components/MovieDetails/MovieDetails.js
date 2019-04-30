@@ -53,7 +53,7 @@ class MovieDetails extends Component {
     super(props);
     this.state = {
       movies: [],
-      heart: false,
+      heart: false
     }
   }
 
@@ -66,14 +66,13 @@ class MovieDetails extends Component {
   manageMovie = (id) => {
     if (JSON.parse(localStorage.getItem('favoris'))) {
       if (JSON.parse(localStorage.getItem('favoris').includes(id))) {
-        this.setState({ heart: true })
-
+        this.setState({ heart: true });
         let favoris = JSON.parse(localStorage.getItem('favoris'));
         let index = favoris.indexOf(id);
         favoris.splice(index, 1);
         localStorage.setItem('favoris', JSON.stringify(favoris));
       } else {
-        this.setState({ heart: false })
+        this.setState({ heart: false });
         localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')), id]))
       }
     }
@@ -91,7 +90,6 @@ class MovieDetails extends Component {
           genre={this.props.info.genres.length ? this.props.info.genres[0].name : "N/A"}
           manageMovie={() => this.manageMovie(this.props.info.id)}
           synopsis={this.props.info.overview}
-
           cast={this.props.info.credits.cast}
           launchYoutube={() => this.launchYoutube(mapper.parseYoutubeUrl(this.props.info.videos))}
         />

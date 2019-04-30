@@ -11,8 +11,8 @@ const SearchBar = (props) => {
     renderSuggestion,
     onSuggestionSelected,
     inputProps
-
-  } = props
+  } = props;
+  
   return (
     <div className="search-bar" >
       <i className="material-icons" >search</i>
