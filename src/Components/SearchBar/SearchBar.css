@@ -79,8 +79,6 @@ input:focus:-ms-input-placeholder {
   color: rgba(0, 0, 0, 0.87);
 }
 
-
-
 /* Autosuggest */
 
 .react-autosuggest__container {

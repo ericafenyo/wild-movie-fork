@@ -9,7 +9,7 @@ class FavoritePage extends Component {
     super(props);
     this.state = {
       movies: [],
-      isLoading: true,
+      isLoading: true
     }
   }
 
@@ -29,17 +29,14 @@ class FavoritePage extends Component {
         let favoris = JSON.parse(localStorage.getItem('favoris'));
         let index = favoris.indexOf(id);
         favoris.splice(index, 1);
-        this.setState({ movies: favoris })
+        this.setState({ movies: favoris });
         localStorage.setItem('favoris', JSON.stringify(favoris));
-        let favtemp = this.state.movies
+        let favtemp = this.state.movies;
         let indexTemp = favtemp.findIndex((movie) => {
-          return movie.id === id
+          return movie.id === id;
         })
         favtemp.splice(indexTemp, 1);
-        console.log(indexTemp);
         this.setState({ movies: favtemp });
-
-
       } else {
         localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')), id]));
       }

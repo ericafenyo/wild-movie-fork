@@ -10,13 +10,13 @@ class MovieInfo extends Component {
     this.state = {
       info: {},
       results: [],
-      isLoading: true,
+      isLoading: true
     }
   }
 
   componentDidMount() {
     fetchMovieDetails(this.props.location.state, res => {
-      this.setState({ info: res, isLoading: false })
+      this.setState({ info: res, isLoading: false });
     });
   }
 

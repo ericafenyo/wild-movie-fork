@@ -52,11 +52,11 @@ class SearchList extends Component {
         favoris.splice(index, 1);
         localStorage.setItem('favoris', JSON.stringify(favoris));
       } else {
-        localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')), id]))
+        localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')), id]));
       }
       // remove
     } else {
-      localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')) || [], id]))
+      localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')) || [], id]));
     }
   }
 
@@ -64,14 +64,14 @@ class SearchList extends Component {
     console.log("remove" + id);
   }
   navigateToInfo = (id) => {
-    this.setState({ movieId: id, navigateInfo: true })
+    this.setState({ movieId: id, navigateInfo: true });
   }
 
   render() {
     if (this.state.navigateInfo) {
       return <Redirect to={{ pathname: '/info', state: this.state.movieId }} />
     }
-    console.log(this.props.movieList[0])
+    
     return (
       <div >
         {this.props.movieList.map(item => <SearchItem
