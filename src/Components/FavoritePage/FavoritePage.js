@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { search } from "../../data/ApiEndpoint";
 import { mapper } from "../../data/Mapper";
 import ToolBar from '../Toolbar/ToolBar';
 import './FavoritePage.css';
@@ -40,8 +39,6 @@ class FavoritePage extends Component {
         favtemp.splice(indexTemp, 1)
         console.log(indexTemp)
         this.setState({ movies: favtemp })
-
-
 
 
       } else {

@@ -148,7 +148,13 @@ const deferredMovieDetails = async (movieId) => {
   const movies = await axios.get(path, config)
   let promises = movies.data.results.map( async item => {
     let movie = await deferredMovieDetails(item.id)
+    movie.data.isFav = false;
+    let favSort = localStorage.getItem('favoris') 
+    if(favSort.includes(movie.data.id)){
+      movie.data.isFav = true;
+    }
     return movie.data
   })
     Promise.all(promises).then(res => callback(res))
  }
+
