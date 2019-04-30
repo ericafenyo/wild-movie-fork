@@ -18,10 +18,9 @@ class FavoritePage extends Component {
     favorisId.map((favori) => {
       axios.get(`https://api.themoviedb.org/3/movie/${favori}?api_key=64b4c85951711a3e428dc42847471e4c&language=en-US`)
         .then((result) => {
-          this.setState({ movies: [...this.state.movies, result.data] })
-        })
-    })
-
+          this.setState({ movies: [...this.state.movies, result.data] });
+        });
+    });
   }
 
   manageMovie = (id) => {
@@ -36,22 +35,18 @@ class FavoritePage extends Component {
         let indexTemp = favtemp.findIndex((movie) => {
           return movie.id === id
         })
-        favtemp.splice(indexTemp, 1)
-        console.log(indexTemp)
-        this.setState({ movies: favtemp })
+        favtemp.splice(indexTemp, 1);
+        console.log(indexTemp);
+        this.setState({ movies: favtemp });
 
 
       } else {
-        localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')), id]))
+        localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')), id]));
       }
-
     } else {
-      localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')) || [164825], id]))
-
-
+      localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')) || [164825], id]));
     }
   }
-
   render() {
     return (
       <Fragment>
@@ -74,9 +69,7 @@ class FavoritePage extends Component {
                     </div>
                   </div>
                 </div>
-              )
-            )
-          }
+              ))}
         </div>
       </Fragment>
     );

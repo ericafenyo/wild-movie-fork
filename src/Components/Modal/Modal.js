@@ -8,7 +8,6 @@ class ModalAbout extends React.Component {
     this.state = {
       modal: false
     };
-   
   }
 
   toggle = () => {

@@ -92,7 +92,6 @@ class HomeScreen extends Component {
     }
   }
 
-
   onSuggestionsFetchRequested = ({ value }) => {
     //Check if the value is empty
     if (/\S/.test(value)) {
@@ -102,14 +101,13 @@ class HomeScreen extends Component {
     } else {
       // Value is empty
       // Empty the data and hide the suggestion box (Dropdown)
-      this.setState({ suggestions: [] })
+      this.setState({ suggestions: [] });
     }
   }
 
   onSuggestionsClearRequested = () => {
     this.setState({ suggestions: [], hideContent: false })
   }
-
 
   getSuggestionValue = suggestion => suggestion.title
 
@@ -122,7 +120,7 @@ class HomeScreen extends Component {
 
   onSuggestionSelected = (event, { suggestion }) => {
     event.preventDefault();
-    this.setState({ movieId: suggestion.id, navigateToInfo: true })
+    this.setState({ movieId: suggestion.id, navigateToInfo: true });
   }
 
   render() {
