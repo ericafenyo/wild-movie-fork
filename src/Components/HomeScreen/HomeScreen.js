@@ -141,7 +141,7 @@ class HomeScreen extends Component {
     }
 
     return (
-      <div className="homeScreen vh-100">
+      <div className="homeScreen">
         <div className="container">
           <header>
             <img src={logo} className="logo" alt="logo" />
