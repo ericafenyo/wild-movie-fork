@@ -7,7 +7,7 @@ import playButton from './icon-play.svg';
 
 const Detail = (props) => {
   return (
-    <div className="movie-details  background-secondary">
+    <div className="movie-details vh-100  background-secondary">
       <div className="backdrop-wrapper">
         <img className="backdrop" src={props.backdrop} alt="backdrop" />
         <div className="play-button">
