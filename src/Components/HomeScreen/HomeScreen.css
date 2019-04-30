@@ -1,8 +1,10 @@
 .logo {
   display: inline-block;
+  width: 120px;
+  margin-top: 24px;
 }
 
-@media (min-width: 200px) and (max-width: 768px) {
+@media (mix-width: 576px) {
   .logo {
     width: 25%;
     margin-top: 25px;

@@ -41,18 +41,24 @@ const Casting = ({ launchDetails, casts }) => {
   }, [])
 
   return (
-    <div class="glide  mt-4 mb-4" ref={glide}>
-      <div class="glide__track" data-glide-el="track">
-        <ul class="glide__slides">
+    <div className="glide  mt-4 mb-4" ref={glide}>
+      <div className="glide__track" data-glide-el="track">
+        <ul className="glide__slides">
           {
             casts.map(cast =>
               <Cast
+                key={cast.id}
                 imgUrl={mapper.buildImageUrl(cast.profile_path)}
                 name={cast.name}
                 character={cast.character}
               />)
           }
         </ul>
+      </div>
+
+      <div class="glide__arrows d-none d-lg-block" data-glide-el="controls">
+        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
       </div>
     </div>
   );

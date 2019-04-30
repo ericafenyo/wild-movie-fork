@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import ToolBar from "../Toolbar/ToolBar";
-import {Redirect } from "react-router-dom";
+
 import SearchList from "../SearchList/SearchList";
-import { search } from '../../data/ApiEndpoint';
+import { searchFull } from '../../data/ApiEndpoint';
 import "./SearchScreen.css";
 
 class SearchScreen extends Component {
@@ -11,34 +11,28 @@ class SearchScreen extends Component {
     this.state = {
       movieList: [],
       isLoading: true,
-      navigateHome: false
+      navigateInfo: false
     }
   }
 
   componentDidMount() {
-    search(this.props.location.state, result => 
+    searchFull(this.props.location.state, result => 
       this.setState({ movieList: result, isLoading: false }));
-  }
-
-  navigateToHome = () => {
-    this.setState({ navigateHome: true })
   }
 
   render() {
     if (this.state.isLoading) {
       return <div>Loading</div>
-    } else if (this.state.navigateHome) {
-      return <Redirect to="/" />
-    }
+    } 
 
     return (
-      <div>
+      <div className="search-screen">
         <ToolBar
-         title="Movie deatails"
+         title="Search results"
          leftIcon="arrow_back"
          rightIcon="bookmark"
        />
-       <SearchList movieList={this.state.movieList}/>
+       <SearchList  movieList={this.state.movieList}/>
       </div>
     );
   }
