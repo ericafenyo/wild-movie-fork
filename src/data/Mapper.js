@@ -16,7 +16,7 @@
  */
 
 import { genres } from "./genres";
-import noImage from './no_poster.png':
+import noImage from './no_poster.png';
 
 /**
  * @class
