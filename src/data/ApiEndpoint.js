@@ -149,7 +149,7 @@ const deferredMovieDetails = async (movieId) => {
   let promises = movies.data.results.map( async item => {
     let movie = await deferredMovieDetails(item.id)
     movie.data.isFav = false;
-    let favSort = localStorage.getItem('favoris') 
+    let favSort = localStorage.getItem('favoris') || []
     if(favSort.includes(movie.data.id)){
       movie.data.isFav = true;
     }
