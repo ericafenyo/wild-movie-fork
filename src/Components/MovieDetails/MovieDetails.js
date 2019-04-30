@@ -9,9 +9,9 @@ const Detail = (props) => {
   return (
     <div className="movie-details  background-secondary">
       <div className="backdrop-wrapper">
-        <img className="backdrop" src={props.backdrop} />
+        <img className="backdrop" src={props.backdrop} alt="backdrop" />
         <div className="play-button">
-          <img src={playButton} onClick={props.launchYoutube} />
+          <img src={playButton} onClick={props.launchYoutube} alt="play button" />
         </div>
       </div>
       <div className="info-wrapper">
@@ -35,7 +35,7 @@ const Detail = (props) => {
           </div>
         </div>
       </div>
-      <p className="text-body-  mx-3 d-md-none">{props.synopsis}</p>
+      <p className="body-text mx-3 d-md-none">{props.synopsis}</p>
       <Casting casts={props.cast} />
     </div>
   );
@@ -60,7 +60,7 @@ class MovieDetails extends Component {
           genre={this.props.info.genres.shift().name}
           synopsis={this.props.info.overview}
           cast={this.props.info.credits.cast}
-          launchYoutube={() => this.launchYoutube("https://www.youtube.com/watch?v=Ct6BUPvE2sM")}
+          launchYoutube={() => this.launchYoutube(mapper.parseYoutubeUrl(this.props.info.videos))}
         />
       </Fragment>
     );
