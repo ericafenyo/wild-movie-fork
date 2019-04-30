@@ -30,6 +30,15 @@ class HomeScreen extends Component {
     }
   }
 
+  handleSubmit = ({ key }) => {
+    const ENTER_KEYCODE = "Enter"
+
+    const query = this.state.value
+    if (key === ENTER_KEYCODE) {
+      this.setState({ navigateToList: true })
+    }
+  };
+
   handleClick = (tab) => {
     switch (tab) {
       case "BOX OFFICE":
