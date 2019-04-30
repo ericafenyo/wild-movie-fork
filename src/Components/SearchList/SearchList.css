@@ -2,18 +2,18 @@
   background-color: #242e42 !important;
   color: white !important;
   flex-direction: row !important;
-  margin: 0% 3% 0% 3%;
-  border-bottom: .5px solid  #44556b!important;
-  font-family: 'roboto' !important ;
+  padding: 12px !important;
+  border-bottom: .5px solid #44556b !important;
 }
 
 .card-img-top {
-  width: 35% !important;
-  padding: 4% 0% 4% 0%;
+  width: 99px !important;
+  height: 144px;
+  margin-right: 16px;
 }
 
-.card-body{
-  padding: 16px !important;
+.card-body {
+  padding: 0 !important;
 }
 
 .body-first-line {
@@ -24,11 +24,11 @@
 .card-title-date {
   color: white;
   font-size: 24px;
-  line-height:1em;
-  font-family: roboto-light;
+  line-height: 1em;
 }
 
-.card-spec, .card-duration {
+.card-spec,
+.card-duration {
   color: #869aac;
   padding: 0;
   margin: 0;
@@ -48,15 +48,14 @@
 } */
 
 .span-search-list {
-  font-size: 1px;
+  font-size: 16px;
   color: #657d95;
-  font-family: roboto-regular;
 }
 
 .card-date {
   color: white;
   font-size: .5em;
-  line-height:1em;
+  line-height: 1em;
   color: #44556b
 }
 
@@ -67,7 +66,7 @@
   display: flex;
 }
 
-.star-rating{
+.star-rating {
   font-size: 18px;
   width: .1em;
   padding-right: 1.4em;
@@ -79,9 +78,10 @@
 }
 
 .favorite-border {
+  margin-top: 8px;
   width: 30px;
   height: 30px;
-  border: solid .5px #3e4e6c ;
+  border: solid .5px #3e4e6c;
   border-radius: 50%;
 }
 
@@ -100,3 +100,55 @@
   display: none;
 } */
 
+@media (min-width: 576px) {
+  .card-img-top {
+    width: 132px !important;
+    height: 198px;
+    margin-right: 16px;
+  }
+
+  .rate {
+    margin-left: 24px;
+  }
+
+  .card-title {
+    font-size: 26px;
+  }
+
+  .card-spec,
+  .star-rating,
+  .card-duration {
+    padding: 0;
+    margin: 0;
+    font-size: 20px !important;
+  }
+
+
+}
+
+
+@media (min-width: 768px) {
+  .card-img-top {
+    width: 144px !important;
+    height: 216px;
+    margin-right: 16px;
+  }
+
+  .rate {
+    margin-left: 28px;
+  }
+
+  .card-title {
+    font-size: 22px;
+  }
+
+  
+
+  .card-spec,
+  .star-rating,
+  .card-duration {
+    padding: 0;
+    margin: 0;
+    font-size: 22px !important;
+  }
+}
