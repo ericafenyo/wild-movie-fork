@@ -1,13 +1,15 @@
+.toolbar-wrapper {
+  border-bottom: 1px solid #20293c;
+}
+
 .toolbar {
-  height: 56px;
-  background-color: #2f3b52;
+  height: 72px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: white;
   padding: 0 16px;
 }
 
@@ -25,6 +27,8 @@
   font-size: 20px;
   padding: 0;
   margin: 0;
+  color: white;
+  font-family: 'Roboto', sans-serif;
 }
 
 .toolbar i {
@@ -34,5 +38,3 @@
 .toolbar .md-light {
   color: white;
 }
-
-/*# sourceMappingURL=Toolbar.css.map */

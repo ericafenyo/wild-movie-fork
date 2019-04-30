@@ -1,7 +1,21 @@
 .logo {
-  width: 17%;
-  margin-top: 8%;
   display: inline-block;
+  width: 120px;
+  margin-top: 24px;
+}
+
+@media (mix-width: 576px) {
+  .logo {
+    width: 25%;
+    margin-top: 25px;
+  }
+}
+
+@media (min-width: 992px) {
+  .logo {
+    width: 15%;
+    margin-top: 50px;
+  }
 }
 
 .homeScreen {
@@ -11,27 +25,72 @@
 }
 
 .searchBar {
-  width: 296px;
-  height: 32px;
-  border-radius: 2px;
-  background-color: white;
-  margin: auto;
-  margin-top: 10%;
+  display: flex;
+  justify-content: center;
   display: inline-block;
 }
 
+@media (min-width: 200px) and (max-width: 768px) {
+  .searchBar {
+    margin-top: 50px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .searchBar {
+    margin-top: 100px;
+    font-size: 20px;
+  }
+}
+
 .dropdownSB {
-  display: inline-block;
   margin-top: 0;
+  display: flex;
+  justify-content: center;
+  display: inline-block;
+  position: absolute;
+}
+
+@media (min-width: 200px) and (max-width: 768px) {
+  .dropdownSB {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .dropdownSB {
+    font-size: 20px;
+  }
+}
+
+.drop {
+  position: absolute !important;
 }
 
 .btn {
   color: #657d95 !important;
+  font-family: 'Roboto', sans-serif;
   background-color: #242e42 !important;
   border: none !important;
-  margin-top: 20%;
-  margin-left: 5%;
-  margin-right: 5%;
+}
+
+@media (min-width: 200px) and (max-width: 768px) {
+  .btn {
+    font-size: 70% !important;
+    margin-top: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+@media (min-width: 992px) {
+  .btn {
+    font-size: 20px !important;
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
 }
 
 .btnActive {
@@ -39,16 +98,53 @@
   background-color: #ffab4f !important;
 }
 
+.slider {
+  display: inline-block;
+}
+
+@media (min-width: 200px) and (max-width: 768px) {
+  .slider {
+    margin-top: 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  .slider {
+    margin-top: 10px;
+  }
+}
+
 .btnFavorite {
   color: #657d95 !important;
   background-color: #242e42 !important;
   border: solid 1px #ffab4f !important;
   border-radius: 0;
-  margin-top: 5%;
-  margin-bottom: 25%;
 }
 
-.slider {
-  display: inline-block;
-  margin-top: 5%;
+@media (min-width: 200px) and (max-width: 768px) {
+  .btnFavorite {
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: 992px) {
+  .btnFavorite {
+    margin-top: 70px;
+  }
+}
+
+@media (min-width: 200px) and (max-width: 768px) {
+  .icon-help {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .icon-help {
+    font-size: 40px;
+    margin-top: 70px;
+    margin-bottom: 40px;
+  }
 }

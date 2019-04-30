@@ -1,0 +1,109 @@
+.movie-details p {
+  padding: 0;
+}
+
+.info-color {
+  color: #869aac;
+  font-size: 14px;
+  text-align: justify;
+}
+
+.title-color {
+  color: white;
+  font-size: 18px;
+}
+
+.font-resume {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.87);
+  text-align: justify;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 16px;
+}
+
+.backdrop-wrapper {
+  width: 100%;
+  position: relative;
+  background-image: linear-gradient(to bottom, rgba(48, 48, 48, 0), #000000);
+}
+
+.backdrop-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+
+.poster {
+  width: 116px;
+  height: 174px;
+  border-radius: 2px;
+  margin-right: 16px;
+  flex-shrink: 0;
+  position: relative;
+  top: -52px;
+  margin-bottom: -52px;
+}
+
+.poster img {
+  width: 100%;
+  height: 100%;
+}
+
+.play-button {
+  width: 68px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.info p {
+  padding: 0;
+  margin: 0;
+}
+
+.info-wrapper {
+  margin: 16px;
+  display: flex;
+}
+
+@media (min-width: 1200px) {
+  .poster {
+    width: 200px;
+    height: 300px;
+    top: -100px;
+    margin-bottom: -100px;
+  }
+}
+
+@media (min-width: 768px) {
+  .poster {
+    width: 148px;
+    height: 222px;
+  }
+
+  .play-button {
+    width: 98px;
+  }
+}
+
+@media (min-width: 992px) {
+  .poster {
+    width: 184px;
+    height: 276px;
+  }
+}
+
+.favorite-clicked {
+  color: #ffab4f;
+  font-size: 18px;
+  width: 1em;
+  padding: .35em;
+}
+
+.favorite-null {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.86);
+  width: 1em;
+  padding: .35em;
+}

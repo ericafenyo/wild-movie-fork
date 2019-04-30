@@ -16,6 +16,7 @@
  */
 
 import { genres } from "./genres";
+import noImage from './no_poster.png';
 
 /**
  * @class
@@ -40,8 +41,12 @@ class Mapper {
      */
     buildImageUrl = (imagePath, fileSize = "w500") => {
         // Base image url
-        const BASE_URL = "https://image.tmdb.org/t/p/"
-        return `${BASE_URL}${fileSize}${imagePath}`
+        const BASE_URL = "https://image.tmdb.org/t/p/";
+
+        if (!imagePath) {
+            return noImage;
+        }
+        return `${BASE_URL}${fileSize}${imagePath}`;
     }
 
     /**
@@ -49,10 +54,17 @@ class Mapper {
      * @param {string} videoKey The `key` included in TMDb video response.
      */
     buildYouTubeUrl = (videoKey) => {
-        const YOUTUBE_BASE_URL = "https://www.youtube.com/watch"
-        return `${YOUTUBE_BASE_URL}?v=${videoKey}`
+        const YOUTUBE_BASE_URL = "https://www.youtube.com/watch";
+        return `${YOUTUBE_BASE_URL}?v=${videoKey}`;
     }
 
+    parseYoutubeUrl = (videos) => {
+        if (!videos.results.length) {
+            return "";
+        }
+        const youtubeKey = videos.results[0].key;
+        return this.buildYouTubeUrl(youtubeKey);
+    }
     /**
      * Converts genre ids from a TMDb movie response to its corresponding String value.
      */
@@ -65,8 +77,20 @@ class Mapper {
                 }
             })
         })
-        return result
+        return result;
+    }
+
+    parseDirector = (crew)  => {
+        const director = crew.filter(item => {
+           return item.job === 'Director';
+        } )
+
+      if(!director.length){
+          return "N/A";
+      }
+
+      return director[0];
     }
 }
 
-export const mapper = new Mapper()
+export const mapper = new Mapper();

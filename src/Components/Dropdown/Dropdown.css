@@ -24,16 +24,18 @@ body {
 p {
   margin: 0;
   padding-left: 8px;
-  font-size: 14px;
   letter-spacing: 0.4px;
   text-align: justify;
   color: rgba(255, 255, 255, 0.87);
+  line-height: 35px;
 }
 
 .dropdown {
+  position: absolute !important;
   width: 296px;
   border: solid 1px #44556b;
-  background-color: rgba(47, 59, 82, 0.3);
+  background-color: rgba(47, 59, 82, 1);
+  z-index: 2 !important;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {

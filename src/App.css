@@ -1,0 +1,159 @@
+:root {
+  --color-dark: #20293C;
+  --color-primary: #242e42;
+  --color-secondary: #2f3b52;
+  --accent-secondary: #1f8efa;
+  --accent-primary: #ffab4f;
+  --color-error: #ee423d;
+  --color-success: #05c985;
+  --white-high-emphasis: rgba(255, 255, 255, 0.87);
+  --white-medium-emphasis: rgba(255, 255, 255, 0.6);
+  --white-disabled: rgba(255, 255, 255, 0.38);
+  --black-high-emphasis: rgba(0, 0, 0, 0.87);
+  --black-medium-emphasis: rgba(0, 0, 0, 0.6);
+  --black-disabled: rgba(0, 0, 0, 0.38);
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  background-color:  #242e42!important;
+}
+
+.background-dark {
+  background: #20293C;
+}
+
+.background-primary {
+  background: #242E42;
+}
+
+.background-secondary {
+  background: #2F3B52;
+}
+
+.text-header {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.text-body- {
+  font-size: 16px;
+  line-height: 1.75;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+.text-caption-light {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.text-caption-dim {
+  font-size: 14px;
+  color: #869aac;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* Typography */
+.header-1,
+.header-2,
+.header-3,
+.header-4,
+.header-5,
+.header-6,
+.button {
+  color: white;
+}
+
+.subtitle-1,
+.subtitle-2,
+.body,
+.overline,
+.caption {
+  color: var(--white-medium-emphasis)
+}
+
+.header-1 {
+  font-size: 96px;
+  font-weight: 300;
+  letter-spacing: -1.5px;
+}
+
+.header-2 {
+  font-size: 60px;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+}
+
+.header-3 {
+  font-size: 48px;
+  font-weight: 300;
+}
+
+.header-4 {
+  font-size: 34px;
+  letter-spacing: 0.3px;
+}
+
+.Header-5 {
+  font-size: 24px;
+}
+
+.Header-6 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.subtitle-1 {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+}
+
+.subtitle-2 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.71;
+  letter-spacing: 0.2px;
+}
+
+.body-text {
+  font-size: 16px;
+  line-height: 1.75;
+  letter-spacing: 0.5px;
+  text-align: justify;
+  color: var(--white-medium-emphasis)
+}
+
+.button-text {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: 1.3px;
+}
+
+.caption {
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.4px;
+}
+
+.overline {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: 2px;
+}
+
+@import './components.css'
