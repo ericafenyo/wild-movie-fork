@@ -14,31 +14,44 @@ class FavoritePage extends Component {
     }
   }
 
-  componentDidMount() { 
-    let favorisId = JSON.parse(localStorage.getItem('favoris'));
+  componentDidMount() {
+    let favorisId = JSON.parse(localStorage.getItem('favoris')) || [164825];
     favorisId.map((favori) => {
       axios.get(`https://api.themoviedb.org/3/movie/${favori}?api_key=64b4c85951711a3e428dc42847471e4c&language=en-US`)
-      .then((result) => {
-        this.setState({movies: [...this.state.movies, result.data]})
-      })
+        .then((result) => {
+          this.setState({ movies: [...this.state.movies, result.data] })
+        })
     })
-    console.log(favorisId);
+
   }
 
   manageMovie = (id) => {
-    if(JSON.parse(localStorage.getItem('favoris'))) {
-      if(JSON.parse(localStorage.getItem('favoris').includes(id))) {
+    if (JSON.parse(localStorage.getItem('favoris'))) {
+      if (JSON.parse(localStorage.getItem('favoris').includes(id))) {
         let favoris = JSON.parse(localStorage.getItem('favoris'));
         let index = favoris.indexOf(id);
-        favoris.splice(index,1);
+        favoris.splice(index, 1);
+        this.setState({ movies: favoris })
         localStorage.setItem('favoris', JSON.stringify(favoris));
+        let favtemp = this.state.movies
+        let indexTemp = favtemp.findIndex((movie) => {
+          return movie.id === id
+        })
+        favtemp.splice(indexTemp, 1)
+        console.log(indexTemp)
+        this.setState({ movies: favtemp })
+
+
+
 
       } else {
         localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')), id]))
       }
-      // remove
+
     } else {
-      localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')) || [], id]))
+      localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')) || [164825], id]))
+
+
     }
   }
 
@@ -51,7 +64,7 @@ class FavoritePage extends Component {
         />
         <div className="row p-0 m-0">
           {
-            this.state.movies.map(movie =>
+            this.state.movies.map((movie) =>
               (
                 < div key={movie.id} className="iconName col-6  favorite-item m-0 p-0 ">
                   <div>
