@@ -3,11 +3,9 @@ import { Redirect } from "react-router-dom";
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 import { mapper } from '../../data/Mapper';
 import "./SearchList.css";
-import "../../App.css";
 
 const SearchItem = (props) => {
   const [favList, setFavList] = useState(props.clicked);
-  
   return (
     <div>
       <Card className="card-search-list rounded-0">
@@ -19,13 +17,12 @@ const SearchItem = (props) => {
           </div>
           <div className="card-rating">
             <i className="material-icons star-rating">star_rate</i>
-            {props.rating}
+            <span className="rate">{props.rating}</span>
           </div>
           <CardText className="card-spec m-0 p-0">Director: {props.director}</CardText>
           <CardText className="card-duration p-0">{props.duration} min | {props.genre} </CardText>
-          
-          <div className="favorite-border" onClick={() => {props.removeFavorite(); setFavList(!favList)}}>
-            <i className= {favList ? "material-icons favorite-clicked" : "material-icons favorite-null"}>favorite</i>
+          <div className="favorite-border" onClick={() => { props.removeFavorite(); setFavList(!favList) }}>
+            <i className={favList ? "material-icons favorite-clicked" : "material-icons favorite-null"}>favorite</i>
           </div>
         </CardBody>
       </Card>
@@ -44,7 +41,7 @@ class SearchList extends Component {
   }
 
   iconClicked = () => {
-    this.setState({ clicked: !this.state.clicked })
+    this.setState({ clicked: !this.state.clicked });
   }
 
   manageMovie = (id) => {
@@ -76,7 +73,7 @@ class SearchList extends Component {
     }
     console.log(this.props.movieList[0])
     return (
-      <div>
+      <div >
         {this.props.movieList.map(item => <SearchItem
           key={item.id}
           title={item.title}
@@ -85,10 +82,10 @@ class SearchList extends Component {
           director={mapper.parseDirector(item.credits.crew).name}
           date={item.release_date}
           duration={item.runtime}
-          genre={item.genres.length? item.genres[0].name : "" }
+          genre={item.genres.length ? item.genres[0].name : ""}
           imgUrl={mapper.buildImageUrl(item.poster_path)}
           removeFavorite={() => this.manageMovie(item.id)}
-          clicked = {item.isFav}
+          clicked={item.isFav}
         />)}
       </div>
     );
