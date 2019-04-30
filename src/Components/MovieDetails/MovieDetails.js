@@ -32,8 +32,12 @@ const Detail = (props) => {
             <p className="info-color">{props.duration + " min | " + props.genre}</p>
             <p className="info-color">{props.director}</p>
             <p className="text-body- d-none d-md-block">{props.synopsis}</p>
+            <div className="" onClick= {props.manageMovie}>
+                      <i className="material-icons" >favorite</i>
+                      </div>
           </div>
         </div>
+      
       </div>
       <p className="body-text mx-3 d-md-none">{props.synopsis}</p>
       <Casting casts={props.cast} />
@@ -42,11 +46,38 @@ const Detail = (props) => {
 }
 
 class MovieDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      movies: [],
+      heart:false,
+      
+    }
+  }
+    
+
   launchYoutube = (youtubeUrl) => {
     if (youtubeUrl) {
       window.open(youtubeUrl);
     }
   }
+
+  manageMovie = (id) =>{
+    if (JSON.parse(localStorage.getItem('favoris'))) {
+      if (JSON.parse(localStorage.getItem('favoris').includes(id))){
+         this.setState({heart: true})
+
+        let favoris = JSON.parse(localStorage.getItem('favoris'));
+        let index = favoris.indexOf(id);
+        favoris.splice(index, 1);
+        localStorage.setItem('favoris', JSON.stringify(favoris));
+    }else{
+      this.setState({heart: false})
+      localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')), id]))
+    }
+  }
+}
+  
 
   render() {
     return (
@@ -57,8 +88,10 @@ class MovieDetails extends Component {
           title={this.props.info.title}
           rating={this.props.info.vote_average / 2}
           duration={this.props.info.runtime}
-          genre={this.props.info.genres.shift().name}
+          genre={this.props.info.genres.length? this.props.info.genres[0].name : "N/A"}
+          manageMovie ={() =>this.manageMovie(this.props.info.id)}
           synopsis={this.props.info.overview}
+          
           cast={this.props.info.credits.cast}
           launchYoutube={() => this.launchYoutube(mapper.parseYoutubeUrl(this.props.info.videos))}
         />

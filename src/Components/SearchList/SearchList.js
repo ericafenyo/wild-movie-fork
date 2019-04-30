@@ -83,7 +83,7 @@ class SearchList extends Component {
           director={mapper.parseDirector(item.credits.crew).name}
           date={item.release_date}
           duration={item.runtime}
-          genre={item.genres.shift().name}
+          genre={item.genres.length? item.genres[0].name : "" }
           imgUrl={mapper.buildImageUrl(item.poster_path)}
           removeFavorite = {() => this.manageMovie(item.id)}
         />)}
