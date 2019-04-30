@@ -33,7 +33,6 @@ class HomeScreen extends Component {
   handleSubmit = ({ key }) => {
     const ENTER_KEYCODE = "Enter";
 
-    const query = this.state.value;
     if (key === ENTER_KEYCODE) {
       this.setState({ navigateToList: true });
     }
@@ -159,7 +158,7 @@ class HomeScreen extends Component {
             <Button onClick={() => this.handleClick("POPULAR")} className={this.state.active === "POPULAR" ? "btnActive" : "btn"} >POPULAR</Button>
           </div>
           <Slider data={this.state.topCharts} />
-           <NavLink className="d-inline-block ui-button-outline mt-4" to="/favorites">MY FAVORITES</NavLink>
+          <NavLink className="d-inline-block ui-button-outline mt-4" to="/favorites">MY FAVORITES</NavLink>
           <Modal className="icon-help" />
         </div>
       </div>
