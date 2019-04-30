@@ -18,9 +18,11 @@
   font-size: 19px;
   background-color:#242e42;
   border-radius: 25px;
-  border : 1px solid #2f3b52;
+  border : 1.5px solid #2f3b52;
   padding-right: 4px;
-  padding-top: 5px;
+  padding-top: 6px;
+  padding-left: 4px;
+  padding-bottom: 4px;
   zoom: 130%;
 }
 
@@ -33,7 +35,7 @@
   justify-content: center;
   bottom: 20px;
   padding: 8px 24px 0px;
-  margin-left: 10px;
+  margin-left: 15px;
 } 
 
 .i.material-icons{

@@ -66,7 +66,7 @@ class FavoritePage extends Component {
           {
             this.state.movies.map((movie) =>
               (
-                < div key={movie.id} className="iconName col-6  favorite-item m-0 p-0 ">
+                < div key={movie.id} className="iconName col-6 col-sm-4 col-md-3 col-lg-2  favorite-item m-0 p-0 ">
                   <div>
                     <img
                       className="sizeImg img-fluid"
