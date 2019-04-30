@@ -117,22 +117,38 @@ export const fetchMovieDetails = (movieId, callback) => {
   }, queryParams)
 }
 
-export const searchFull = (query, callback, page = 1) => {
-  const path = "search/movie"
-  const array = [];
-  const queryParams = {
-    query: query,
-    page: page
+const deferredMovieDetails = async (movieId) => {
+  const path = `movie/${movieId}`
+  const PARAM_APPEND_TO_RESULT = "videos,credits"
+ 
+  const config = {
+    baseURL: BASE_URL,
+    params: {
+      api_key: API_TOKEN,
+      append_to_response: PARAM_APPEND_TO_RESULT
+    }
   }
-  _performNetworkCall(path, response => {
-  
-    response.data.results.forEach(res => {
-      fetchMovieDetails(res.id, detailedResponse => {
-        array.push(detailedResponse)
-      })
-    })
-  }, queryParams)
+  let movie = await axios.get(path, config)
+  return movie
+ }
 
-  callback(array)
-  
+ export const searchFull = async (query, callback, page = 1) => {
+  const path = "search/movie"
+ 
+  // axios config options for making network requests
+  const config = {
+    baseURL: BASE_URL,
+    params: {
+      api_key: API_TOKEN,
+      query: query,
+      page: page
+    }
   }
+ 
+  const movies = await axios.get(path, config)
+  let promises = movies.data.results.map( async item => {
+    let movie = await deferredMovieDetails(item.id)
+    return movie.data
+  })
+    Promise.all(promises).then(res => callback(res))
+ }

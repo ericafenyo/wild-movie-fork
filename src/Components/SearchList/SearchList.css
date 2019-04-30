@@ -3,8 +3,8 @@
   color: white !important;
   flex-direction: row !important;
   margin: 0% 3% 0% 3%;
-  border-bottom: .5px solid  #44556b !important;
-  font-family: roboto-regular;
+  border-bottom: .5px solid  #44556b!important;
+  font-family: 'roboto' !important ;
 }
 
 .card-img-top {
@@ -13,7 +13,7 @@
 }
 
 .card-body{
-  padding: 4%!important;
+  padding: 16px !important;
 }
 
 .body-first-line {
@@ -23,9 +23,17 @@
 
 .card-title-date {
   color: white;
-  font-size: 1.3em;
+  font-size: 24px;
   line-height:1em;
   font-family: roboto-light;
+}
+
+.card-spec, .card-duration {
+  color: #869aac;
+  padding: 0;
+  margin: 0;
+  font-size: 16px !important;
+
 }
 
 .chevron-closed {
@@ -40,7 +48,7 @@
 } */
 
 .span-search-list {
-  font-size: .4em;
+  font-size: 1px;
   color: #657d95;
   font-family: roboto-regular;
 }
@@ -54,7 +62,8 @@
 
 .card-rating {
   color: #ffab4f;
-  font-size: .8em;
+  margin-bottom: 4px;
+  font-size: 16px;
   display: flex;
 }
 
@@ -90,3 +99,4 @@
   padding: .35em;
   display: none;
 } */
+

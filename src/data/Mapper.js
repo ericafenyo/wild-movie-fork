@@ -79,13 +79,19 @@ class Mapper {
         })
         return result
     }
+
+    parseDirector = (crew)  => {
+        const director = crew.filter(item => {
+           return item.job === 'Director'
+        } )
+
+      if(!director.length){
+          return ""
+      }
+
+      return director[0]
+    }
 }
 
-
-// const releaseYear = (date) => {
-//     date.slice(0, 4) {
-//     return
-//   }
-// }
 
 export const mapper = new Mapper()
