@@ -94,3 +94,16 @@
   }
 }
 
+.favorite-clicked {
+  color: #ffab4f;
+  font-size: 18px;
+  width: 1em;
+  padding: .35em;
+}
+
+.favorite-null {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.86);
+  width: 1em;
+  padding: .35em;
+}
