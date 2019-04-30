@@ -1,17 +1,17 @@
 import React, { Component, Fragment } from 'react';
+import { mapper } from "../../data/Mapper";
+import Casting from "../Casting/Casting";
+import StarRatings from "react-star-ratings";
 import "./MovieDetails.css";
-import { mapper } from "../../data/Mapper"
-import Casting from "../Casting/Casting"
-import playButton from './icon-play.svg'
-import StarRatings from "react-star-ratings"
+import playButton from './icon-play.svg';
 
 const Detail = (props) => {
   return (
     <div className="movie-details  background-secondary">
       <div className="backdrop-wrapper">
-        <img className="backdrop" src={props.backdrop} />
+        <img className="backdrop" src={props.backdrop} alt="backdrop" />
         <div className="play-button">
-          <img src={playButton} onClick={props.launchYoutube} />
+          <img src={playButton} onClick={props.launchYoutube} alt="play button" />
         </div>
       </div>
       <div className="info-wrapper">
@@ -33,22 +33,21 @@ const Detail = (props) => {
             <p className="info-color">{props.director}</p>
             <p className="text-body- d-none d-md-block">{props.synopsis}</p>
           </div>
-
         </div>
       </div>
-      <p className="text-body-  mx-3 d-md-none">{props.synopsis}</p>
+      <p className="body-text mx-3 d-md-none">{props.synopsis}</p>
       <Casting casts={props.cast} />
     </div>
   );
 }
 
 class MovieDetails extends Component {
-
   launchYoutube = (youtubeUrl) => {
     if (youtubeUrl) {
-      window.open(youtubeUrl)
+      window.open(youtubeUrl);
     }
   }
+
   render() {
     return (
       <Fragment>
@@ -61,11 +60,11 @@ class MovieDetails extends Component {
           genre={this.props.info.genres.shift().name}
           synopsis={this.props.info.overview}
           cast={this.props.info.credits.cast}
-          launchYoutube={() => this.launchYoutube("https://www.youtube.com/watch?v=Ct6BUPvE2sM")}
+          launchYoutube={() => this.launchYoutube(mapper.parseYoutubeUrl(this.props.info.videos))}
         />
       </Fragment>
-    )
+    );
   }
 }
 
-export default MovieDetails
+export default MovieDetails;

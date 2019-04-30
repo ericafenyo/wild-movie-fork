@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import './Modal.css'; 
+import './Modal.css';
 
 class ModalAbout extends React.Component {
   constructor(props) {
@@ -8,11 +8,10 @@ class ModalAbout extends React.Component {
     this.state = {
       modal: false
     };
-    
-    this.toggle = this.toggle.bind(this);
+   
   }
 
-  toggle() {
+  toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
@@ -21,19 +20,19 @@ class ModalAbout extends React.Component {
   render() {
     return (
       <div className="modalAbout">
-          <i className="material-icons icon-help" onClick={this.toggle}>help</i>
-          <div className="modalStyle">
+        <i className="material-icons icon-help" onClick={this.toggle}>help</i>
+        <div className="modalStyle">
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>About</ModalHeader>
-          <ModalBody>
-            Version 0.1 <br/>
-            Contributors: Anaïs Chevallier, Alexandre Coutant, Tristan Olivier, Eric Afenyo et Jennifer Boultareau<br/>
-            Technology:HTML, CSS, JavaScript, React, Reactstrap
+            <ModalHeader toggle={this.toggle}>About</ModalHeader>
+            <ModalBody>
+              Version 0.1 <br />
+              Contributors: Anaïs Chevallier, Alexandre Coutant, Tristan Olivier, Eric Afenyo et Jennifer Boultareau<br />
+              Technology:HTML, CSS, JavaScript, React, Reactstrap
           </ModalBody>
-          <ModalFooter classname="modalFooter">
-            <Button onClick={this.toggle}>Cancel</Button>
-          </ModalFooter>
-        </Modal>
+            <ModalFooter classname="modalFooter">
+              <Button onClick={this.toggle}>Cancel</Button>
+            </ModalFooter>
+          </Modal>
         </div>
       </div>
     );

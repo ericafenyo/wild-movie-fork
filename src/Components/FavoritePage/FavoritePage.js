@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { search } from "../../data/ApiEndpoint";
 import { mapper } from "../../data/Mapper";
+import ToolBar from '../Toolbar/ToolBar';
 import './FavoritePage.css';
 
 const FavIcon = ({ url, openDetail, adFavorite }) => {
@@ -43,17 +44,23 @@ class FavoritePage extends Component {
 
   render() {
     return (
-      <div className="row p-0 m-0">
-        {
-          this.state.results.map(item =>
-            (
-              < div  key={item.id} className="iconName col-6  favorite-item m-0 p-0 ">
-                <FavIcon  url={mapper.buildImageUrl(item.poster_path)} openDetail={this.openetail} adFavorite={this.adFavorite} />
-              </div>
+      <Fragment>
+        <ToolBar
+          title="Favorites"
+          leftIcon="arrow_back"
+        />
+        <div className="row p-0 m-0">
+          {
+            this.state.results.map(item =>
+              (
+                < div key={item.id} className="iconName col-6  favorite-item m-0 p-0 ">
+                  <FavIcon url={mapper.buildImageUrl(item.poster_path)} openDetail={this.openetail} adFavorite={this.adFavorite} />
+                </div>
+              )
             )
-          )
-        }
-      </div>
+          }
+        </div>
+      </Fragment>
     );
   }
 }

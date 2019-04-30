@@ -1,10 +1,10 @@
 .card-search-list {
-    background-color: #242e42 !important;
-    color: white !important;
-    flex-direction: row !important;
-    margin: 0% 3% 0% 3%;
-    border-bottom: .5px solid  #44556b !important;
-    font-family: roboto-regular;
+  background-color: #242e42 !important;
+  color: white !important;
+  flex-direction: row !important;
+  margin: 0% 3% 0% 3%;
+  border-bottom: .5px solid  #44556b !important;
+  font-family: roboto-regular;
 }
 
 .card-img-top {
@@ -22,10 +22,10 @@
 }
 
 .card-title-date {
-color: white;
-font-size: 1.3em;
-line-height:1em;
-font-family: roboto-light;
+  color: white;
+  font-size: 1.3em;
+  line-height:1em;
+  font-family: roboto-light;
 }
 
 .chevron-closed {
@@ -90,8 +90,3 @@ font-family: roboto-light;
   padding: .35em;
   display: none;
 } */
-
-
-
-
-

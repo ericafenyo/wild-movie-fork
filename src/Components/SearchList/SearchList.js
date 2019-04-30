@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
-import { Route, withRouter, Redirect } from "react-router-dom";
-import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle
-} from 'reactstrap';
-import { search } from '../../data/ApiEndpoint';
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 import { mapper } from '../../data/Mapper';
 import "./SearchList.css";
 import "../../App.css";
-import { strict } from 'assert';
-import ToolBar from '../Toolbar/ToolBar'
-
 
 const SearchItem = (props) => {
-  return (<div>
+  return (
+  <div>
     <Card className="card-search-list">
       <CardImg top height="100%" src={props.imgUrl} alt="Card image cap" />
       <CardBody>
@@ -34,59 +27,18 @@ const SearchItem = (props) => {
         {/* <SearchListExpanded /> */}
       </CardBody>
     </Card>
-
-  </div >
+  </div>
   );
-};
-
-// const releaseYear = (duration) => {
-//   str.slice(0, 4) {
-//     return
-//   }
-// }
-
+}
 
 class SearchList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      movieList: [],
-      isLoading: true,
-      navigateHome: false
-    }
-  }
-
-  componentDidMount() {
-    search(this.props.history.location.state, result => this.setState({ movieList: result, isLoading: false }))
-  }
-
-  navigateToHome = () => {
-    this.setState({ navigateHome: true })
-  }
-
-  navigateToFavorites = () => {
-    this.props.history.push('/favorites')
-  }
   render() {
-    if (this.state.isLoading) {
-      return <div>Loading</div>
-    } else if (this.state.navigateHome) {
-      return <Redirect to="/" />
-    }
-
     return (
       <div>
-        <ToolBar
-          title="Movie deatails"
-          leftIcon="arrow_back"
-          rightIcon="favorite"
-          onClickLeftIcon={this.navigateToHome}
-          onClickRightIcon={this.navigateToFavorites}
-        />
-        {this.state.movieList.map(item => <SearchItem
+        {this.props.movieList.map(item => <SearchItem
           key={item.id}
           title={item.title}
-          rating={item.vote_average}
+          rating={item.vote_average/2}
           director=''
           date={item.release_date}
           duration='120'

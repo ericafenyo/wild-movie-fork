@@ -1,0 +1,35 @@
+*:focus {
+    outline: none;
+  }
+  
+  button:focus {
+    outline: 0 !important;
+  }
+  
+  .ui-button-primary {
+    color: var(--white-medium-emphasis);
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+  }
+  
+  .ui-button-primary,
+  .ui-button-secondary,
+  .ui-button-outline {
+    transition: all .3s;
+    padding: 8px 12px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.14;
+  }
+  
+  .ui-button-outline {
+    color: var(--white-medium-emphasis);
+    border: solid 1px var(--accent-primary);
+  }
+  
+  .ui-button-secondary {
+    color: var(--color-primary);
+    background-color: var(--accent-primary);
+    border: solid 1px var(--accent-primary);
+  }

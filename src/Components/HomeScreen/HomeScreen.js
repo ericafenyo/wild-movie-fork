@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Dropdown, ResultItem } from '../Dropdown/Dropdown';
+import { NavLink, Redirect } from "react-router-dom/cjs/react-router-dom";
+import { search, fetchMovieChart } from '../../data/ApiEndpoint';
+import { Button } from 'reactstrap';
 import Slider from "../Slider/Slider";
 import SearchBar from "../SearchBar/SearchBar";
 import Modal from "../Modal/Modal";
-import { Button } from 'reactstrap';
-import { search, fetchMovieChart } from '../../data/ApiEndpoint';
 import logo from "../Logo/logo.svg";
 import "./HomeScreen.css";
 
@@ -18,10 +18,12 @@ class HomeScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      navigateToInfo: false,
+      navigateToList: false,
+      suggestions: [],
       active: "BOX OFFICE",
       isLoading: true,
       value: "",
-      data: [],
       history: [],
       topCharts: [],
       chart: "now_playing"
@@ -53,16 +55,6 @@ class HomeScreen extends Component {
     const value = event.target.value;
     // Update the state with the value 
     this.setState({ value: value })
-    //Check if the value is empty
-    if (value.notEmpty()) {
-      // Value not empty
-      // Perform a search request
-      this.dispatchSearchRequest(value);
-    } else {
-      // Value is empty
-      // Empty the data and hide the suggession box (Dropdown)
-      this.cleanData();
-    }
   }
 
   dispatchSearchRequest = (query) => {
@@ -71,39 +63,18 @@ class HomeScreen extends Component {
 
   performSearch = (query) => {
     search(query, (movies) => {
-      this.setState({ data: movies, isLoading: false })
+      this.setState({ suggestions: movies, isLoading: false })
     });
-  }
-
-  cleanData = () => {
-    this.setState({ data: [], isLoading: true });
-  }
-
-  onSuggessionItemClick = (event) => {
-    const suggession = event.target.textContent;
-    console.log(suggession);
-    // TODO: use this for history logs
-    this.setState({ value: suggession });
-    this.cleanData();
-  }
-
-  clearValue = (event) => {
-    this.setState({ value: "" });
-    this.cleanData();
-    console.log("suggession");
-    return false;
   }
 
   getCharts = () => {
     fetchMovieChart(this.state.chart, response => {
-      console.log(this.state.chart);
-
-      this.setState({ topCharts: response })
-    })
+      this.setState({ topCharts: response });
+    });
   }
 
   componentDidMount() {
-    this.getCharts()
+    this.getCharts();
   }
 
   componentDidUpdate(_, prevState) {
@@ -112,38 +83,79 @@ class HomeScreen extends Component {
     }
   }
 
-  render() {
+
+  onSuggestionsFetchRequested = ({ value }) => {
+    //Check if the value is empty
+    if (/\S/.test(value)) {
+      // Value not empty
+      // Perform a search request
+      this.dispatchSearchRequest(value);
+    } else {
+      // Value is empty
+      // Empty the data and hide the suggestion box (Dropdown)
+      this.setState({ suggestions: [] })
+    }
+  }
+
+  onSuggestionsClearRequested = () => {
+    this.setState({ suggestions: [], hideContent: false })
+  }
+
+
+  getSuggestionValue = suggestion => suggestion.title
+
+  renderSuggestion = (suggestion) => {
+    this.setState({ hideContent: true })
     return (
-      <div className="homeScreen">
-        <header>
-          <img src={logo} className="logo" alt="logo" />
-        </header>
-        <div className="searchBar">
+      <p className="suggestion-item">{suggestion.title}</p>
+    );
+  }
+
+  onSuggestionSelected = (event, { suggestion }) => {
+    event.preventDefault();
+    this.setState({ movieId: suggestion.id, navigateToInfo: true })
+  }
+
+  render() {
+    const inputProps = {
+      placeholder: "Search movies",
+      value: this.state.value,
+      onChange: this.onTextChange,
+      onKeyPress: this.handleSubmit,
+      className: "w-100 px-3"
+    }
+
+    if (this.state.navigateToInfo) {
+      return <Redirect push to={{ pathname: '/info', state: this.state.movieId }} />
+    } else if (this.state.navigateToList) {
+      return <Redirect push to={{ pathname: '/movies', state: this.state.value }} />
+    }
+
+    return (
+      <div className="homeScreen vh-100">
+        <div className="container">
+          <header>
+            <img src={logo} className="logo" alt="logo" />
+          </header>
           <SearchBar
-            performSearch={this.performSearch}
-            value={this.props.value}
-            handleChange={this.props.handleChange}
-            handleSubmit={this.props.handleSubmit}
-          />
-          {this.state.isLoading ? "" :
-            <Dropdown className="drop">
-              {this.state.data.slice(0, 5).map((movie) =>
-                <ResultItem
-                  key={movie.id}
-                  title={movie.title}
-                  handleClick={this.onSuggessionItemClick}
-                />)}
-            </Dropdown>
-          }
+            suggestions={this.state.suggestions.slice(0, 5)}
+            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+            getSuggestionValue={this.getSuggestionValue}
+            renderSuggestion={this.renderSuggestion}
+            onSuggestionSelected={this.onSuggestionSelected}
+            alwaysRenderSuggestions={true}
+            onSubmit={this.handleSubmit}
+            inputProps={inputProps} />
+          <div>
+            <Button onClick={() => this.handleClick("BOX OFFICE")} className={this.state.active === "BOX OFFICE" ? "btnActive" : "btn"} >BOX OFFICE</Button>
+            <Button onClick={() => this.handleClick("COMING SOON")} className={this.state.active === "COMING SOON" ? "btnActive" : "btn"} >COMING SOON</Button>
+            <Button onClick={() => this.handleClick("POPULAR")} className={this.state.active === "POPULAR" ? "btnActive" : "btn"} >POPULAR</Button>
+          </div>
+          <Slider data={this.state.topCharts} />
+           <NavLink className="d-inline-block ui-button-outline mt-4" exact to="/favorites">MY FAVORITES</NavLink>
+          <Modal className="icon-help" />
         </div>
-        <div>
-          <Button onClick={() => this.handleClick("BOX OFFICE")} className={this.state.active === "BOX OFFICE" ? "btnActive" : "btn"} >BOX OFFICE</Button>
-          <Button onClick={() => this.handleClick("COMING SOON")} className={this.state.active === "COMING SOON" ? "btnActive" : "btn"} >COMING SOON</Button>
-          <Button onClick={() => this.handleClick("POPULAR")} className={this.state.active === "POPULAR" ? "btnActive" : "btn"} >POPULAR</Button>
-        </div>
-        <Slider data={this.state.topCharts} />
-        <Button className="btnFavorite">MY FAVORITES</Button>
-        <Modal className="icon-help" />
       </div>
     );
   }
