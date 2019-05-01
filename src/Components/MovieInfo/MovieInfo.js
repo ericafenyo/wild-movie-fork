@@ -31,8 +31,6 @@ class MovieInfo extends Component {
           title="Movie details"
           leftIcon="close"
           rightIcon="bookmark"
-          onClickLeftIcon={() => console.log("Close")}
-          onClickRightIcon={() => console.log("Favorite")}
         />
         <MovieDetails info={this.state.info} />
       </Fragment>

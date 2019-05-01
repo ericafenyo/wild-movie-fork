@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, Redirect } from "react-router-dom/cjs/react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { search, fetchMovieChart } from '../../data/ApiEndpoint';
 import { Button } from 'reactstrap';
 import Slider from "../Slider/Slider";
@@ -33,7 +33,6 @@ class HomeScreen extends Component {
   handleSubmit = ({ key }) => {
     const ENTER_KEYCODE = "Enter";
 
-    const query = this.state.value;
     if (key === ENTER_KEYCODE) {
       this.setState({ navigateToList: true });
     }
@@ -153,13 +152,17 @@ class HomeScreen extends Component {
             alwaysRenderSuggestions={true}
             onSubmit={this.handleSubmit}
             inputProps={inputProps} />
-          <div>
+          <div className="tabLayout">
             <Button onClick={() => this.handleClick("BOX OFFICE")} className={this.state.active === "BOX OFFICE" ? "btnActive" : "btn"} >BOX OFFICE</Button>
             <Button onClick={() => this.handleClick("COMING SOON")} className={this.state.active === "COMING SOON" ? "btnActive" : "btn"} >COMING SOON</Button>
             <Button onClick={() => this.handleClick("POPULAR")} className={this.state.active === "POPULAR" ? "btnActive" : "btn"} >POPULAR</Button>
           </div>
           <Slider data={this.state.topCharts} />
+<<<<<<< HEAD
            <NavLink className="d-inline-block ui-button-outline mt-4" exact to={process.env.PUBLIC_URL+"/favorites"}>MY FAVORITES</NavLink>
+=======
+          <NavLink className="d-inline-block ui-button-outline mt-4" to="/favorites">MY FAVORITES</NavLink>
+>>>>>>> 648f36f70cdafeaba270d8cf3a0e73ecb9189684
           <Modal className="icon-help" />
         </div>
       </div>

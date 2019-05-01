@@ -5,11 +5,11 @@ import { NavLink } from "react-router-dom";
 const ToolBar = ({ title, leftIcon, rightIcon, onClickLeftIcon, onClickRightIcon, leftPath = process.env.PUBLIC_URL+"/", rightPath = process.env.PUBLIC_URL+"/favorites" }) => {
   return (
     <div className="toolbar background-secondary">
-      <NavLink exact to={leftPath}>
+      <NavLink to={leftPath}>
         <i className="material-icons md-light" onClick={onClickLeftIcon}>{leftIcon}</i>
       </NavLink>
       <p>{title}</p>
-      <NavLink exact to={rightPath}>
+      <NavLink to={rightPath}>
         <i className="material-icons  md-light" onClick={onClickRightIcon}>{rightIcon}</i>
       </NavLink>
     </div>

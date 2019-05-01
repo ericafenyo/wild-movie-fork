@@ -38,7 +38,7 @@ const Casting = ({ launchDetails, casts }) => {
 
   useEffect(() => {
     new Glide(glide.current, settings).mount()
-  }, [])
+  }, []);
 
   return (
     <div className="glide  mt-4 mb-4" ref={glide}>
@@ -55,9 +55,9 @@ const Casting = ({ launchDetails, casts }) => {
           }
         </ul>
       </div>
-      <div class="glide__arrows d-none d-lg-block" data-glide-el="controls">
-        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+      <div className="glide__arrows d-none d-lg-block" data-glide-el="controls">
+        <button className="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+        <button className="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
       </div>
     </div>
   );
