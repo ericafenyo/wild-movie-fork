@@ -132,9 +132,9 @@ class HomeScreen extends Component {
     }
 
     if (this.state.navigateToInfo) {
-      return <Redirect push to={{ pathname: '/info', state: this.state.movieId }} />
+      return <Redirect push to={{ pathname: process.env.PUBLIC_URL+'/info', state: this.state.movieId }} />
     } else if (this.state.navigateToList) {
-      return <Redirect push to={{ pathname: '/movies', state: this.state.value }} />
+      return <Redirect push to={{ pathname: process.env.PUBLIC_URL+'/movies', state: this.state.value }} />
     }
 
     return (
@@ -159,7 +159,7 @@ class HomeScreen extends Component {
             <Button onClick={() => this.handleClick("POPULAR")} className={this.state.active === "POPULAR" ? "btnActive" : "btn"} >POPULAR</Button>
           </div>
           <Slider data={this.state.topCharts} />
-           <NavLink className="d-inline-block ui-button-outline mt-4" exact to="/favorites">MY FAVORITES</NavLink>
+           <NavLink className="d-inline-block ui-button-outline mt-4" exact to={process.env.PUBLIC_URL+"/favorites"}>MY FAVORITES</NavLink>
           <Modal className="icon-help" />
         </div>
       </div>

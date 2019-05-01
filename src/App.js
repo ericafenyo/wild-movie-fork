@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter, Switch } from "react-router";
+import { Route, Switch } from "react-router";
 import HomeScreen from "./Components/HomeScreen/HomeScreen"
 import FavoritePage from './Components/FavoritePage/FavoritePage';
 import MovieInfo from './Components/MovieInfo/MovieInfo';
@@ -20,4 +20,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default App;

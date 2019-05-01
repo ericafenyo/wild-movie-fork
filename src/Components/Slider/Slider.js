@@ -27,7 +27,7 @@ class Slider extends Component {
   render() {
 
     if (this.state.posterClick){
-      return  <Redirect to={{ pathname: "/info", state: this.state.movieid }} /> 
+      return  <Redirect to={{ pathname: process.env.PUBLIC_URL+"/info", state: this.state.movieid }} /> 
     }
 
     return (
