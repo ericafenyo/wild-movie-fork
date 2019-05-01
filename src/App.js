@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { Route, Switch } from "react-router";
-=======
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
->>>>>>> 648f36f70cdafeaba270d8cf3a0e73ecb9189684
 import HomeScreen from "./Components/HomeScreen/HomeScreen"
 import FavoritePage from './Components/FavoritePage/FavoritePage';
 import MovieInfo from './Components/MovieInfo/MovieInfo';

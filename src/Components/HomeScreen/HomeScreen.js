@@ -158,11 +158,7 @@ class HomeScreen extends Component {
             <Button onClick={() => this.handleClick("POPULAR")} className={this.state.active === "POPULAR" ? "btnActive" : "btn"} >POPULAR</Button>
           </div>
           <Slider data={this.state.topCharts} />
-<<<<<<< HEAD
            <NavLink className="d-inline-block ui-button-outline mt-4" exact to={process.env.PUBLIC_URL+"/favorites"}>MY FAVORITES</NavLink>
-=======
-          <NavLink className="d-inline-block ui-button-outline mt-4" to="/favorites">MY FAVORITES</NavLink>
->>>>>>> 648f36f70cdafeaba270d8cf3a0e73ecb9189684
           <Modal className="icon-help" />
         </div>
       </div>
