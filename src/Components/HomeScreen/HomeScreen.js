@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import { search, fetchMovieChart } from '../../data/ApiEndpoint';
 import { Button } from 'reactstrap';
-import Slider from "../Slider/Slider";
+import Carousel from "../Carousel/Carousel";
 import SearchBar from "../SearchBar/SearchBar";
 import Modal from "../Modal/Modal";
 import logo from "../Logo/logo.svg";
@@ -22,6 +22,7 @@ class HomeScreen extends Component {
       navigateToList: false,
       suggestions: [],
       active: "BOX OFFICE",
+      chartLoading: true,
       isLoading: true,
       value: "",
       history: [],
@@ -77,7 +78,7 @@ class HomeScreen extends Component {
 
   getCharts = () => {
     fetchMovieChart(this.state.chart, response => {
-      this.setState({ topCharts: response });
+      this.setState({ topCharts: response, chartLoading: false });
     });
   }
 
@@ -131,9 +132,9 @@ class HomeScreen extends Component {
     }
 
     if (this.state.navigateToInfo) {
-      return <Redirect push to={{ pathname: process.env.PUBLIC_URL+'/info', state: this.state.movieId }} />
+      return <Redirect push to={{ pathname: process.env.PUBLIC_URL + '/info', state: this.state.movieId }} />
     } else if (this.state.navigateToList) {
-      return <Redirect push to={{ pathname: process.env.PUBLIC_URL+'/movies', state: this.state.value }} />
+      return <Redirect push to={{ pathname: process.env.PUBLIC_URL + '/movies', state: this.state.value }} />
     }
 
     return (
@@ -157,8 +158,10 @@ class HomeScreen extends Component {
             <Button onClick={() => this.handleClick("COMING SOON")} className={this.state.active === "COMING SOON" ? "btnActive" : "btn"} >COMING SOON</Button>
             <Button onClick={() => this.handleClick("POPULAR")} className={this.state.active === "POPULAR" ? "btnActive" : "btn"} >POPULAR</Button>
           </div>
-          <Slider data={this.state.topCharts} />
-           <NavLink className="d-inline-block ui-button-outline mt-4" exact to={process.env.PUBLIC_URL+"/favorites"}>MY FAVORITES</NavLink>
+          {
+            !this.state.chartLoading && <Carousel data={this.state.topCharts} />
+          }
+          <NavLink className="d-inline-block ui-button-outline mt-4" exact to={process.env.PUBLIC_URL + "/favorites"}>MY FAVORITES</NavLink>
           <Modal className="icon-help" />
         </div>
       </div>
