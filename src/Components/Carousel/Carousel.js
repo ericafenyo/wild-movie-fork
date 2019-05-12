@@ -59,15 +59,15 @@ class carousel extends Component {
     }
 
     return (
-      <div className="mt-4 mb-4">
-      <Slider {...this.settings} >
-        {this.props.data.map((item) =>
-          <Poster
-            key={item.id}
-            imageUrl={mapper.buildImageUrl(item.poster_path)}
-            linkInfoFilm={() => this.handleClick(item.id)}
-          />)}
-      </Slider>
+      <div className="mt-3 mb-4">
+        <Slider {...this.settings} >
+          {this.props.data.map((item) =>
+            <Poster
+              key={item.id}
+              imageUrl={mapper.buildImageUrl(item.poster_path)}
+              linkInfoFilm={() => this.handleClick(item.id)}
+            />)}
+        </Slider>
       </div>
     );
   }
