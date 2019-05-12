@@ -153,16 +153,16 @@ class HomeScreen extends Component {
             alwaysRenderSuggestions={true}
             onSubmit={this.handleSubmit}
             inputProps={inputProps} />
-          <div className="tabLayout">
-            <Button onClick={() => this.handleClick("BOX OFFICE")} className={this.state.active === "BOX OFFICE" ? "btnActive" : "btn"} >BOX OFFICE</Button>
-            <Button onClick={() => this.handleClick("COMING SOON")} className={this.state.active === "COMING SOON" ? "btnActive" : "btn"} >COMING SOON</Button>
-            <Button onClick={() => this.handleClick("POPULAR")} className={this.state.active === "POPULAR" ? "btnActive" : "btn"} >POPULAR</Button>
+          <div className="tab-layout">
+            <button onClick={() => this.handleClick("BOX OFFICE")} className={"button " + (this.state.active === "BOX OFFICE" ? "ui-button-secondary" : "ui-button-primary")} >BOX OFFICE</button>
+            <button onClick={() => this.handleClick("COMING SOON")} className={"button " + (this.state.active === "COMING SOON" ? "ui-button-secondary" : "ui-button-primary")} >COMING SOON</button>
+            <button onClick={() => this.handleClick("POPULAR")} className={"button " + (this.state.active === "POPULAR" ? "ui-button-secondary" : "ui-button-primary")} >POPULAR</button>
           </div>
           {
             !this.state.chartLoading && <Carousel data={this.state.topCharts} />
           }
-          <NavLink className="d-inline-block ui-button-outline mt-4" exact to={process.env.PUBLIC_URL + "/favorites"}>MY FAVORITES</NavLink>
-          <Modal className="icon-help" />
+          <NavLink className="button ui-button-outline" exact to={process.env.PUBLIC_URL + "/favorites"}>MY FAVORITES</NavLink>
+          <Modal />
         </div>
       </div>
     );
