@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Redirect } from "react-router-dom";
 import { mapper } from "../../data/Mapper";
 import ToolBar from '../Toolbar/ToolBar';
 import './FavoritePage.css';
@@ -9,6 +10,8 @@ class FavoritePage extends Component {
     super(props);
     this.state = {
       movies: [],
+      movieId: 0,
+      navigateToInfo: false,
       isLoading: true
     }
   }
@@ -34,7 +37,7 @@ class FavoritePage extends Component {
         let favtemp = this.state.movies;
         let indexTemp = favtemp.findIndex((movie) => {
           return movie.id === id;
-        })
+        });
         favtemp.splice(indexTemp, 1);
         this.setState({ movies: favtemp });
       } else {
@@ -44,7 +47,12 @@ class FavoritePage extends Component {
       localStorage.setItem('favoris', JSON.stringify([...JSON.parse(localStorage.getItem('favoris')) || [164825], id]));
     }
   }
+
   render() {
+    if (this.state.navigateToInfo) {
+      return <Redirect push to={{ pathname: process.env.PUBLIC_URL + '/info', state: this.state.movieId }} />
+    }
+
     return (
       <Fragment>
         <ToolBar
@@ -60,7 +68,9 @@ class FavoritePage extends Component {
                     <img
                       className="sizeImg img-fluid"
                       src={mapper.buildImageUrl(movie.poster_path)}
-                      alt="poster_path" />
+                      alt="poster_path"
+                      onClick={() => { this.setState({ navigateToInfo: true,movieId: movie.id }) }}
+                    />
                     <div className="icon-favorite" onClick={() => this.manageMovie(movie.id)}>
                       <i className="material-icons" >favorite</i>
                     </div>
