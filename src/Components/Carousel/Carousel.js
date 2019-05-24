@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-import Glide from '@glidejs/glide';
 import { mapper } from '../../data/Mapper';
-import '@glidejs/glide/dist/css/glide.core.css';
 import Slider from "react-slick";
-import '@glidejs/glide/dist/css/glide.theme.min.css';
 import './Carousel.css';
 
 const Poster = ({ imageUrl, linkInfoFilm }) => {

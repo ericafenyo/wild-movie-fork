@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import { search, fetchMovieChart } from '../../data/ApiEndpoint';
-import { Button } from 'reactstrap';
 import Carousel from "../Carousel/Carousel";
 import SearchBar from "../SearchBar/SearchBar";
 import Modal from "../Modal/Modal";
-import logo from "../Logo/logo.svg";
 import "./HomeScreen.css";
 
 const filter = {
@@ -140,9 +138,6 @@ class HomeScreen extends Component {
     return (
       <div className="homeScreen">
         <div className="container">
-          <header>
-            <img src={logo} className="logo" alt="logo" />
-          </header>
           <SearchBar
             suggestions={this.state.suggestions.slice(0, 5)}
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
