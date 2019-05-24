@@ -18,8 +18,8 @@ class ModalAbout extends React.Component {
 
   render() {
     return (
-      <div className="modalAbout">
-        <i className="material-icons icon-help" onClick={this.toggle}>help</i>
+      <div>
+        <i className="material-icons icon-help my-4" onClick={this.toggle}>help</i>
         <div className="modalStyle">
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader toggle={this.toggle}>About</ModalHeader>

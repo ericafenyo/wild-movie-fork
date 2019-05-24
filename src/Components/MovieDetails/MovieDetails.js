@@ -17,33 +17,36 @@ const Detail = (props) => {
           <img src={playButton} onClick={props.launchYoutube} alt="play button" />
         </div>
       </div>
-      <div className="info-wrapper">
-        <div className="poster wm-card">
-          <img src={props.poster} alt="small poster" />
-        </div>
-        <div className="info">
-          <div className="last-wrapper">
-            <p className="text-header">{props.title}</p>
-            <StarRatings
-              numberOfStars={5}
-              rating={props.rating}
-              starDimension="20px"
-              starSpacing="4px"
-              starRatedColor="#ffab4f"
-              startEmptyColor="#2f3b52"
-            />
-            <p className="info-color">{props.duration + " min | " + props.genre}</p>
-            <p className="info-color">{props.director}</p>
-            <p className="text-body- d-none d-md-block">{props.synopsis}</p>
-            <div className="" onClick={() => { props.manageMovie(); setFavList(!favList) }}>
-              <i className={favList ? "material-icons favorite-clicked" : "material-icons favorite-null"} >favorite</i>
+
+      <div>
+        <div className="info-wrapper">
+          <div className="poster wm-card">
+            <img src={props.poster} alt="small poster" />
+          </div>
+          <div className="info">
+            <div className="last-wrapper">
+              <p className="header-2">{props.title}</p>
+              <StarRatings
+                numberOfStars={5}
+                rating={props.rating}
+                starDimension="20px"
+                starSpacing="4px"
+                starRatedColor="#ffab4f"
+                startEmptyColor="#2f3b52"
+              />
+              <p className="info-color my-2">{props.duration + " min | " + props.genre}</p>
+              <p className="info-color">{props.director}</p>
+              <p className="body-text d-none d-md-block">{props.synopsis}</p>
+              <div className="favorite-icon mt-3" onClick={() => { props.manageMovie(); setFavList(!favList) }}>
+                <i className={favList ? "material-icons favorite-active" : "material-icons favorite-inactive"} >favorite</i>
+              </div>
             </div>
           </div>
-        </div>
 
+        </div>
+        <p className="body-text mx-3 d-md-none">{props.synopsis}</p>
+        <Casting casts={props.cast} />
       </div>
-      <p className="body-text mx-3 d-md-none">{props.synopsis}</p>
-      <Casting casts={props.cast} />
     </div>
   );
 }
