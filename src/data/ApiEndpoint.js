@@ -47,22 +47,21 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
  * @param {object} params Optional: The URL parameters to be sent with the request.
  */
 const _performNetworkCall = (path, callback, params = {}) => {
-	// axios config options for making network requests
-	const config = {
-		baseURL: BASE_URL,
-		params: {
-			api_key: API_TOKEN,
-			...params,
-		},
-	};
-	// Perform a GET request wih the provided path and config option
-	// TODO: Implement networkState to notify the "calling layer" about the state changes.
-	axios.get(path, config)
-		.then((response) => {
-			callback(response);
-		}).catch((error) => {
-			console.log(error);
-		});
+  // axios config options for making network requests
+  const config = {
+    baseURL: BASE_URL,
+    params: {
+      api_key: API_TOKEN,
+      ...params,
+    },
+  };
+  // Perform a GET request wih the provided path and config option
+  // TODO: Implement networkState to notify the "calling layer" about the state changes.
+  axios.get(path, config)
+    .then((response) => {
+      callback(response);
+    }).catch((error) => {
+    });
 };
 
 /**
@@ -73,14 +72,14 @@ const _performNetworkCall = (path, callback, params = {}) => {
  * @param {number} page Optional: The page to query. Default value is 1
  */
 export const search = (query, callback, page = 1) => {
-	const path = 'search/movie';
-	const queryParams = {
-		query,
-		page,
-	};
-	_performNetworkCall(path, (response) => {
-		callback(response.data.results);
-	}, queryParams);
+  const path = 'search/movie';
+  const queryParams = {
+    query,
+    page,
+  };
+  _performNetworkCall(path, (response) => {
+    callback(response.data.results);
+  }, queryParams);
 };
 
 /**
@@ -91,13 +90,13 @@ export const search = (query, callback, page = 1) => {
  * @param {number} page Optional: The page to query. Default value is 1
  */
 export const fetchMovieChart = (chart, callback, page = 1) => {
-	const path = `movie/${chart}`;
-	const queryParams = {
-		page,
-	};
-	_performNetworkCall(path, (response) => {
-		callback(response.data.results);
-	}, queryParams);
+  const path = `movie/${chart}`;
+  const queryParams = {
+    page,
+  };
+  _performNetworkCall(path, (response) => {
+    callback(response.data.results);
+  }, queryParams);
 };
 
 /**
@@ -107,53 +106,53 @@ export const fetchMovieChart = (chart, callback, page = 1) => {
  * @param {function} callback A Function to execute on the network response.
  */
 export const fetchMovieDetails = (movieId, callback) => {
-	const path = `movie/${movieId}`;
-	const PARAM_APPEND_TO_RESULT = 'videos,credits';
-	const queryParams = {
-		append_to_response: PARAM_APPEND_TO_RESULT,
-	};
-	_performNetworkCall(path, (response) => {
-		callback(response.data);
-	}, queryParams);
+  const path = `movie/${movieId}`;
+  const PARAM_APPEND_TO_RESULT = 'videos,credits';
+  const queryParams = {
+    append_to_response: PARAM_APPEND_TO_RESULT,
+  };
+  _performNetworkCall(path, (response) => {
+    callback(response.data);
+  }, queryParams);
 };
 
 const deferredMovieDetails = async (movieId) => {
-	const path = `movie/${movieId}`;
-	const PARAM_APPEND_TO_RESULT = 'videos,credits';
+  const path = `movie/${movieId}`;
+  const PARAM_APPEND_TO_RESULT = 'videos,credits';
 
-	const config = {
-		baseURL: BASE_URL,
-		params: {
-			api_key: API_TOKEN,
-			append_to_response: PARAM_APPEND_TO_RESULT,
-		},
-	};
-	const movie = await axios.get(path, config);
-	return movie;
+  const config = {
+    baseURL: BASE_URL,
+    params: {
+      api_key: API_TOKEN,
+      append_to_response: PARAM_APPEND_TO_RESULT,
+    },
+  };
+  const movie = await axios.get(path, config);
+  return movie;
 };
 
 export const searchFull = async (query, callback, page = 1) => {
-	const path = 'search/movie';
+  const path = 'search/movie';
 
-	// axios config options for making network requests
-	const config = {
-		baseURL: BASE_URL,
-		params: {
-			api_key: API_TOKEN,
-			query,
-			page,
-		},
-	};
+  // axios config options for making network requests
+  const config = {
+    baseURL: BASE_URL,
+    params: {
+      api_key: API_TOKEN,
+      query,
+      page,
+    },
+  };
 
-	const movies = await axios.get(path, config);
-	const promises = movies.data.results.map(async (item) => {
-		const movie = await deferredMovieDetails(item.id);
-		movie.data.isFav = false;
-		const favSort = localStorage.getItem('favoris') || [];
-		if (favSort.includes(movie.data.id)) {
-			movie.data.isFav = true;
-		}
-		return movie.data;
-	});
-	Promise.all(promises).then(res => callback(res));
+  const movies = await axios.get(path, config);
+  const promises = movies.data.results.map(async (item) => {
+    const movie = await deferredMovieDetails(item.id);
+    movie.data.isFav = false;
+    const favSort = localStorage.getItem('favoris') || [];
+    if (favSort.includes(movie.data.id)) {
+      movie.data.isFav = true;
+    }
+    return movie.data;
+  });
+  Promise.all(promises).then(res => callback(res));
 };

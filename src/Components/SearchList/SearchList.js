@@ -69,9 +69,9 @@ class SearchList extends Component {
 
   render() {
     if (this.state.navigateInfo) {
-      return <Redirect to={{ pathname: process.env.PUBLIC_URL+'/info', state: this.state.movieId }} />
+      return <Redirect to={{ pathname: process.env.PUBLIC_URL + '/info', state: this.state.movieId }} />
     }
-    
+
     return (
       <div >
         {this.props.movieList.map(item => <SearchItem
