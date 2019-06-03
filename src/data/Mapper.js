@@ -65,6 +65,11 @@ class Mapper {
         const youtubeKey = videos.results[0].key;
         return this.buildYouTubeUrl(youtubeKey);
     }
+
+    parseYoutubeUrlWithKey = (youtubeKey) => {
+        return this.buildYouTubeUrl(youtubeKey);
+    }
+    
     /**
      * Converts genre ids from a TMDb movie response to its corresponding String value.
      */
@@ -84,12 +89,18 @@ class Mapper {
         const director = crew.filter(item => {
            return item.job === 'Director';
         } )
-
       if(!director.length){
           return "N/A";
       }
-
       return director[0];
+    }
+
+    getYoutubeKey = (videos) => {
+        if (videos && videos.results.length) {
+            return videos.results[0].key
+        } else {
+            return ""
+        }
     }
 }
 
