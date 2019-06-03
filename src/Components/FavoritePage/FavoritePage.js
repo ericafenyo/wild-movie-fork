@@ -17,7 +17,7 @@ class FavoritePage extends Component {
   }
 
   componentDidMount() {
-    let favorisId = JSON.parse(localStorage.getItem('favoris')) || [164825];
+    let favorisId = JSON.parse(localStorage.getItem('favoris')) || [];
     favorisId.forEach((favori) => {
       axios.get(`https://api.themoviedb.org/3/movie/${favori}?api_key=64b4c85951711a3e428dc42847471e4c&language=en-US`)
         .then((result) => {
