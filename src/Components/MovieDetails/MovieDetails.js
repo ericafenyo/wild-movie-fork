@@ -1,34 +1,56 @@
-import React, { Component, Fragment, useState } from 'react';
+import React, { Component, Fragment, useState, useRef } from 'react';
 import { mapper } from "../../data/Mapper";
 import Casting from "../Casting/Casting";
 import StarRatings from "react-star-ratings";
 import "./MovieDetails.css";
-import playButton from './icon-play.svg';
+import ReactPlayer from 'react-player'
 
 const Detail = (props) => {
+  const { clicked, poster, title, rating, youtubeUrl } = props;
   // Hook variable
-  const [favList, setFavList] = useState(props.clicked);
+  const [favorites, setFavorites] = useState(clicked);
+  const opts = {
+    youtube: {
+      playerVars: {
+        showinfo: 0,
+        modestbranding: 1,
+        rel: 0
+      }
+    }
+  }
+
+  const Backdrop = ({ videoKey }) => {
+    console.log(videoKey)
+    return (videoKey ?
+      <ReactPlayer
+        url={mapper.parseYoutubeUrlWithKey(videoKey)}
+        config={opts}
+        className='react-player'
+        width='100%'
+        height="100%"
+      /> :
+      <div className="backdrop-wrapper react-player">
+        <img className="backdrop" src={props.backdrop} alt="backdrop" />
+      </div>)
+  }
 
   return (
-    <div className="movie-details vh-100  background-secondary">
-      <div className="backdrop-wrapper">
-        <img className="backdrop" src={props.backdrop} alt="backdrop" />
-        <div className="play-button">
-          <img src={playButton} onClick={props.launchYoutube} alt="play button" />
-        </div>
+    <div className="movie-details vh-100 background-secondary">
+      <div className='player-wrapper'>
+        <Backdrop videoKey = {props.videoKey}/>
       </div>
 
       <div>
         <div className="info-wrapper">
           <div className="poster wm-card">
-            <img src={props.poster} alt="small poster" />
+            <img src={poster} alt="small poster" />
           </div>
           <div className="info">
             <div className="last-wrapper">
-              <p className="header-2">{props.title}</p>
+              <p className="header-2">{title}</p>
               <StarRatings
                 numberOfStars={5}
-                rating={props.rating}
+                rating={rating}
                 starDimension="20px"
                 starSpacing="4px"
                 starRatedColor="#ffab4f"
@@ -37,8 +59,8 @@ const Detail = (props) => {
               <p className="info-color my-2">{props.duration + " min | " + props.genre}</p>
               <p className="info-color">{props.director}</p>
               <p className="body-text d-none d-md-block">{props.synopsis}</p>
-              <div className="favorite-icon mt-3" onClick={() => { props.manageMovie(); setFavList(!favList) }}>
-                <i className={favList ? "material-icons favorite-active" : "material-icons favorite-inactive"} >favorite</i>
+              <div className="favorite-icon mt-3" onClick={() => { props.manageMovie(); setFavorites(!favorites) }}>
+                <i className={favorites ? "material-icons favorite-active" : "material-icons favorite-inactive"} >favorite</i>
               </div>
             </div>
           </div>
@@ -81,6 +103,15 @@ class MovieDetails extends Component {
     }
   }
 
+  componentDidMount() {
+    try {
+      console.log(document.querySelector('iframe'));
+    } catch (error) {
+
+    }
+
+  }
+
   render() {
     return (
       <Fragment>
@@ -94,7 +125,7 @@ class MovieDetails extends Component {
           manageMovie={() => this.manageMovie(this.props.info.id)}
           synopsis={this.props.info.overview}
           cast={this.props.info.credits.cast}
-          launchYoutube={() => this.launchYoutube(mapper.parseYoutubeUrl(this.props.info.videos))}
+          videoKey={mapper.getYoutubeKey(this.props.info.videos)}
         />
       </Fragment>
     );
