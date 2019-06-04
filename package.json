@@ -6,6 +6,7 @@
     "@glidejs/glide": "^3.3.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "keyboardjs": "^2.5.1",
     "react": "^16.8.6",
     "react-autosuggest": "^9.4.3",
     "react-coverflow": "^0.2.19",
@@ -15,7 +16,9 @@
     "react-scripts": "2.1.8",
     "react-slick": "^0.24.0",
     "react-star-ratings": "^2.3.0",
+    "react-use": "^9.3.0",
     "reactstrap": "^8.0.0",
+    "rebound": "^0.1.0",
     "slick-carousel": "^1.8.1"
   },
   "scripts": {
@@ -23,6 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "eslint": "./node_modules/.bin/eslint",
     "lint": "./node_modules/.bin/eslint .",
     "lint:fix": "./node_modules/.bin/eslint . --fix"
   },
