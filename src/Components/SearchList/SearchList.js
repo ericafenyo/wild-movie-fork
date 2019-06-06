@@ -22,7 +22,7 @@ const SearchItem = (props) => {
               <span className="span-search-list">
                 {' '}
 (
-                {props.date.split('-').shift()}
+                {props.date.split('-')[0]}
 )
               </span>
             </CardTitle>
