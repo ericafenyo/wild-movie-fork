@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ToolBar from '../Toolbar/ToolBar';
+import LoadingState from '../ViewStates/LoadingState';
 
 import SearchList from '../SearchList/SearchList';
 import { searchFull } from '../../data/ApiEndpoint';
@@ -21,7 +22,7 @@ class SearchScreen extends Component {
 
   render() {
     if (this.state.isLoading) {
-      return <div>Loading</div>;
+      return <LoadingState />;
     }
 
     return (
@@ -31,7 +32,7 @@ class SearchScreen extends Component {
           leftIcon="arrow_back"
           rightIcon="bookmark"
         />
-        <SearchList movieList={this.state.movieList} />
+        <SearchList movies={this.state.movieList} />
       </div>
     );
   }

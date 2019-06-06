@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import ToolBar from '../Toolbar/ToolBar';
 import MovieDetails from '../MovieDetails/MovieDetails';
+import LoadingState from '../ViewStates/LoadingState';
 import './MovieInfo.css';
 import { fetchMovieDetails } from '../../data/ApiEndpoint';
 
@@ -22,7 +23,7 @@ class MovieInfo extends Component {
 
   render() {
     if (this.state.isLoading) {
-      return <div>loading</div>;
+      return <LoadingState />;
     }
 
     return (
