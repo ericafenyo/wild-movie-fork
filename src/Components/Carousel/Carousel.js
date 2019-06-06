@@ -1,16 +1,31 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import Slider from 'react-slick';
 import { mapper } from '../../data/Mapper';
 import './Carousel.css';
 
 const Poster = ({ imageUrl, linkInfoFilm }) => (
-  <div className="slide" onClick={linkInfoFilm}>
+  <div
+    className="slide"
+    onClick={linkInfoFilm}
+    onKeyDown={linkInfoFilm}
+    role="link"
+  >
     <img src={imageUrl} alt="movie poster" />
   </div>
 );
 
+Poster.prototype = {
+  imageUrl: PropTypes.string,
+  linkInfoFilm: PropTypes.string,
+};
+
 const Carousel = ({ data }) => {
+  Carousel.prototype = {
+    data: PropTypes.array,
+  };
+
   const [movieId, setMovieId] = useState(0);
   const [posterClick, setPosterClick] = useState(false);
 

@@ -10,7 +10,6 @@ class MovieInfo extends Component {
     super(props);
     this.state = {
       info: {},
-      results: [],
       isLoading: true,
     };
   }

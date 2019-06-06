@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import { useLocalStorage } from 'react-use';
 import { mapper } from '../../data/Mapper';
 import ToolBar from '../Toolbar/ToolBar';
-import './FavoritePage.css';
 import EmptyState from '../ViewStates/EmptyState';
 import { getFavoriteMovies } from '../../data/ApiEndpoint';
-import { useLocalStorage } from 'react-use';
+import './FavoritePage.css';
 
 const FavoritePage = () => {
   const [favoriteIds, setFavoriteIds] = useLocalStorage('favorites', []);
@@ -15,7 +15,7 @@ const FavoritePage = () => {
 
   useEffect(() => {
     getFavoriteMovies(favoriteIds, (response) => {
-      setMovies(response)
+      setMovies(response);
     });
   }, []);
 
@@ -31,20 +31,20 @@ const FavoritePage = () => {
         setMovies(newMovies);
       }
     }
-  }
+  };
 
   if (navigateToInfo) {
     return <Redirect push to={{ pathname: `${process.env.PUBLIC_URL}/info`, state: movieId }} />;
   }
 
   if (!movies.length) {
-    return <EmptyState message = "No favorites saved" />;
+    return <EmptyState message="No favorites saved" />;
   }
 
   const navigateTodetails = (id) => {
     setMoviesId(id);
     setNavigateToInfo(true);
-  }
+  };
 
   return (
     <Fragment>
