@@ -52,15 +52,9 @@ const HomeScreen = () => {
     setActive(tab);
   };
 
-  const onTextChange = (event) => {
-    // Retrieve the value from the search input
-    const value = event.target.value;
+  const onTextChange = ({ target }) => {
     // Update the state with the value
-    setValue(value);
-  };
-
-  const dispatchSearchRequest = (query) => {
-    performSearch(query);
+    setValue(target.value);
   };
 
   const performSearch = (query) => {
@@ -69,6 +63,11 @@ const HomeScreen = () => {
       setLoading(false);
     });
   };
+
+  const dispatchSearchRequest = (query) => {
+    performSearch(query);
+  };
+
 
   const getCharts = () => {
     fetchMovieChart(chart, (response) => {
@@ -140,9 +139,9 @@ const HomeScreen = () => {
           inputProps={inputProps}
         />
         <div className="tab-layout">
-          <button onClick={() => handleClick('BOX OFFICE')} className={`button ${active === 'BOX OFFICE' ? 'ui-button-secondary' : 'ui-button-primary'}`}>BOX OFFICE</button>
-          <button onClick={() => handleClick('COMING SOON')} className={`button ${active === 'COMING SOON' ? 'ui-button-secondary' : 'ui-button-primary'}`}>COMING SOON</button>
-          <button onClick={() => handleClick('POPULAR')} className={`button ${active === 'POPULAR' ? 'ui-button-secondary' : 'ui-button-primary'}`}>POPULAR</button>
+          <button type="button" onClick={() => handleClick('BOX OFFICE')} className={`button ${active === 'BOX OFFICE' ? 'ui-button-secondary' : 'ui-button-primary'}`}>BOX OFFICE</button>
+          <button type="button" onClick={() => handleClick('COMING SOON')} className={`button ${active === 'COMING SOON' ? 'ui-button-secondary' : 'ui-button-primary'}`}>COMING SOON</button>
+          <button type="button" onClick={() => handleClick('POPULAR')} className={`button ${active === 'POPULAR' ? 'ui-button-secondary' : 'ui-button-primary'}`}>POPULAR</button>
         </div>
         {
           !isLoading && <Carousel data={topCharts} />
