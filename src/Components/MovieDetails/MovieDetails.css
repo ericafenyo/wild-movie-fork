@@ -67,9 +67,6 @@
   display: flex;
 }
 
-
-
-
 @media (min-width: 1200px) {
   .poster {
     width: 200px;
@@ -103,7 +100,6 @@
     margin-top: 48px;
   }
 
-
   .backdrop-wrapper img {
     height: auto;
   }
@@ -129,4 +125,17 @@
 
 .favorite-inactive {
   color: rgba(255, 255, 255, 0.86);
+}
+
+.player-wrapper {
+  position: relative;
+  /* Player ratio: 100 / (1280 / 720)  */
+  /* padding-top: 56.25% ; */
+  padding-bottom: 56.25%;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

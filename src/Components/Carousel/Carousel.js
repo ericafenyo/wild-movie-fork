@@ -1,73 +1,66 @@
-import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import Slider from 'react-slick';
 import { mapper } from '../../data/Mapper';
-import Slider from "react-slick";
 import './Carousel.css';
 
-const Poster = ({ imageUrl, linkInfoFilm }) => {
+const Poster = ({ imageUrl, linkInfoFilm }) => (
+  <div className="slide" onClick={linkInfoFilm}>
+    <img src={imageUrl} alt="movie poster" />
+  </div>
+);
+
+const Carousel = ({ data }) => {
+  const [movieId, setMovieId] = useState(0);
+  const [posterClick, setPosterClick] = useState(false);
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    initialSlide: 1,
+    responsive: [
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
+    ],
+  };
+
+  const handleClick = (id) => {
+    setMovieId(id);
+    setPosterClick(true);
+  };
+
+  if (posterClick) {
+    return <Redirect to={{ pathname: `${process.env.PUBLIC_URL}/info`, state: movieId }} />;
+  }
+
   return (
-    <div className="slide" onClick={linkInfoFilm}>
-      <img src={imageUrl} alt="movie poster" />
+    <div className="mt-3 mb-4">
+      <Slider {...settings}>
+        {data.map(item => (
+          <Poster
+            key={item.id}
+            imageUrl={mapper.buildImageUrl(item.poster_path)}
+            linkInfoFilm={() => handleClick(item.id)}
+          />
+        ))}
+      </Slider>
     </div>
   );
-}
+};
 
-class carousel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      movieId: 0,
-      posterClick: false
-    }
-
-    this.settings = {
-      dots: false,
-      infinite: false,
-      speed: 500,
-      slidesToShow: 5,
-      slidesToScroll: 5,
-      initialSlide: 1,
-      responsive: [
-        {
-          breakpoint: 576,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-          }
-        },
-        {
-          breakpoint: 992,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 4,
-          }
-        }
-      ]
-    }
-  }
-
-  handleClick = (id) => {
-    this.setState({ posterClick: true, movieId: id });
-  }
-
-  render() {
-    if (this.state.posterClick) {
-      return <Redirect to={{ pathname: "/info", state: this.state.movieId }} />
-    }
-
-    return (
-      <div className="mt-3 mb-4">
-        <Slider {...this.settings} >
-          {this.props.data.map((item) =>
-            <Poster
-              key={item.id}
-              imageUrl={mapper.buildImageUrl(item.poster_path)}
-              linkInfoFilm={() => this.handleClick(item.id)}
-            />)}
-        </Slider>
-      </div>
-    );
-  }
-}
-
-export default carousel;
+export default Carousel;
