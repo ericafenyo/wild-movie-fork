@@ -45,7 +45,7 @@ const Carousel = ({ data }) => {
   };
 
   if (posterClick) {
-    return <Redirect to={{ pathname: '/info', state: movieId }} />;
+    return <Redirect to={{ pathname: `${process.env.PUBLIC_URL}/info`, state: movieId }} />;
   }
 
   return (
