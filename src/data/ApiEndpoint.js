@@ -105,15 +105,9 @@ export const fetchMovieChart = (chart, callback, page = 1) => {
  * @param {number} movieId TMDb movie id
  * @param {function} callback A Function to execute on the network response.
  */
-export const fetchMovieDetails = (movieId, callback) => {
-  const path = `movie/${movieId}`;
-  const PARAM_APPEND_TO_RESULT = 'videos,credits';
-  const queryParams = {
-    append_to_response: PARAM_APPEND_TO_RESULT,
-  };
-  _performNetworkCall(path, (response) => {
-    callback(response.data);
-  }, queryParams);
+export const fetchMovieDetails = async (movieId, callback) => {
+  const movie = await deferredMovieDetails(movieId);
+  callback(movie.data);
 };
 
 const deferredMovieDetails = async (movieId) => {
@@ -130,6 +124,7 @@ const deferredMovieDetails = async (movieId) => {
   const movie = await axios.get(path, config);
   return movie;
 };
+
 
 export const searchFull = async (query, callback, page = 1) => {
   const path = 'search/movie';
@@ -155,4 +150,18 @@ export const searchFull = async (query, callback, page = 1) => {
     return movie.data;
   });
   Promise.all(promises).then(res => callback(res));
+};
+
+/**
+ * Get a primary information about a particular movie.
+ * @param {array} movieIds list of TMDb movie id.
+ * @param {function} callback  callback A Function to execute on the network response.
+ */
+export const getFavoriteMovies = (movieIds, callback) => {
+  const promises = movieIds.map(async (movieId) => {
+    const movie = await deferredMovieDetails(movieId);
+    return movie.data;
+  });
+
+  Promise.all(promises).then(movies => callback(movies));
 };
