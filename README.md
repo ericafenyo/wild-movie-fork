@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/ericafenyo/wild-movie-fork.svg?branch=master)](https://travis-ci.com/ericafenyo/wild-movie-fork)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
