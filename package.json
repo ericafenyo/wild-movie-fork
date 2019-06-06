@@ -15,6 +15,7 @@
     "react-router-dom": "4.3.1",
     "react-scripts": "2.1.8",
     "react-slick": "^0.24.0",
+    "react-spinners": "^0.5.4",
     "react-star-ratings": "^2.3.0",
     "react-use": "^9.3.0",
     "reactstrap": "^8.0.0",
@@ -46,5 +47,5 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0"
   },
-  "homepage": "https://www.ericafenyo.com/"
+  "homepage": "https://ericafenyo.com/apps/wild-movie/"
 }
