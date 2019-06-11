@@ -13,7 +13,7 @@ before_install:
   -cp scripts/deploy-rsa ~/.ssh/deploy-rsa
   -chmod 600 ~/.ssh/deploy-rsa
   -ssh-add ~/.ssh/deploy-rsa
-  -echo -e "Host 51.68.231.219\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  # -echo -e "Host 51.68.231.219\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
 deploy:
 - provider: script
