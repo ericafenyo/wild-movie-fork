@@ -6,4 +6,4 @@ addons:
   - 51.68.231.219
 before_install:
 - openssl aes-256-cbc -K $encrypted_4116ce22bfa8_key -iv $encrypted_4116ce22bfa8_iv
-  -in deploy-rsa.enc -out deploy-rsa -d
+  -in scripts/deploy-rsa.enc -out scripts/deploy-rsa -d
