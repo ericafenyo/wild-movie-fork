@@ -26,7 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "eslint": "./node_modules/.bin/eslint",
     "lint": "./node_modules/.bin/eslint .",
@@ -46,7 +46,8 @@
     "eslint-config-airbnb": "17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.0"
+    "eslint-plugin-react": "^7.11.0",
+    "jest": "^24.8.0"
   },
   "homepage": "https://ericafenyo.com/apps/wild-movie/"
 }
