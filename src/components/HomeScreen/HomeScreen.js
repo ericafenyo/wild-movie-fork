@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { search, fetchMovieChart } from '../../data/ApiEndpoint';
-import Carousel from '../Carousel/Carousel';
+import Carousel from '../carousel/';
 import SearchBar from '../SearchBar/SearchBar';
 import Modal from '../Modal/Modal';
 import './HomeScreen.css';
