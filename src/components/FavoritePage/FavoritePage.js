@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useLocalStorage } from 'react-use';
 import { mapper } from '../../data/Mapper';
-import ToolBar from '../Toolbar/ToolBar';
+import { ToolBar } from 'components';
 import EmptyState from '../ViewStates/EmptyState';
 import { getFavoriteMovies } from '../../data/ApiEndpoint';
 import './FavoritePage.css';
