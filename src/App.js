@@ -1,9 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import HomeScreen from './components/HomeScreen/HomeScreen';
-import FavoritePage from './components/FavoritePage/FavoritePage';
-import MovieInfo from './components/MovieInfo/MovieInfo';
-import SearchScreen from './components/SearchScreen/SearchScreen';
+import { HomeScreen, SearchScreen, MovieInfo, FavoritePage } from 'components';
 import './App.css';
 
 const App = () => (
