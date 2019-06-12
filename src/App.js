@@ -1,11 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import HomeScreen from './Components/HomeScreen/HomeScreen';
-import FavoritePage from './Components/FavoritePage/FavoritePage';
-import MovieInfo from './Components/MovieInfo/MovieInfo';
-import SearchScreen from './Components/SearchScreen/SearchScreen';
+import HomeScreen from './components/HomeScreen/HomeScreen';
+import FavoritePage from './components/FavoritePage/FavoritePage';
+import MovieInfo from './components/MovieInfo/MovieInfo';
+import SearchScreen from './components/SearchScreen/SearchScreen';
 import './App.css';
-import './Components/HomeScreen/HomeScreen.css';
 
 const App = () => (
   <Router>
