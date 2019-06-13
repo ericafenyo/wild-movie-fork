@@ -3,12 +3,10 @@ import StarRatings from 'react-star-ratings';
 import './MovieDetails.css';
 import ReactPlayer from 'react-player';
 import { useLocalStorage } from 'react-use';
-import Casting from '../Casting/Casting';
-import { mapper } from '../../data/Mapper';
+import { mapper } from 'mapper';
+import { Casting } from 'components';
 
-const Detail = (props) => {
-  const [favorites, setFavorites] = useState([]);
-  const { poster, title, rating } = props;
+const Backdrop = ({ youtubeKey, backdrop }) => {
   const opts = {
     youtube: {
       playerVars: {
@@ -19,28 +17,45 @@ const Detail = (props) => {
     },
   };
 
-  const Backdrop = ({ videoKey }) => (videoKey
+  return youtubeKey
     ? (
       <ReactPlayer
-        url={mapper.parseYoutubeUrlWithKey(videoKey)}
+        url={mapper.parseYoutubeUrlWithKey(youtubeKey)}
         config={opts}
         className="react-player"
         width="100%"
         height="100%"
       />
     )
+
     : (
       <div className="backdrop-wrapper react-player">
-        <img className="backdrop" src={props.backdrop} alt="backdrop" />
+        <img className="backdrop" src={backdrop} alt="backdrop" />
       </div>
-    ));
+    );
+};
+
+const Detail = (props) => {
+  const [favorites, setFavorites] = useState([]);
+  const {
+    poster,
+    title,
+    rating,
+    duration,
+    backdrop,
+    genre,
+    videoKey,
+    director,
+    synopsis,
+    cast,
+    manageMovie,
+  } = props;
 
   return (
     <div className="movie-details vh-100 background-secondary">
       <div className="player-wrapper">
-        <Backdrop videoKey={props.videoKey} />
+        <Backdrop youtubeKey={videoKey} backdrop={backdrop} />
       </div>
-
       <div>
         <div className="info-wrapper">
           <div className="poster wm-card">
@@ -57,17 +72,17 @@ const Detail = (props) => {
                 starRatedColor="#ffab4f"
                 startEmptyColor="#2f3b52"
               />
-              <p className="info-color my-2">{`${props.duration} min | ${props.genre}`}</p>
-              <p className="info-color">{props.director}</p>
-              <p className="body-text d-none d-md-block">{props.synopsis}</p>
-              <div className="favorite-icon mt-3" onClick={() => { props.manageMovie(); setFavorites(!favorites); }}>
+              <p className="info-color my-2">{`${duration} min | ${genre}`}</p>
+              <p className="info-color">{director}</p>
+              <p className="body-text d-none d-md-block">{synopsis}</p>
+              <div className="favorite-icon mt-3" onClick={() => { manageMovie(); setFavorites(!favorites); }}>
                 <i className={favorites ? 'material-icons favorite-active' : 'material-icons favorite-inactive'}>favorite</i>
               </div>
             </div>
           </div>
         </div>
-        <p className="body-text mx-3 d-md-none">{props.synopsis}</p>
-        <Casting casts={props.cast} />
+        <p className="body-text mx-3 d-md-none">{synopsis}</p>
+        <Casting casts={cast} />
       </div>
     </div>
   );

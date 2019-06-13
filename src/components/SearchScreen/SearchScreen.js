@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ToolBar from '../Toolbar/ToolBar';
-import LoadingState from '../ViewStates/LoadingState';
+import { LoadingState } from 'view-states';
 
 import SearchList from '../SearchList/SearchList';
 import { searchFull } from '../../data/ApiEndpoint';

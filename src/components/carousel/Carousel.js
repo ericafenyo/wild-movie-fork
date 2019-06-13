@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import Slider from 'react-slick';
-import { mapper } from '../../data/Mapper';
+import { mapper } from 'mapper';
 import './Carousel.css';
 
 const Poster = ({ imageUrl, linkInfoFilm }) => (
   <div
     className="slide"
+    tabIndex="0"
     onClick={linkInfoFilm}
     onKeyDown={linkInfoFilm}
     role="link"

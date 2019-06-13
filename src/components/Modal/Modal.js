@@ -11,7 +11,7 @@ const ModalAbout = () => {
     setModal(!modal);
   };
 
-  const handleKeyDown = () => {};
+  const handleKeyDown = () => { };
 
   return (
     <div>
@@ -19,6 +19,7 @@ const ModalAbout = () => {
         className="material-icons icon-help my-4"
         onClick={toggle}
         onKeyDown={handleKeyDown}
+        tabIndex="0"
         role="button"
       >
         help

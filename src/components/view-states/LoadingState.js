@@ -2,7 +2,7 @@ import React from 'react';
 import { BounceLoader } from 'react-spinners';
 import './ViewStates.css';
 
-const EmptyState = () => (
+const LoadingState = () => (
   <div className="view-state">
     <BounceLoader
       size={60}
@@ -12,4 +12,4 @@ const EmptyState = () => (
   </div>
 );
 
-export default EmptyState;
+export default LoadingState;

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import { genres } from "./genres";
+import genres from "./genres";
 import noImage from './no_poster.png';
 
 /**
@@ -69,7 +69,7 @@ class Mapper {
     parseYoutubeUrlWithKey = (youtubeKey) => {
         return this.buildYouTubeUrl(youtubeKey);
     }
-    
+
     /**
      * Converts genre ids from a TMDb movie response to its corresponding String value.
      */
@@ -85,14 +85,14 @@ class Mapper {
         return result;
     }
 
-    parseDirector = (crew)  => {
+    parseDirector = (crew) => {
         const director = crew.filter(item => {
-           return item.job === 'Director';
-        } )
-      if(!director.length){
-          return "N/A";
-      }
-      return director[0];
+            return item.job === 'Director';
+        })
+        if (!director.length) {
+            return "N/A";
+        }
+        return director[0];
     }
 
     getYoutubeKey = (videos) => {

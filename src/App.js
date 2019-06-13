@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { HomeScreen, SearchScreen, MovieInfo, FavoritePage } from 'components';
+import {
+  HomeScreen, SearchScreen, MovieInfo, FavoritePage,
+} from 'components';
 import './App.css';
 
 const App = () => (

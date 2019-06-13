@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Glide from '@glidejs/glide';
-import { mapper } from '../../data/Mapper';
+import { mapper } from 'mapper';
 import '@glidejs/glide/dist/css/glide.core.css';
 import '@glidejs/glide/dist/css/glide.theme.min.css';
 import './Casting.css';

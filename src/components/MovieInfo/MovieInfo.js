@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import ToolBar from '../Toolbar/ToolBar';
-import MovieDetails from '../MovieDetails/MovieDetails';
-import LoadingState from '../ViewStates/LoadingState';
+import { MovieDetails, ToolBar } from 'components';
+import { LoadingState } from 'view-states'; 
 import './MovieInfo.css';
 import { fetchMovieDetails } from '../../data/ApiEndpoint';
 
