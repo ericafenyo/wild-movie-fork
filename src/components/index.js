@@ -19,5 +19,5 @@ export {
   FavoritePage,
   MovieInfo,
   ToolBar,
-  Casting
+  Casting,
 };
