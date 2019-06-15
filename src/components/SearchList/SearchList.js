@@ -3,47 +3,54 @@ import { Redirect } from 'react-router-dom';
 import {
   Card, CardImg, CardText, CardBody, CardTitle,
 } from 'reactstrap';
-import { mapper } from '../../data/Mapper';
-import './SearchList.css';
 import { useLocalStorage } from 'react-use';
+import { mapper } from 'mapper';
+import './SearchList.css';
 
 const SearchItem = (props) => {
-  const [favorites, setFavorites] = useState(props.clicked);
+  const {
+    clicked,
+    handleClick,
+    title,
+    date,
+    rating,
+    director,
+    duration,
+    genre,
+    imgUrl,
+    removeFavorite,
+  } = props;
+  const [favorites, setFavorites] = useState(clicked);
 
   return (
     <div>
       <Card className="card-search-list rounded-0">
-        <CardImg top height="100%" src={props.imgUrl} alt="Card image cap" />
+        <CardImg top height="100%" src={imgUrl} alt="Card image cap" />
         <CardBody>
           <div className="body-first-line">
-            <CardTitle onClick={props.handleClick} className="card-title-date">
-              {props.title}
-              {' '}
-              <span className="span-search-list">
-                {' '}
-(
-                {props.date.split('-')[0]}
-)
-              </span>
+            <CardTitle onClick={handleClick} className="card-title-date">
+              {title}
+              <span className="span-search-list">{` (${date.split('-')[0]})`}</span>
             </CardTitle>
           </div>
           <div className="card-rating">
             <i className="material-icons star-rating">star_rate</i>
-            <span className="rate">{props.rating}</span>
+            <span className="rate">{rating}</span>
           </div>
           <CardText className="card-spec m-0 p-0">
-Director:
-            {props.director}
+            Director:
+            {' '}
+            {director}
           </CardText>
           <CardText className="card-duration p-0">
-            {props.duration}
+            {duration}
             {' '}
-min |
+            min |
             {' '}
-            {props.genre}
+            {genre}
             {' '}
           </CardText>
-          <div className="favorite-border" onClick={() => { props.removeFavorite(); setFavorites(!favorites); }}>
+          <div className="favorite-border" onClick={() => { removeFavorite(); setFavorites(!favorites); }}>
             <i className={favorites ? 'material-icons favorite-clicked' : 'material-icons favorite-null'}>favorite</i>
           </div>
         </CardBody>
@@ -62,7 +69,6 @@ const SearchList = ({ movies }) => {
       const index = favoriteIds.indexOf(id);
       const favoriteIdsCopy = [...favoriteIds];
       favoriteIdsCopy.splice(index, 1);
-      console.log(favoriteIdsCopy);
       setFavoriteIds(favoriteIdsCopy);
     } else {
       setFavoriteIds([...favoriteIds, id]);

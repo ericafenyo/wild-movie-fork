@@ -1,40 +1,27 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { MovieDetails, ToolBar } from 'components';
-import { LoadingState } from 'view-states'; 
+import { LoadingState } from 'view-states';
 import './MovieInfo.css';
 import { fetchMovieDetails } from '../../data/ApiEndpoint';
 
-class MovieInfo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      info: {},
-      isLoading: true,
-    };
-  }
+const MovieInfo = (props) => {
+  const [movie, setMovie] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
-  componentDidMount() {
-    fetchMovieDetails(this.props.location.state, (res) => {
-      this.setState({ info: res, isLoading: false });
+  useEffect(() => {
+    fetchMovieDetails(props.location.state, (result) => {
+      setMovie(result);
+      setLoading(false);
     });
+  }, []);
+
+  if (isLoading) {
+    return <LoadingState />;
   }
 
-  render() {
-    if (this.state.isLoading) {
-      return <LoadingState />;
-    }
-
-    return (
-      <Fragment>
-        <ToolBar
-          title="Movie details"
-          leftIcon="close"
-          rightIcon="bookmark"
-        />
-        <MovieDetails info={this.state.info} />
-      </Fragment>
-    );
-  }
-}
+  return (
+      <MovieDetails info={movie} />
+  );
+};
 
 export default MovieInfo;

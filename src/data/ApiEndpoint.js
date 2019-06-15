@@ -19,12 +19,13 @@
  * @file
  * This file contains some helper functions for accessing movie data
  * from [The Movie Database (TMDb)]{@link https://www.themoviedb.org}.
- * It is recommended to parse the responses with mapper functions present in the [Mapper]{@link ./Mapper }
- * class.
+ * It is recommended to parse the responses with mapper functions present
+ * in the [Mapper]{@link ./Mapper }class.
  *
  * To use these helper functions;
  * 1: Install axios using `yarn add axios` or `npm install axios`
- * 2: Import them into your javaScript file using `import { search, fetchMovieChart, fetchMovieDetails } from 'path`
+ * 2: Import them into your javaScript file using
+ * `import { search, fetchMovieChart, fetchMovieDetails } from '<path>`
  * 3: Invoke the function of your choice and pass the required parameters.
  * Example `search("query", result => console.log(result))`
  *
@@ -46,7 +47,7 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
  * @param {function} callback A Function to execute on the network response.
  * @param {object} params Optional: The URL parameters to be sent with the request.
  */
-const _performNetworkCall = (path, callback, params = {}) => {
+const performNetworkCall = (path, callback, params = {}) => {
   // axios config options for making network requests
   const config = {
     baseURL: BASE_URL,
@@ -61,6 +62,8 @@ const _performNetworkCall = (path, callback, params = {}) => {
     .then((response) => {
       callback(response);
     }).catch((error) => {
+      // eslint-disable-next-line no-console
+      console.log(error);
     });
 };
 
@@ -77,7 +80,7 @@ export const search = (query, callback, page = 1) => {
     query,
     page,
   };
-  _performNetworkCall(path, (response) => {
+  performNetworkCall(path, (response) => {
     callback(response.data.results);
   }, queryParams);
 };
@@ -94,20 +97,9 @@ export const fetchMovieChart = (chart, callback, page = 1) => {
   const queryParams = {
     page,
   };
-  _performNetworkCall(path, (response) => {
+  performNetworkCall(path, (response) => {
     callback(response.data.results);
   }, queryParams);
-};
-
-/**
- * Get the primary information about a particular movie.
- *
- * @param {number} movieId TMDb movie id
- * @param {function} callback A Function to execute on the network response.
- */
-export const fetchMovieDetails = async (movieId, callback) => {
-  const movie = await deferredMovieDetails(movieId);
-  callback(movie.data);
 };
 
 const deferredMovieDetails = async (movieId) => {
@@ -123,6 +115,17 @@ const deferredMovieDetails = async (movieId) => {
   };
   const movie = await axios.get(path, config);
   return movie;
+};
+
+/**
+ * Get the primary information about a particular movie.
+ *
+ * @param {number} movieId TMDb movie id
+ * @param {function} callback A Function to execute on the network response.
+ */
+export const fetchMovieDetails = async (movieId, callback) => {
+  const movie = await deferredMovieDetails(movieId);
+  callback(movie.data);
 };
 
 

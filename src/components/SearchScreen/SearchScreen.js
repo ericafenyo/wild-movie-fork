@@ -1,41 +1,36 @@
-import React, { Component } from 'react';
-import ToolBar from '../Toolbar/ToolBar';
+import React, { useState, useEffect } from 'react';
 import { LoadingState } from 'view-states';
+import ToolBar from '../Toolbar/ToolBar';
 
 import SearchList from '../SearchList/SearchList';
 import { searchFull } from '../../data/ApiEndpoint';
 import './SearchScreen.css';
 
-class SearchScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      movieList: [],
-      isLoading: true,
-      navigateInfo: false,
-    };
+const SearchScreen = (props) => {
+  const [movies, setMovies] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    searchFull(props.location.state, (result) => {
+      setMovies(result);
+      setLoading(false);
+    });
+  }, []);
+
+  if (isLoading) {
+    return <LoadingState />;
   }
 
-  componentDidMount() {
-    searchFull(this.props.location.state, result => this.setState({ movieList: result, isLoading: false }));
-  }
-
-  render() {
-    if (this.state.isLoading) {
-      return <LoadingState />;
-    }
-
-    return (
-      <div className="search-screen">
-        <ToolBar
-          title="Search results"
-          leftIcon="arrow_back"
-          rightIcon="bookmark"
-        />
-        <SearchList movies={this.state.movieList} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="search-screen">
+      <ToolBar
+        title="Search results"
+        leftIcon="arrow_back"
+        rightIcon="bookmark"
+      />
+      <SearchList movies={movies} />
+    </div>
+  );
+};
 
 export default SearchScreen;

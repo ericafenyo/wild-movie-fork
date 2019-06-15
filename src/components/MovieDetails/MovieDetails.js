@@ -4,7 +4,7 @@ import './MovieDetails.css';
 import ReactPlayer from 'react-player';
 import { useLocalStorage } from 'react-use';
 import { mapper } from 'mapper';
-import { Casting } from 'components';
+import { Casting,ToolBar } from 'components';
 
 const Backdrop = ({ youtubeKey, backdrop }) => {
   const opts = {
@@ -17,22 +17,19 @@ const Backdrop = ({ youtubeKey, backdrop }) => {
     },
   };
 
-  return youtubeKey
-    ? (
+  return youtubeKey? 
       <ReactPlayer
         url={mapper.parseYoutubeUrlWithKey(youtubeKey)}
         config={opts}
         className="react-player"
         width="100%"
         height="100%"
-      />
-    )
-
-    : (
+    /> 
+    :
       <div className="backdrop-wrapper react-player">
         <img className="backdrop" src={backdrop} alt="backdrop" />
       </div>
-    );
+    ;
 };
 
 const Detail = (props) => {
@@ -52,12 +49,19 @@ const Detail = (props) => {
   } = props;
 
   return (
-    <div className="movie-details vh-100 background-secondary">
-      <div className="player-wrapper">
+    <div className="movie-details background-gradient">
+      <ToolBar
+        title="Movie details"
+        leftIcon="close"
+        rightIcon="bookmark"
+        />
+      <div className="container test-style">
+      <div className="player-wrapper"> 
         <Backdrop youtubeKey={videoKey} backdrop={backdrop} />
       </div>
       <div>
         <div className="info-wrapper">
+        
           <div className="poster wm-card">
             <img src={poster} alt="small poster" />
           </div>
@@ -83,6 +87,7 @@ const Detail = (props) => {
         </div>
         <p className="body-text mx-3 d-md-none">{synopsis}</p>
         <Casting casts={cast} />
+      </div>
       </div>
     </div>
   );
