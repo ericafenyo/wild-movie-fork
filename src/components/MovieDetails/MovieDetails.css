@@ -1,3 +1,11 @@
+.test-style {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.background-gradient {
+  background-image: linear-gradient(to right top, #565479, #d57785);
+}
+
 .movie-details p {
   padding: 0;
 }
@@ -71,7 +79,6 @@
   .poster {
     width: 200px;
     height: 300px;
-
     margin-bottom: -100px;
   }
 }
@@ -95,9 +102,7 @@
   }
 
   .movie-details {
-    max-width: 960px;
     margin: 0 auto;
-    margin-top: 48px;
   }
 
   .backdrop-wrapper img {
