@@ -1,25 +1,34 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
-import { Carousel, SearchBar, Modal } from 'components';
-import { search, fetchMovieChart } from '../../data/ApiEndpoint';
-import './HomeScreen.css';
+import { Carousel, SearchBar } from 'components';
+import { search } from '../../data/ApiEndpoint';
+import { loadFeaturedMovies } from '../../actions'
 
-const HomeScreen = () => {
+const Home = () => {
   const filter = {
     nowPlaying: 'now_playing',
     upcoming: 'upcoming',
-    popular: 'popular',
+    popular: 'popular'
   };
+
+  // redux hooks
+  const dispatch = useDispatch();
+  const { data } = useSelector(state => state.movies.featured);
+  console.log(data);
 
   const [navigateToInfo, setNavigateToInfo] = useState(false);
   const [navigateToList, setsNavigateToList] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const [active, setActive] = useState('BOX OFFICE');
-  const [isLoading, setLoading] = useState(true);
   const [value, setValue] = useState('');
-  const [topCharts, setTopCharts] = useState([]);
   const [chart, setChart] = useState(filter.nowPlaying);
   const [movieId, setMovieId] = useState(0);
+
+  useEffect(() => {
+    dispatch(loadFeaturedMovies(chart));
+  }, [chart]);
+
 
   const handleSubmit = ({ key }) => {
     const ENTER_KEYCODE = 'Enter';
@@ -58,25 +67,13 @@ const HomeScreen = () => {
   const performSearch = (query) => {
     search(query, (movies) => {
       setSuggestions(movies);
-      setLoading(false);
+      // setLoading(false);
     });
   };
 
   const dispatchSearchRequest = (query) => {
     performSearch(query);
   };
-
-
-  const getCharts = () => {
-    fetchMovieChart(chart, (response) => {
-      setTopCharts(response);
-      setLoading(false);
-    });
-  };
-
-  useEffect(() => {
-    getCharts();
-  }, [chart]);
 
 
   const onSuggestionsFetchRequested = ({ value }) => {
@@ -123,8 +120,12 @@ const HomeScreen = () => {
   }
 
   return (
-    <div className="homeScreen">
+    <div className="home h-100">
       <div className="container">
+        <div className="logo text-center w-100">
+          <i className="icon icon-fire"></i>
+          <p className="text">wild movie</p>
+        </div>
         <SearchBar
           suggestions={suggestions.slice(0, 5)}
           onSuggestionsFetchRequested={onSuggestionsFetchRequested}
@@ -141,14 +142,11 @@ const HomeScreen = () => {
           <button type="button" onClick={() => handleClick('COMING SOON')} className={`button ${active === 'COMING SOON' ? 'ui-button-secondary' : 'ui-button-primary'}`}>COMING SOON</button>
           <button type="button" onClick={() => handleClick('POPULAR')} className={`button ${active === 'POPULAR' ? 'ui-button-secondary' : 'ui-button-primary'}`}>POPULAR</button>
         </div>
-        {
-          !isLoading && <Carousel data={topCharts} />
-        }
+        <Carousel data={data} />
         <NavLink className="button ui-button-outline" exact to={`${process.env.PUBLIC_URL}/favorites`}>MY FAVORITES</NavLink>
-        <Modal />
       </div>
     </div>
   );
 };
 
-export default HomeScreen;
+export default Home;

@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MovieDetails, ToolBar } from 'components';
 import { LoadingState } from 'view-states';
 import './MovieInfo.css';
@@ -20,7 +20,7 @@ const MovieInfo = (props) => {
   }
 
   return (
-      <MovieDetails info={movie} />
+    <MovieDetails info={movie} />
   );
 };
 

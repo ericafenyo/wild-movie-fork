@@ -4,7 +4,7 @@ import './MovieDetails.css';
 import ReactPlayer from 'react-player';
 import { useLocalStorage } from 'react-use';
 import { mapper } from 'mapper';
-import { Casting,ToolBar } from 'components';
+import { Casting, ToolBar } from 'components';
 
 const Backdrop = ({ youtubeKey, backdrop }) => {
   const opts = {
@@ -17,18 +17,18 @@ const Backdrop = ({ youtubeKey, backdrop }) => {
     },
   };
 
-  return youtubeKey? 
-      <ReactPlayer
-        url={mapper.parseYoutubeUrlWithKey(youtubeKey)}
-        config={opts}
-        className="react-player"
-        width="100%"
-        height="100%"
-    /> 
+  return youtubeKey ?
+    <ReactPlayer
+      url={mapper.parseYoutubeUrlWithKey(youtubeKey)}
+      config={opts}
+      className="react-player"
+      width="100%"
+      height="100%"
+    />
     :
-      <div className="backdrop-wrapper react-player">
-        <img className="backdrop" src={backdrop} alt="backdrop" />
-      </div>
+    <div className="backdrop-wrapper react-player">
+      <img className="backdrop" src={backdrop} alt="backdrop" />
+    </div>
     ;
 };
 
@@ -49,45 +49,47 @@ const Detail = (props) => {
   } = props;
 
   return (
-    <div className="movie-details background-gradient">
+    <div className="movie-details background-dark">
       <ToolBar
         title="Movie details"
         leftIcon="close"
         rightIcon="bookmark"
-        />
-      <div className="container test-style">
-      <div className="player-wrapper"> 
-        <Backdrop youtubeKey={videoKey} backdrop={backdrop} />
-      </div>
-      <div>
-        <div className="info-wrapper">
-        
-          <div className="poster wm-card">
-            <img src={poster} alt="small poster" />
+      />
+      <div className="container p-0">
+        <div className="test-style">
+          <div className="player-wrapper">
+            <Backdrop youtubeKey={videoKey} backdrop={backdrop} />
           </div>
-          <div className="info">
-            <div className="last-wrapper">
-              <p className="header-2">{title}</p>
-              <StarRatings
-                numberOfStars={5}
-                rating={rating}
-                starDimension="20px"
-                starSpacing="4px"
-                starRatedColor="#ffab4f"
-                startEmptyColor="#2f3b52"
-              />
-              <p className="info-color my-2">{`${duration} min | ${genre}`}</p>
-              <p className="info-color">{director}</p>
-              <p className="body-text d-none d-md-block">{synopsis}</p>
-              <div className="favorite-icon mt-3" onClick={() => { manageMovie(); setFavorites(!favorites); }}>
-                <i className={favorites ? 'material-icons favorite-active' : 'material-icons favorite-inactive'}>favorite</i>
+          <div>
+            <div className="info-wrapper">
+
+              <div className="poster wm-card">
+                <img src={poster} alt="small poster" />
+              </div>
+              <div className="info">
+                <div className="last-wrapper">
+                  <p className="header-2">{title}</p>
+                  <StarRatings
+                    numberOfStars={5}
+                    rating={rating}
+                    starDimension="20px"
+                    starSpacing="4px"
+                    starRatedColor="#ffab4f"
+                    startEmptyColor="#2f3b52"
+                  />
+                  <p className="info-color my-2">{`${duration} min | ${genre}`}</p>
+                  <p className="info-color">{director}</p>
+                  <p className="body-text d-none d-md-block">{synopsis}</p>
+                  <div className="favorite-icon mt-3" onClick={() => { manageMovie(); setFavorites(!favorites); }}>
+                    <i className={favorites ? 'material-icons favorite-active' : 'material-icons favorite-inactive'}>favorite</i>
+                  </div>
+                </div>
               </div>
             </div>
+            <p className="body-text mx-3 d-md-none">{synopsis}</p>
+            <Casting casts={cast} />
           </div>
         </div>
-        <p className="body-text mx-3 d-md-none">{synopsis}</p>
-        <Casting casts={cast} />
-      </div>
       </div>
     </div>
   );

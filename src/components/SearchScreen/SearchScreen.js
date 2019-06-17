@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LoadingState } from 'view-states';
-import ToolBar from '../Toolbar/ToolBar';
-
-import SearchList from '../SearchList/SearchList';
+import {ToolBar,SearchList} from 'components';
 import { searchFull } from '../../data/ApiEndpoint';
 import './SearchScreen.css';
 

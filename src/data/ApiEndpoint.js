@@ -44,10 +44,9 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 /**
  * Performs a network request using the [axios api]{@link https://github.com/axios/axios}
  * @param {string} path The URL path to be appended to the base server URL.
- * @param {function} callback A Function to execute on the network response.
  * @param {object} params Optional: The URL parameters to be sent with the request.
  */
-const performNetworkCall = (path, callback, params = {}) => {
+const performNetworkCall = async (path, params = {}) => {
   // axios config options for making network requests
   const config = {
     baseURL: BASE_URL,
@@ -57,14 +56,7 @@ const performNetworkCall = (path, callback, params = {}) => {
     },
   };
   // Perform a GET request wih the provided path and config option
-  // TODO: Implement networkState to notify the "calling layer" about the state changes.
-  axios.get(path, config)
-    .then((response) => {
-      callback(response);
-    }).catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log(error);
-    });
+  return await axios.get(path, config);
 };
 
 /**
@@ -74,15 +66,15 @@ const performNetworkCall = (path, callback, params = {}) => {
  * @param {function} callback A Function to execute on the network response.
  * @param {number} page Optional: The page to query. Default value is 1
  */
-export const search = (query, callback, page = 1) => {
+export const search = async (query, callback, page = 1) => {
   const path = 'search/movie';
   const queryParams = {
     query,
     page,
   };
-  performNetworkCall(path, (response) => {
-    callback(response.data.results);
-  }, queryParams);
+
+  const response = await performNetworkCall(path, queryParams);
+  callback(response.data.results);
 };
 
 /**
@@ -92,14 +84,11 @@ export const search = (query, callback, page = 1) => {
  * @param {function} callback A Function to execute on the network response.
  * @param {number} page Optional: The page to query. Default value is 1
  */
-export const fetchMovieChart = (chart, callback, page = 1) => {
+export const fetchMovieChart = async (chart, callback,page = 1) => {
   const path = `movie/${chart}`;
-  const queryParams = {
-    page,
-  };
-  performNetworkCall(path, (response) => {
-    callback(response.data.results);
-  }, queryParams);
+  
+  const response = await performNetworkCall(path, { page });
+  callback(response.data.results);
 };
 
 const deferredMovieDetails = async (movieId) => {
