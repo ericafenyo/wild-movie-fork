@@ -23,7 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 yarn.lock
-src/Components/SearchBar/SearchBar.scss
-src/Components/SearchBar/SearchBar.css.map
 scripts/deploy-rsa
 *.pub
