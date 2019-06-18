@@ -1,24 +1,53 @@
+# Wild movie
+
 [![Build Status](https://travis-ci.com/ericafenyo/wild-movie-fork.svg?branch=master)](https://travis-ci.com/ericafenyo/wild-movie-fork)
+![](https://img.shields.io/badge/licence-MIT-green.svg)
+![](https://img.shields.io/badge/version-1.0.1a-blue.svg)
 
 
-## Available Scripts
+Wild movie is a web app that helps users find and save movies as favorites.
 
-In the project directory, you can run:
+This app is actively refined with attention to visuals and performance that create an experience that feels tailor-made to the user. It is built upon a [previous project][wm] done at [Wild Code School][wcs].
 
-### `npm start`
+## Useful scripts
+  In the project directory, you can run:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  ```$ npm start``` : run the app in the development mode.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+  ```$ npm test``` : run all unit tests.
 
-### `npm test`
+  ```$ npm lint <path>``` : run eslint utility in the specified `<path>`.
+  
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
+* React
+* Redux
+* JavaScript/ES6
+* Node
+* Jest
+* Enzyme
+* HTML5/CSS3/SCSS
 
-### `npm run build`
+## Features
+* Search movies by title.
+* View a detailed information on a particular movie.
+* Watch the latest movie trailer.
+* Save your favorite movies. 
+* Explore top movie charts: Box office, Popular and Coming soon.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+
+
+## Contributors
+* [Olivier Tristan][Tristan]
+* [Anaïs Chevallier][Anaïs]
+* [Alexandre Coutant][Alex]
+* [Jennifer Boultareau][Jennifer]
+* [Simon Philouze][Simon]
+
+[wm]:"https://github.com/WildCodeSchool/nantes-0219-js-wild-movie"
+[wcs]:"https://wildcodeschool.fr/"
+[Tristan]:"https://github.com/Gwaper"
+[Anaïs]:"https://github.com/Anais084"
+[Alex]:"https://github.com/AlexCou49"
+[Jennifer]:"https://github.com/JenniferBoultareau"
+[Simon]:"https://github.com/HitAngry"
