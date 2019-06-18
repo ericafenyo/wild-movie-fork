@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
 import { Carousel, SearchBar } from 'components';
 import { search } from '../../data/ApiEndpoint';
