@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
 import { Carousel, SearchBar } from 'components';
 import { search } from '../../data/ApiEndpoint';
@@ -14,7 +15,6 @@ const Home = () => {
   // redux hooks
   const dispatch = useDispatch();
   const { data } = useSelector(state => state.movies.featured);
-  console.log(data);
 
   const [navigateToInfo, setNavigateToInfo] = useState(false);
   const [navigateToList, setsNavigateToList] = useState(false);
@@ -27,7 +27,6 @@ const Home = () => {
   useEffect(() => {
     dispatch(loadFeaturedMovies(chart));
   }, [chart]);
-
 
   const handleSubmit = ({ key }) => {
     const ENTER_KEYCODE = 'Enter';
@@ -73,7 +72,6 @@ const Home = () => {
   const dispatchSearchRequest = (query) => {
     performSearch(query);
   };
-
 
   const onSuggestionsFetchRequested = ({ value }) => {
     // Check if the value is empty
@@ -142,7 +140,10 @@ const Home = () => {
           <button type="button" onClick={() => handleClick('POPULAR')} className={`button ${active === 'POPULAR' ? 'ui-button-secondary' : 'ui-button-primary'}`}>POPULAR</button>
         </div>
         <Carousel data={data} />
-        <NavLink className="button ui-button-outline" exact to={`${process.env.PUBLIC_URL}/favorites`}>MY FAVORITES</NavLink>
+        <div className="actions">
+          <NavLink className="button ui-button-outline mt-4" exact to={`${process.env.PUBLIC_URL}/favorites`}>MY FAVORITES</NavLink>
+        </div>
+
       </div>
     </div>
   );

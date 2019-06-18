@@ -15,7 +15,7 @@ const SearchBar = (props) => {
 
   return (
     <div className="search-bar">
-      <i className="material-icons">search</i>
+      <i className="icon-search"></i>
       <Autosuggest
         suggestions={suggestions}
         onSuggestionsFetchRequested={onSuggestionsFetchRequested}

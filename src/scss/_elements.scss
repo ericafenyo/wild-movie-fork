@@ -3,13 +3,23 @@
 // @import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
 
 %h-100 {
-  min-height: 100%;
+  height: 100%;
 }
+
+#root {
+  @extend %h-100;
+}
+
+
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
 }
 
 button:focus {

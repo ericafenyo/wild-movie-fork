@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Home, SearchScreen, MovieInfo, FavoritePage, ToolBar } from 'components';
+import { Home, SearchScreen, MovieInfo, FavoritePage } from 'components';
 import './App.css';
 
 const App = () => (
@@ -12,7 +12,6 @@ const App = () => (
       <Route path={`${process.env.PUBLIC_URL}/info`} component={MovieInfo} />
     </Switch>
   </Router>
-
 );
 
 export default App;

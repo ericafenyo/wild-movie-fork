@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LoadingState } from 'view-states';
-import {ToolBar,SearchList} from 'components';
+import { SearchList } from 'components';
 import { searchFull } from '../../data/ApiEndpoint';
 import './SearchScreen.css';
 
@@ -21,11 +21,6 @@ const SearchScreen = (props) => {
 
   return (
     <div className="search-screen">
-      <ToolBar
-        title="Search results"
-        leftIcon="arrow_back"
-        rightIcon="bookmark"
-      />
       <SearchList movies={movies} />
     </div>
   );

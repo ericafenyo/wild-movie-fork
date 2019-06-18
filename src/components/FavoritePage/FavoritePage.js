@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useLocalStorage } from 'react-use';
-import { ToolBar } from 'components';
 import { mapper } from 'mapper';
 import EmptyState from '../view-states/EmptyState';
 import { getFavoriteMovies } from '../../data/ApiEndpoint';
@@ -48,24 +47,22 @@ const FavoritePage = () => {
 
   return (
     <Fragment>
-      <ToolBar
-        title="Favorites"
-        leftIcon="arrow_back"
-      />
-      <div className="row p-0 m-0 ">
-        {movies.map(movie => (
-          <div key={movie.id} className="iconName col-6 col-sm-4 col-md-3 col-lg-3  favorite-item m-0 p-0 ">
-            <img
-              className="w-100 h-100"
-              src={mapper.buildImageUrl(movie.poster_path)}
-              alt="Movie poster"
-              onClick={() => navigateTodetails(movie.id)}
-            />
-            <div className="icon-favorite" onClick={() => removeMovie(movie.id)}>
-              <i className="material-icons">favorite</i>
+      <div className="container h-100">
+        <div className="row">
+          {movies.map(movie => (
+            <div key={movie.id} className="iconName col-6 col-sm-4 col-md-3 col-lg-3  favorite-item p-0 ">
+              <img
+                className="w-100 h-100"
+                src={mapper.buildImageUrl(movie.poster_path)}
+                alt="Movie poster"
+                onClick={() => navigateTodetails(movie.id)}
+              />
+              <div className="icon-favorite" onClick={() => removeMovie(movie.id)}>
+                <i className="icon-heart-fill" />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </Fragment>
   );

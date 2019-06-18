@@ -18,7 +18,6 @@ const MovieInfo = (props) => {
   if (isLoading) {
     return <LoadingState />;
   }
-
   return (
     <MovieDetails info={movie} />
   );

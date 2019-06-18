@@ -34,7 +34,7 @@ const SearchItem = (props) => {
             </CardTitle>
           </div>
           <div className="card-rating">
-            <i className="material-icons star-rating">star_rate</i>
+            <i className="icon-star-round star-rating" />
             <span className="rate">{rating}</span>
           </div>
           <CardText className="card-spec m-0 p-0">
@@ -51,7 +51,7 @@ const SearchItem = (props) => {
             {' '}
           </CardText>
           <div className="favorite-border" onClick={() => { removeFavorite(); setFavorites(!favorites); }}>
-            <i className={favorites ? 'material-icons favorite-clicked' : 'material-icons favorite-null'}>favorite</i>
+            <i className={favorites ? 'icon-heart-fill favorite-clicked' : 'icon-heart favorite-null'} />
           </div>
         </CardBody>
       </Card>
@@ -85,7 +85,7 @@ const SearchList = ({ movies }) => {
   }
 
   return (
-    <div>
+    <div className="container background-primary">
       {movies.map(item => (
         <SearchItem
           key={item.id}

@@ -5,8 +5,6 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducers'
 import App from './App';
-//  import 'bootstrap/dist/css/bootstrap-grid.min.css';
-
 import './css/index.css';
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

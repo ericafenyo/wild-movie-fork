@@ -18,6 +18,15 @@
       @extend %color-white-medium-emphasis;
     }
   }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+
+    .button {
+      margin: 0 16px;
+    }
+  }
 }
 
 .searchBar {

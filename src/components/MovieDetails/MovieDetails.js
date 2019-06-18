@@ -4,7 +4,7 @@ import './MovieDetails.css';
 import ReactPlayer from 'react-player';
 import { useLocalStorage } from 'react-use';
 import { mapper } from 'mapper';
-import { Casting, ToolBar } from 'components';
+import { Casting } from 'components';
 
 const Backdrop = ({ youtubeKey, backdrop }) => {
   const opts = {
@@ -50,11 +50,6 @@ const Detail = (props) => {
 
   return (
     <div className="movie-details background-dark">
-      <ToolBar
-        title="Movie details"
-        leftIcon="close"
-        rightIcon="bookmark"
-      />
       <div className="container p-0">
         <div className="test-style">
           <div className="player-wrapper">
@@ -81,7 +76,7 @@ const Detail = (props) => {
                   <p className="info-color">{director}</p>
                   <p className="body-text d-none d-md-block">{synopsis}</p>
                   <div className="favorite-icon mt-3" onClick={() => { manageMovie(); setFavorites(!favorites); }}>
-                    <i className={favorites ? 'material-icons favorite-active' : 'material-icons favorite-inactive'}>favorite</i>
+                    <i className={favorites ? 'icon-heart-fill favorite-active' : 'icon-heart favorite-inactive'} />
                   </div>
                 </div>
               </div>
