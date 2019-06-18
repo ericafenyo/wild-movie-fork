@@ -84,9 +84,9 @@ export const search = async (query, callback, page = 1) => {
  * @param {function} callback A Function to execute on the network response.
  * @param {number} page Optional: The page to query. Default value is 1
  */
-export const fetchMovieChart = async (chart, callback,page = 1) => {
+export const fetchMovieChart = async (chart, callback, page = 1) => {
   const path = `movie/${chart}`;
-  
+
   const response = await performNetworkCall(path, { page });
   callback(response.data.results);
 };
