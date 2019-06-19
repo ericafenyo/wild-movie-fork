@@ -1,0 +1,43 @@
+.icon-favorite {
+  text-align: right;
+  padding-right: 70px;
+  position: absolute;
+  min-width: 100%;
+  min-height: 2%;
+  justify-content: center;
+  bottom: 20px;
+  padding: 8px 24px 0px;
+}
+
+.favorite-item {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, .25);
+}
+
+.favorite-item i {
+  color: #ffab4f;
+  font-size: 14px;
+  background-color: #242e42;
+  border-radius: 50px;
+  border: 1.5px solid #2f3b52;
+  padding-right: 5px;
+  padding-top: 6px;
+  padding-left: 5px;
+  padding-bottom: 4px;
+  zoom: 130%;
+}
+
+.i.material-icons {
+  margin: 20px;
+}
+
+.FavoriteScreen {
+  height: 100vh;
+  background-color: #242e42;
+  text-align: center;
+}
+
+.Rectangle {
+  width: 96px;
+  height: 144px;
+  border-radius: 2px;
+}

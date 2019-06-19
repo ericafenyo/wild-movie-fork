@@ -15,15 +15,15 @@
  * limitations under the License.
  */
 
-import { genres } from "./genres";
+import genres from './genres';
 import noImage from './no_poster.png';
 
 /**
  * @class
- * This class provides some mapper functions for parsing the raw encoded 
+ * This class provides some mapper functions for parsing the raw encoded
  * response from the server.
- * 
- * @see 
+ *
+ * @see
  */
 class Mapper {
     /**
@@ -31,22 +31,22 @@ class Mapper {
      * 1. A base url.
      * 2. Image file size.
      * 3. Image path.
-     * The first two pieces can be retrieved by calling the 
-     * [TMDb configuration]{@link https://developers.themoviedb.org/3/configuration/get-api-configuration} API 
-     * and the third is the file path you're wishing to grab on a particular media object. 
+     * The first two pieces can be retrieved by calling the
+     * [TMDb configuration]{@link https://developers.themoviedb.org/3/configuration/get-api-configuration} API
+     * and the third is the file path you're wishing to grab on a particular media object.
      * Example: `poster_path` or `backdrop_path`
-     * 
-     * @param {string} imagePath The file path(poster_path or backdrop_path) from a TMDb movie response. 
+     *
+     * @param {string} imagePath The file path(poster_path or backdrop_path) from a TMDb movie response.
      * @param {string} fileSize Image file size.
      */
-    buildImageUrl = (imagePath, fileSize = "w500") => {
-        // Base image url
-        const BASE_URL = "https://image.tmdb.org/t/p/";
+    buildImageUrl = (imagePath, fileSize = 'w500') => {
+      // Base image url
+      const BASE_URL = 'https://image.tmdb.org/t/p/';
 
-        if (!imagePath) {
-            return noImage;
-        }
-        return `${BASE_URL}${fileSize}${imagePath}`;
+      if (!imagePath) {
+        return noImage;
+      }
+      return `${BASE_URL}${fileSize}${imagePath}`;
     }
 
     /**
@@ -54,53 +54,48 @@ class Mapper {
      * @param {string} videoKey The `key` included in TMDb video response.
      */
     buildYouTubeUrl = (videoKey) => {
-        const YOUTUBE_BASE_URL = "https://www.youtube.com/watch";
-        return `${YOUTUBE_BASE_URL}?v=${videoKey}`;
+      const YOUTUBE_BASE_URL = 'https://www.youtube.com/watch';
+      return `${YOUTUBE_BASE_URL}?v=${videoKey}`;
     }
 
     parseYoutubeUrl = (videos) => {
-        if (!videos.results.length) {
-            return "";
-        }
-        const youtubeKey = videos.results[0].key;
-        return this.buildYouTubeUrl(youtubeKey);
+      if (!videos.results.length) {
+        return '';
+      }
+      const youtubeKey = videos.results[0].key;
+      return this.buildYouTubeUrl(youtubeKey);
     }
 
-    parseYoutubeUrlWithKey = (youtubeKey) => {
-        return this.buildYouTubeUrl(youtubeKey);
-    }
-    
+    parseYoutubeUrlWithKey = youtubeKey => this.buildYouTubeUrl(youtubeKey)
+
     /**
      * Converts genre ids from a TMDb movie response to its corresponding String value.
      */
     parseGenres = (genreIds) => {
-        const result = []
-        genreIds.forEach(genreId => {
-            genres.forEach(genre => {
-                if (genreId === genre.id) {
-                    result.push(genre.name)
-                }
-            })
-        })
-        return result;
+      const result = [];
+      genreIds.forEach((genreId) => {
+        genres.forEach((genre) => {
+          if (genreId === genre.id) {
+            result.push(genre.name);
+          }
+        });
+      });
+      return result;
     }
 
-    parseDirector = (crew)  => {
-        const director = crew.filter(item => {
-           return item.job === 'Director';
-        } )
-      if(!director.length){
-          return "N/A";
+    parseDirector = (crew) => {
+      const director = crew.filter(item => item.job === 'Director');
+      if (!director.length) {
+        return 'N/A';
       }
       return director[0];
     }
 
     getYoutubeKey = (videos) => {
-        if (videos && videos.results.length) {
-            return videos.results[0].key
-        } else {
-            return ""
-        }
+      if (videos && videos.results.length) {
+        return videos.results[0].key;
+      }
+      return '';
     }
 }
 

@@ -19,12 +19,13 @@
  * @file
  * This file contains some helper functions for accessing movie data
  * from [The Movie Database (TMDb)]{@link https://www.themoviedb.org}.
- * It is recommended to parse the responses with mapper functions present in the [Mapper]{@link ./Mapper }
- * class.
+ * It is recommended to parse the responses with mapper functions present
+ * in the [Mapper]{@link ./Mapper }class.
  *
  * To use these helper functions;
  * 1: Install axios using `yarn add axios` or `npm install axios`
- * 2: Import them into your javaScript file using `import { search, fetchMovieChart, fetchMovieDetails } from 'path`
+ * 2: Import them into your javaScript file using
+ * `import { search, fetchMovieChart, fetchMovieDetails } from '<path>`
  * 3: Invoke the function of your choice and pass the required parameters.
  * Example `search("query", result => console.log(result))`
  *
@@ -43,10 +44,9 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 /**
  * Performs a network request using the [axios api]{@link https://github.com/axios/axios}
  * @param {string} path The URL path to be appended to the base server URL.
- * @param {function} callback A Function to execute on the network response.
  * @param {object} params Optional: The URL parameters to be sent with the request.
  */
-const _performNetworkCall = (path, callback, params = {}) => {
+const performNetworkCall = async (path, params = {}) => {
   // axios config options for making network requests
   const config = {
     baseURL: BASE_URL,
@@ -56,12 +56,7 @@ const _performNetworkCall = (path, callback, params = {}) => {
     },
   };
   // Perform a GET request wih the provided path and config option
-  // TODO: Implement networkState to notify the "calling layer" about the state changes.
-  axios.get(path, config)
-    .then((response) => {
-      callback(response);
-    }).catch((error) => {
-    });
+  return await axios.get(path, config);
 };
 
 /**
@@ -71,15 +66,15 @@ const _performNetworkCall = (path, callback, params = {}) => {
  * @param {function} callback A Function to execute on the network response.
  * @param {number} page Optional: The page to query. Default value is 1
  */
-export const search = (query, callback, page = 1) => {
+export const search = async (query, callback, page = 1) => {
   const path = 'search/movie';
   const queryParams = {
     query,
     page,
   };
-  _performNetworkCall(path, (response) => {
-    callback(response.data.results);
-  }, queryParams);
+
+  const response = await performNetworkCall(path, queryParams);
+  callback(response.data.results);
 };
 
 /**
@@ -89,25 +84,11 @@ export const search = (query, callback, page = 1) => {
  * @param {function} callback A Function to execute on the network response.
  * @param {number} page Optional: The page to query. Default value is 1
  */
-export const fetchMovieChart = (chart, callback, page = 1) => {
+export const fetchMovieChart = async (chart, callback, page = 1) => {
   const path = `movie/${chart}`;
-  const queryParams = {
-    page,
-  };
-  _performNetworkCall(path, (response) => {
-    callback(response.data.results);
-  }, queryParams);
-};
 
-/**
- * Get the primary information about a particular movie.
- *
- * @param {number} movieId TMDb movie id
- * @param {function} callback A Function to execute on the network response.
- */
-export const fetchMovieDetails = async (movieId, callback) => {
-  const movie = await deferredMovieDetails(movieId);
-  callback(movie.data);
+  const response = await performNetworkCall(path, { page });
+  callback(response.data.results);
 };
 
 const deferredMovieDetails = async (movieId) => {
@@ -123,6 +104,17 @@ const deferredMovieDetails = async (movieId) => {
   };
   const movie = await axios.get(path, config);
   return movie;
+};
+
+/**
+ * Get the primary information about a particular movie.
+ *
+ * @param {number} movieId TMDb movie id
+ * @param {function} callback A Function to execute on the network response.
+ */
+export const fetchMovieDetails = async (movieId, callback) => {
+  const movie = await deferredMovieDetails(movieId);
+  callback(movie.data);
 };
 
 

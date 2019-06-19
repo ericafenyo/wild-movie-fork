@@ -14,12 +14,12 @@
   --black-disabled: rgba(0, 0, 0, 0.38);
 }
 
-*:focus {
-  outline: none;
+body {
+  background: var(--color-dark);
 }
 
-body {
-  background-color: #242e42 !important;
+*:focus {
+  outline: none;
 }
 
 .background-dark {
@@ -170,5 +170,3 @@ body {
     font-size: 2.75rem;
   }
 }
-
-@import './components.css'
