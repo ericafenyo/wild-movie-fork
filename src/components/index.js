@@ -1,4 +1,4 @@
-import Carousel from './Carousel/Carousel';
+import Carousel from './carousel/Carousel';
 import SearchBar from './SearchBar/SearchBar';
 import Modal from './Modal/Modal';
 import Home from './Home/Home'
